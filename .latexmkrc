@@ -5,6 +5,7 @@ $pdf_mode = 1;             # Generate PDF (1: PDF, 0: DVI, 2: PS)
 
 # Output configuration
 # syntex=1: Enable synchronization with editors (e.g., VSCode <==> PDF viewer)
+# $pdflatex = 'pdflatex -file-line-error -interaction=nonstopmode -synctex=1 %O %S';
 $pdflatex = 'pdflatex -synctex=1 %O %S';
 
 # Clean extensions - define which files to clean when running cleanup commands (e.g.: latexmk -c)

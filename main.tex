@@ -1,58 +1,15 @@
-\documentclass[ppgc,pep,english]{iiufrgs}
-% \usepackage[T1]{fontenc} %Not needed by LuaLaTeX or XeLaTeX
-% \usepackage[utf8]{inputenc}   % pacote para acentuação
+\documentclass[ppgc,pep,english]{iiufrgs} % UFRGS template
+\usepackage[utf8]{inputenc}   % For punctuation in Portuguese
+\usepackage{graphicx}         % To include images
+\usepackage{times}              % Use Adobe Times font
+\usepackage[alf,abnt-emphasize=bf]{abntex2cite}	% Use ABNT citations
 
-% \usepackage{graphicx}           % pacote para importar figuras
-% \usepackage{svg}
-
-% \usepackage{times}              % pacote para usar fonte Adobe Times
-% \usepackage{verbatim}
-
-% \usepackage{pdfpages} % usado no anexo, para incluir arquivos PDF inteiros.
-% \usepackage{adjustbox} % usado numa tabela que ficou muito larga
-
-% \usepackage{csquotes}
-% \usepackage{hyperref}
-% \usepackage[hyperref=true,style=abnt,repeatfields=true]{biblatex}
-% \addbibresource{biblio.bib}
-
-% \usepackage{multirow}
-
-
-\title{Evaluation of a Cloud-Edge Serverless-based Architecure for Digital Twins}
-% \title{Evaluation of a Cloud-Edge Serverless-based Architecure for Digital Twins}
-\author{Correa}{Henrique Krausburg}
-\advisor[Prof.~Dr.]{Wickboldt}{Juliano Araújo}
-\date{}{2025}
-\location{Porto Alegre}{RS}
-
-\makeatletter
-
-\let\newtitle\@title
-\let\newauthor\@author
-\let\newdate\@date
-\makeatother
-
-\sloppy
+\input{frontmatter/titlepage.tex}
 
 \begin{document}
 
-\keyword{Serverless}
-\keyword{Digital Twins}
-\keyword{Cloud Computing}
-\keyword{Edge Computing}
-\keyword{Federated Learning}
-
 \maketitle
 
-% \input{abstract}
-% \tableofcontents
-
-% \input{chapters/introduction}
-% \input{chapters/results}
-% \input{chapters/methodology}
-% \input{chapters/acitivities}
-
-% \printbibliography
+\input{frontmatter/abstract.tex}
 
 \end{document}
