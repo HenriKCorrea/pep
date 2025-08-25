@@ -26,3 +26,52 @@ By leveraging the recent open-sourcing of GitHub Copilot Chat extension and the 
 This research aims to deliver both theoretical and practical contributions to the Digital Twin development community. The expected outcomes include a comprehensive analysis of current AI applications in Digital Twin development, a novel framework for AI-assisted development processes, and practical tools that demonstrate measurable productivity improvements. The ultimate goal is to lower the barriers to Digital Twin adoption, enabling smaller organizations to leverage this transformative technology while accelerating development cycles for enterprises of all sizes.
 
 The following chapters detail the methodology for achieving these objectives, including planned activities, validation strategies, and a timeline for completing this research program.
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%
+
+
+
+\section{Research Objective and Hypothesis}
+
+Objective: Design, implement, and evaluate protocol-anchored AI agents that deliver semantic and dynamic interoperability across heterogeneous DT systems without requiring a unified tool.
+
+Hypothesis: Compared to traditional, manual integration methods, LLM agent protocols will enable developers to achieve DT interoperability tasks faster and with higher success rates, while reducing the need for pre-defined static mappings.
+
+\section{Foundation: KTWIN and the Remaining Gap}
+
+KTWIN addresses infrastructure abstraction and vendor lock-in by leveraging Kubernetes/Knative and an extended DTDL for domain and system configuration \cite{ktwin}. The remaining gap is cross-platform interoperability: enabling KTWIN-based twins to discover, understand, and collaborate with twins hosted on other platforms (e.g., Eclipse Ditto) that expose different models and APIs. This work proposes an MCP Server for KTWIN to expose its twin graph (entities, relationships, properties, event streams) as first-class MCP resources and tools, allowing agents to browse and act on DT context in a standardized way. Federated A2A-mediated agents then negotiate schema alignment and task execution across platforms.
+
+\section{Research Questions}
+
+RQ1 (Feasibility): How effectively can a DT platform (KTWIN) be exposed as MCP resources and tools for discovery, querying, and actuation?
+
+RQ2 (Architecture): Do centralized mediator agents or federated adapter agents (per-platform) yield better scalability, robustness, and clarity for DT interoperability?
+
+RQ3 (Effectiveness): Do protocol-anchored agents improve time-to-integration and success rates over traditional API-based methods in realistic DT tasks?
+
+RQ4 (Quality and Risk): What are the accuracy, safety, and cost trade-offs of using LLM agents for semantic mappings and runtime decisions in DTs?
+
+\section{Contributions}
+
+This research proposes to deliver:
+\begin{itemize}
+  \item A design and reference implementation of an MCP Server for KTWIN, exposing the twin graph and event streams.
+  \item Agent architectures for DT interoperability: (A) centralized mediator and (B) federated per-platform adapters via A2A.
+  \item A prototypical heterogeneous testbed (e.g., KTWIN and Eclipse Ditto) for repeatable evaluation.
+  \item An empirical study comparing traditional integration vs. agent-mediated integration on DT tasks, reporting productivity and success metrics.
+  \item Guidelines and patterns for intent-, semantic-, and dynamic-level interoperability in DT ecosystems without unifying tools.
+\end{itemize}
+
+\section{Scope and Assumptions}
+
+This work focuses on interoperability across existing DT platforms rather than creating a new unified tool. It targets semantic and dynamic mediation at the application layer, assuming standard transport and security primitives (e.g., HTTPS, OAuth). Safety mitigations (e.g., constrained tool access, typed functions, human-in-the-loop) are considered to control agent error modes.
+
+\section{Structure of the Proposal}
+
+Chapter~\ref{chap:methodology} details methodology, including the MCP Server for KTWIN, agent designs, prototyping against Eclipse Ditto, and a controlled user study comparing traditional vs. agent-mediated workflows. The final chapters discuss results, limitations, and implications for DT standardization and practice.
+
+% References used above: \cite{digital_twin_survey,enabling_technologies,interview_study,ktwin}
+% Please add entries for MCP and A2A specifications if you plan to cite them.
