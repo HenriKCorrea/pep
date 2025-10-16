@@ -1,0 +1,32 @@
+15. PEP (PLANO DE ESTUDOS E PESQUISA)
+
+O Plano de Estudos e Pesquisa (PEP) define os objetivos científicos previstos para a Dissertação de Mestrado.
+
+FORMATO
+
+Sugere-se o seguinte formato para submissão do PEP:
+
+    a) folha de rosto, contendo o título da dissertação, nome e e-mail do aluno, orientador(es) e, eventualmente, coorientador;
+    b) resumo de uma página, contendo as informações mais relevantes sobre a contribuição pretendida pela dissertação;
+    c) introdução e motivação ocupando de duas a três páginas, fornecendo uma visão geral do tema da dissertação e a motivação para o trabalho;
+    d) objetivos e resultados esperados expostos em uma ou duas páginas, indicando claramente os objetivos do trabalho e o resultado concreto final pretendido;
+    e) metodologia de trabalho detalhando as atividades previstas assim como os métodos e recursos computacionais a serem empregados em cada uma delas, e o cronograma do trabalho. Devem estar, explícitos no cronograma, marcos importantes como elaboração de eventuais relatórios parciais e a elaboração de no mínimo um artigo a ser submetido a evento ou periódico;
+    f) referências bibliográficas, constando das publicações explicitamente referidas no plano.
+
+SUBMISSÃO DO PEP
+
+Até o final do oitavo mês após o ingresso no PPGC. Por exemplo: alunos ingressantes em março têm até dia 30/11 para submeter seu PEP.
+
+O aluno deverá enviar o PEP pelo sistema interno do PPGC (https://www.inf.ufrgs.br/ppgc/sistema/)
+
+Após o envio, o orientador (e o coorientador, se houver) será avisado e receberá o documento para avaliação.
+
+Em caso de dúvidas ou dificuldades no acesso ao sistema, entre em contato através do e-mail: ppgc@inf.ufrgs.br.
+
+
+O que falta definir direitinho:
+Escopo: Quais tarefas especificas o MCP vai implementar?
+a- Code retrieval: perguntar como utilizar o ktwin com base em documentação e código público disponível
+b- Code generation + retrieval: Buscar requisitos para implementar medição de qualidade do ar, integrado com APIS do KTWIN
+c- code translation: traduzir uma ontologia para kubernets CRD
+d- interoperability: criar MCP servers para KTWIN + outra ferramenta open source para viabilizar uma comunicação entre as ferramentas usando modelo / agente IA como intermediador
