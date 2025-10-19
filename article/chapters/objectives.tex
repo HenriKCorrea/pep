@@ -1,78 +1,82 @@
 % This chapter presents the objectives and expected results for this research study plan.
-% It should be one to two pages long, clearly indicating the objectives of the work and the concrete final result intended.
+% It should clearly indicating the objectives of the work and the concrete final result intended.
 
 \chapter{Research Goals and Expected Results}
 \label{chap:objectives}
 
-\section{Research Questions}
+This research aims to address the critical challenge of achieving semantic interoperability between heterogeneous Digital Twin (DT) systems while preserving the autonomy and domain-specific optimizations of existing implementations.
+The research question guiding this study is:
 
-This research aims to investigate and demonstrate how Artificial Intelligence can enhance productivity throughout the Digital Twin development process, with a focus on creating generalizable AI-assisted methodologies using KTWIN as a representative case study. The research is guided by three primary research questions:
+\textbf{How can AI Agent Protocols improve Digital Twin systems interoperability while preserving existing system autonomy?}
 
-\textbf{RQ1:} How has artificial intelligence been used in Digital Twin development processes so far, and what gaps exist in current approaches?
+This question addresses the fundamental tension between the need for cross-domain DT collaboration and the practical constraints of maintaining operational systems that have been optimized for specific domains and use cases.
 
-\textbf{RQ2:} How can artificial intelligence improve Digital Twin modeling, development, deployment, and operability through automated assistance and knowledge augmentation?
+\section{Research Objectives}
+\label{sec:objectives}
 
-\textbf{RQ3:} Can artificial intelligence contribute to solving interoperability issues in Digital Twin development through standardized integration frameworks and automated tool orchestration?
+To answer the research question, this work pursues the following specific objectives:
 
-\section{Research Approach and Innovation}
+\begin{enumerate}
+    \item \textbf{Investigate AI Agent Protocols for DT Interoperability:} 
+    Conduct a comprehensive review of AI Agent Protocols and analyze their applicability to Digital Twin ecosystems.
+    This includes examining how agent-mediated communication can bridge semantic gaps between heterogeneous DT platforms
+      without requiring universal standards or breaking changes.
 
-This research proposes a novel approach to AI-assisted Digital Twin development through the implementation of specialized tools based on the Model Context Protocol (MCP) specification. MCP provides a standardized framework for connecting AI models to diverse data sources and tools, enabling the creation of sophisticated AI agents and workflows that can interact with the complex Digital Twin development ecosystem.
+    \item \textbf{Design a Digital Environment Architecture:}
+    Define and formalize an architectural framework for Digital Ecosystems powered by AI Agent Protocols.
+      This architecture should enable autonomous DTs to cooperate through agent-mediated semantic mapping
+        while maintaining their domain-specific characteristics and stakeholder independence.
 
-The research innovation lies in developing MCP-based connectors and automation tools that can address specific Digital Twin development tasks—such as generating Kubernetes Custom Resource Definitions from ontology specifications, automating tool configuration, and facilitating cross-platform integration. This approach promises to democratize Digital Twin development by reducing the expertise barriers while maintaining the sophistication and capability of the resulting solutions.
+    \item \textbf{Develop a Proof-of-Concept Implementation:}
+    Create a working prototype that demonstrates cross-domain DT interoperability using open-source frameworks.
+      The implementation will extend existing DT platforms with agent protocol capabilities to validate the proposed architectural approach.
 
-By leveraging the recent open-sourcing of GitHub Copilot Chat extension and the growing ecosystem of AI development tools, this research positions itself at the intersection of three rapidly evolving fields: DevOps and platform engineering, Digital Twin technologies, and AI-assisted software development.
+    \item \textbf{Evaluate Cross-Domain Use Case Performance:}
+    Conduct technical evaluation of the developed prototype using a realistic cross-domain scenario
+      that requires coordination between heterogeneous DT systems to solve problems that individual systems cannot address independently.
+\end{enumerate}
 
 \section{Expected Contributions}
+\label{sec:contributions}
 
-This research aims to deliver both theoretical and practical contributions to the Digital Twin development community. The expected outcomes include a comprehensive analysis of current AI applications in Digital Twin development, a novel framework for AI-assisted development processes, and practical tools that demonstrate measurable productivity improvements. The ultimate goal is to lower the barriers to Digital Twin adoption, enabling smaller organizations to leverage this transformative technology while accelerating development cycles for enterprises of all sizes.
+This research is expected to make the following contributions to the Digital Twin and distributed systems communities:
 
-The following chapters detail the methodology for achieving these objectives, including planned activities, validation strategies, and a timeline for completing this research program.
-
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%
-
-
-
-\section{Research Objective and Hypothesis}
-
-Objective: Design, implement, and evaluate protocol-anchored AI agents that deliver semantic and dynamic interoperability across heterogeneous DT systems without requiring a unified tool.
-
-Hypothesis: Compared to traditional, manual integration methods, LLM agent protocols will enable developers to achieve DT interoperability tasks faster and with higher success rates, while reducing the need for pre-defined static mappings.
-
-\section{Foundation: KTWIN and the Remaining Gap}
-
-KTWIN addresses infrastructure abstraction and vendor lock-in by leveraging Kubernetes/Knative and an extended DTDL for domain and system configuration \cite{Wermann_Wickboldt_2025}. The remaining gap is cross-platform interoperability: enabling KTWIN-based twins to discover, understand, and collaborate with twins hosted on other platforms (e.g., Eclipse Ditto) that expose different models and APIs. This work proposes an MCP Server for KTWIN to expose its twin graph (entities, relationships, properties, event streams) as first-class MCP resources and tools, allowing agents to browse and act on DT context in a standardized way. Federated A2A-mediated agents then negotiate schema alignment and task execution across platforms.
-
-\section{Research Questions}
-
-RQ1 (Feasibility): How effectively can a DT platform (KTWIN) be exposed as MCP resources and tools for discovery, querying, and actuation?
-
-RQ2 (Architecture): Do centralized mediator agents or federated adapter agents (per-platform) yield better scalability, robustness, and clarity for DT interoperability?
-
-RQ3 (Effectiveness): Do protocol-anchored agents improve time-to-integration and success rates over traditional API-based methods in realistic DT tasks?
-
-RQ4 (Quality and Risk): What are the accuracy, safety, and cost trade-offs of using LLM agents for semantic mappings and runtime decisions in DTs?
-
-\section{Contributions}
-
-This research proposes to deliver:
 \begin{itemize}
-  \item A design and reference implementation of an MCP Server for KTWIN, exposing the twin graph and event streams.
-  \item Agent architectures for DT interoperability: (A) centralized mediator and (B) federated per-platform adapters via A2A.
-  \item A prototypical heterogeneous testbed (e.g., KTWIN and Eclipse Ditto) for repeatable evaluation.
-  \item An empirical study comparing traditional integration vs. agent-mediated integration on DT tasks, reporting productivity and success metrics.
-  \item Guidelines and patterns for intent-, semantic-, and dynamic-level interoperability in DT ecosystems without unifying tools.
+    \item \textbf{Conceptual Framework for Agent-Mediated DT Interoperability:}
+    A novel theoretical framework that positions AI Agent Protocols as mediators for semantic interoperability in Digital Ecosystems,
+      extending current understanding of how autonomous systems can cooperate without sacrificing domain specificity.
+
+    \item \textbf{Digital Environment Architecture:}
+    A formalized architectural pattern that demonstrates how agent protocols can be integrated into existing DT platforms
+      to enable cross-domain collaboration while maintaining system boundaries and stakeholder autonomy.
+
+    \item \textbf{Open-Source Implementation:}
+    A working prototype that extends open-source DT frameworks with AI Agent capabilities,
+      providing a reference implementation for researchers and practitioners interested in exploring agent-mediated DT interoperability.
+
+    \item \textbf{Cross-Domain Validation Scenario:}
+    A comprehensive evaluation using Smart City and Energy Grid DTs that demonstrates practical benefits of the proposed approach in a realistic use case
+      % involving traffic management and EV charging optimization.
+
+    \item \textbf{Literature Review:} A comprehensive analysis of AI Agent Protocols in the context of Digital Twin systems,
+      identifying gaps and opportunities for future research.
 \end{itemize}
 
-\section{Scope and Assumptions}
+\section{Research Scope and Limitations}
+\label{sec:scope-limitations}
 
-This work focuses on interoperability across existing DT platforms rather than creating a new unified tool. It targets semantic and dynamic mediation at the application layer, assuming standard transport and security primitives (e.g., HTTPS, OAuth). Safety mitigations (e.g., constrained tool access, typed functions, human-in-the-loop) are considered to control agent error modes.
+This research focuses specifically on semantic interoperability challenges and does not address all aspects of DT integration. The scope includes:
 
-\section{Structure of the Proposal}
+\textbf{Included:} 
+Semantic mapping between different ontologies,
+  agent-mediated negotiation protocols, cross-domain optimization coordination, and
+  open-source DT platform extensions.
 
-Chapter~\ref{chap:methodology} details methodology, including the MCP Server for KTWIN, agent designs, prototyping against Eclipse Ditto, and a controlled user study comparing traditional vs. agent-mediated workflows. The final chapters discuss results, limitations, and implications for DT standardization and practice.
+\textbf{Excluded:}
+Network-level protocols,
+  security and authentication mechanisms,
+  real-time synchronization guarantees, and
+  proprietary DT platform integration.
 
-% References used above: \cite{digital_twin_survey,enabling_technologies,interview_study,ktwin}
-% Please add entries for MCP and A2A specifications if you plan to cite them.
+The evaluation will be limited to simulated environments and may not capture all complexities of production DT deployments.
+Results should be interpreted within the context of the specific use cases and platforms chosen for validation.
