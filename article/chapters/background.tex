@@ -1,0 +1,100 @@
+\chapter{Theoretical Background}
+\label{chap:background}
+
+\section{Digital Twins}
+
+The concept of DTs has evolved significantly since its introduction by Grieves over two decades ago as a "conceptual ideal for product lifecycle management" \cite{Grieves_2017}.
+Initially focused on manufacturing and product optimization, DTs have expanded to encompass entire complex systems such as 
+    ports, cities, and supply chains \cite{Klar_2024}.
+This expansion reflects the growing recognition of DTs as pillars of Industry 4.0 and innovation backbones for future systems \cite{Jiang_2021}.
+
+At their core, Digital Twins represent virtual replicas of physical assets or processes that are continuously updated with real-time data throughout their lifecycle.
+The Digital Twin Consortium provides a cross-domain definition characterizing DTs through three foundational elements:
+    (1) virtual representation enabling comprehensive situational awareness,
+    (2) real-world entities and processes analyzed within models, and
+    (3) constant bidirectional data exchange synchronizing virtual and real-world entities \cite{Budiardjo_2021}.
+This bidirectional nature distinguishes DTs from 
+    digital shadows (unidirectional data flow) and 
+    digital models (no automatic information flow) \cite{Botín-Sanabria_2022}.
+
+The maturation of DT technologies has revealed significant challenges in achieving interoperability between heterogeneous systems.
+As Klar et al. \cite{Klar_2024} argue, while existing maturity frameworks often emphasize autonomous operations as the highest level,
+    true maturity in complex systems requires 
+    \emph{interoperability}—the capability of DTs to optimize beyond their physical boundaries by exchanging information with interconnected systems.
+This perspective aligns with the System of Systems (SoS) paradigm, where 
+    joint optimization across domains delivers value greater than the sum of individual system optimizations \cite{Dietz_2020}.
+
+The six-level maturity model proposed by Klar et al. \cite{Klar_2024} provides a domain-independent framework for assessing DT sophistication:
+\begin{enumerate}
+    \item \textbf{Replication of Assets}: Digital mirroring of physical assets and their states
+    \item \textbf{Connection}: Integration of models with static data and metadata
+    \item \textbf{Synchronization}: Enrichment with real-time sensor data
+    \item \textbf{Interaction}: Bidirectional data communication and remote control
+    \item \textbf{Automation}: Autonomous operations optimization and self-maintenance
+    \item \textbf{Interoperability}: Joint decision-making across systems through standardized interfaces
+\end{enumerate}
+
+This research specifically addresses Level 6 interoperability,
+    focusing on semantic interoperability challenges that enable DTs to cooperate while 
+    preserving domain-specific optimizations and stakeholder autonomy.
+
+\subsection{Digital Twins Frameworks}
+
+Several open-source frameworks have emerged to support DT development, each with different architectural approaches and interoperability capabilities.
+
+\textbf{KTWIN} is an open-source framework for building and operating digital twins in Kubernetes environments. It provides a cloud-native approach to DT management, supporting scalable deployment and integration with various data sources. KTWIN emphasizes modularity and extensibility, making it suitable for complex industrial applications requiring high availability and scalability.
+
+\textbf{Eclipse Ditto} is a framework for building digital twins of physical devices, focusing on managing and synchronizing the state between physical assets and their digital representations. Ditto provides a rich API for interacting with digital twins and supports various communication protocols, making it particularly suited for IoT scenarios where device management and state synchronization are critical.
+
+Both frameworks represent different approaches to DT implementation, but face challenges in achieving semantic interoperability across domains—a gap this research aims to address through agent-mediated communication protocols.
+
+% Digital Twin Consortium
+The \textbf{Digital Twin Consortium} has emerged as a key organization driving standardization and best practices in DT development. Their Digital Twin System Interoperability Framework outlines seven interoperability concepts: system-centric design, model-based approach, holistic information flow, state-based interactions, federated repositories, actionable information, and scalable mechanisms \cite{Budiardjo_2021}. This framework provides valuable guidance but primarily targets manufacturing contexts, leaving gaps in cross-domain semantic interoperability.
+
+\section{Digital Environment}
+
+The concept of a \emph{Digital Environment}, as introduced by~\cite{Nativi_2021} in the Destination Earth (DestinE) context, represents a paradigm shift in how complex systems interact digitally. A Digital Environment can be understood as an ecosystem where multiple digital twins coexist, interact, and collaborate to address complex, cross-domain challenges that individual systems cannot solve independently.
+
+In the DestinE implementation, the Digital Environment architecture enables the creation of multiple digital twins representing different aspects of the Earth system (climate, oceans, atmosphere, etc.) that can interoperate through standardized interfaces and shared data spaces. This approach recognizes that no single organization or system can encompass the complexity of global challenges, requiring instead a federated approach where specialized DTs maintain their autonomy while contributing to collective intelligence.
+
+The Digital Environment concept addresses several key requirements for large-scale DT ecosystems:
+\begin{itemize}
+    \item \textbf{Federated Architecture}: Systems maintain independence while participating in collective workflows
+    \item \textbf{Semantic Interoperability}: Meaningful data exchange across different ontological frameworks
+    \item \textbf{Data Sovereignty}: Control over data sharing and usage rights
+    \item \textbf{Scalable Collaboration}: Mechanisms for systems to discover and interact with relevant partners
+\end{itemize}
+
+While DestinE focuses on Earth system modeling, its architectural principles are highly relevant to other domains requiring cross-DT collaboration. However, current implementations rely heavily on predefined standards and centralized coordination, which may not scale to dynamic, multi-stakeholder environments where systems evolve independently.
+
+\section{AI Agents}
+
+Artificial Intelligence Agents are computational systems that perceive their environment and take actions to achieve specific goals \cite{Russell2020}. In the context of digital ecosystems, AI agents can act as autonomous intermediaries that facilitate communication, negotiation, and coordination between heterogeneous systems.
+
+AI agents exhibit several characteristics that make them suitable for addressing DT interoperability challenges:
+\begin{itemize}
+    \item \textbf{Autonomy}: Ability to operate without direct human intervention
+    \item \textbf{Reactivity}: Capacity to perceive and respond to environmental changes
+    \item \textbf{Pro-activeness}: Goal-directed behavior that initiates interactions
+    \item \textbf{Social Ability}: Capability to communicate with other agents and systems
+\end{itemize}
+
+\subsection{AI Agent Protocols}
+
+Agent protocols define the communication patterns and interaction mechanisms that enable coordinated behavior in multi-agent systems. Several protocols have emerged as standards for agent-mediated communication.
+
+\textbf{Model Context Protocol (MCP)} is an open protocol that enables AI applications to connect to external data sources and tools through standardized interfaces. MCP provides a framework for semantic mapping between different data models, allowing systems to exchange information while preserving their internal representations. The protocol's focus on context-aware data retrieval and tool invocation makes it particularly relevant for DT interoperability scenarios where systems need to understand and respond to each other's capabilities and requirements.
+
+\textbf{Agent-to-Agent (A2A) Protocols} encompass various standards for direct communication between autonomous agents. These protocols typically include mechanisms for agent discovery, capability advertisement, task delegation, and result sharing. A2A protocols enable the emergence of complex behaviors through simple local interactions, making them suitable for large-scale DT ecosystems where centralized control is impractical.
+
+Both MCP and A2A protocols provide building blocks for the agent-mediated interoperability approach proposed in this research, addressing the semantic gaps that hinder current DT integration efforts.
+
+\subsection{AI Agent Frameworks}
+
+Several frameworks facilitate the development and deployment of AI agents, providing tools for agent orchestration, communication, and task execution.
+
+\textbf{LangChain} is a framework for developing applications powered by language models, with specific capabilities for building conversational agents and tool-using systems. LangChain provides abstractions for connecting LLMs to external data sources and APIs, making it suitable for creating agents that can mediate between different DT systems with natural language understanding capabilities.
+
+\textbf{LlamaIndex} focuses on data ingestion and retrieval for LLM applications, providing sophisticated indexing and querying capabilities across heterogeneous data sources. This framework is particularly relevant for DT interoperability scenarios where agents need to access and reason over distributed knowledge bases with different schemas and ontologies.
+
+These frameworks, combined with specialized agent protocols, provide the technical foundation for implementing the digital ecosystem architecture proposed in this research—enabling autonomous DTs to achieve semantic interoperability without sacrificing their domain-specific optimizations.
