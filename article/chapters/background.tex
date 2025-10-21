@@ -42,20 +42,45 @@ This research specifically addresses Level 6 interoperability,
 
 Several open-source frameworks have emerged to support DT development, each with different architectural approaches and interoperability capabilities.
 
-\textbf{KTWIN} is an open-source framework for building and operating digital twins in Kubernetes environments. It provides a cloud-native approach to DT management, supporting scalable deployment and integration with various data sources. KTWIN emphasizes modularity and extensibility, making it suitable for complex industrial applications requiring high availability and scalability.
+\textbf{KTWIN} is an open-source framework for building and operating digital twins in Kubernetes environments.
+It provides a cloud-native approach to DT management, supporting scalable deployment and integration with various data sources.
+KTWIN emphasizes modularity and extensibility, making it suitable for complex industrial applications requiring high availability and scalability.
 
-\textbf{Eclipse Ditto} is a framework for building digital twins of physical devices, focusing on managing and synchronizing the state between physical assets and their digital representations. Ditto provides a rich API for interacting with digital twins and supports various communication protocols, making it particularly suited for IoT scenarios where device management and state synchronization are critical.
+\textbf{Eclipse Ditto} is a framework for building digital twins of physical devices,
+    focusing on managing and synchronizing the state between physical assets and their digital representations.
+Ditto provides a rich API for interacting with digital twins and supports various communication protocols,
+    making it particularly suited for IoT scenarios where device management and state synchronization are critical.
 
-Both frameworks represent different approaches to DT implementation, but face challenges in achieving semantic interoperability across domains—a gap this research aims to address through agent-mediated communication protocols.
+Both frameworks represent different approaches to DT implementation,
+    but face challenges in achieving semantic interoperability across domains—a gap 
+    this research aims to address through agent-mediated communication protocols.
 
 % Digital Twin Consortium
-The \textbf{Digital Twin Consortium} has emerged as a key organization driving standardization and best practices in DT development. Their Digital Twin System Interoperability Framework outlines seven interoperability concepts: system-centric design, model-based approach, holistic information flow, state-based interactions, federated repositories, actionable information, and scalable mechanisms \cite{Budiardjo_2021}. This framework provides valuable guidance but primarily targets manufacturing contexts, leaving gaps in cross-domain semantic interoperability.
+The \textbf{Digital Twin Consortium} has emerged as a key organization driving standardization and best practices in DT development.
+Their Digital Twin System Interoperability Framework outlines seven interoperability concepts:
+    system-centric design,
+    model-based approach,
+    holistic information flow,
+    state-based interactions,
+    federated repositories,
+    actionable information, and
+    scalable mechanisms \cite{Budiardjo_2021}.
+This framework provides valuable guidance but primarily targets manufacturing contexts,
+    leaving gaps in cross-domain semantic interoperability.
 
 \section{Digital Environment}
 
-The concept of a \emph{Digital Environment}, as introduced by~\cite{Nativi_2021} in the Destination Earth (DestinE) context, represents a paradigm shift in how complex systems interact digitally. A Digital Environment can be understood as an ecosystem where multiple digital twins coexist, interact, and collaborate to address complex, cross-domain challenges that individual systems cannot solve independently.
+The concept of a \emph{Digital Environment}, as introduced by~\cite{Nativi_2021} in the Destination Earth (DestinE) context, represents
+    a paradigm shift in how complex systems interact digitally.
+A Digital Environment can be understood as an ecosystem where multiple digital twins coexist, interact, and collaborate 
+    to address complex, cross-domain challenges that individual systems cannot solve independently.
 
-In the DestinE implementation, the Digital Environment architecture enables the creation of multiple digital twins representing different aspects of the Earth system (climate, oceans, atmosphere, etc.) that can interoperate through standardized interfaces and shared data spaces. This approach recognizes that no single organization or system can encompass the complexity of global challenges, requiring instead a federated approach where specialized DTs maintain their autonomy while contributing to collective intelligence.
+In the DestinE implementation, the Digital Environment architecture enables the creation of multiple digital twins
+    representing different aspects of the Earth system (climate, oceans, atmosphere, etc.) that can
+    interoperate through standardized interfaces and shared data spaces.
+This approach recognizes that no single organization or system can encompass the complexity of global challenges,
+    requiring instead a federated approach where specialized DTs maintain their autonomy
+    while contributing to collective intelligence.
 
 The Digital Environment concept addresses several key requirements for large-scale DT ecosystems:
 \begin{itemize}
@@ -65,11 +90,15 @@ The Digital Environment concept addresses several key requirements for large-sca
     \item \textbf{Scalable Collaboration}: Mechanisms for systems to discover and interact with relevant partners
 \end{itemize}
 
-While DestinE focuses on Earth system modeling, its architectural principles are highly relevant to other domains requiring cross-DT collaboration. However, current implementations rely heavily on predefined standards and centralized coordination, which may not scale to dynamic, multi-stakeholder environments where systems evolve independently.
+While DestinE focuses on Earth system modeling, its architectural principles are highly relevant to other domains requiring cross-DT collaboration.
+% However, current implementations rely heavily on predefined standards and centralized coordination, which
+%     may not scale to dynamic, multi-stakeholder environments where systems evolve independently.
 
 \section{AI Agents}
 
-Artificial Intelligence Agents are computational systems that perceive their environment and take actions to achieve specific goals \cite{Russell2020}. In the context of digital ecosystems, AI agents can act as autonomous intermediaries that facilitate communication, negotiation, and coordination between heterogeneous systems.
+Artificial Intelligence Agents are computational systems that perceive their environment and take actions to achieve specific goals \cite{Russell_2020}.
+In the context of digital ecosystems, AI agents can act as autonomous intermediaries that
+    facilitate communication, negotiation, and coordination between heterogeneous systems.
 
 AI agents exhibit several characteristics that make them suitable for addressing DT interoperability challenges:
 \begin{itemize}
