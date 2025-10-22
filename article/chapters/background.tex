@@ -42,9 +42,30 @@ This research specifically addresses Level 6 interoperability,
 
 Several open-source frameworks have emerged to support DT development, each with different architectural approaches and interoperability capabilities.
 
-\textbf{KTWIN} is an open-source framework for building and operating digital twins in Kubernetes environments.
-It provides a cloud-native approach to DT management, supporting scalable deployment and integration with various data sources.
-KTWIN emphasizes modularity and extensibility, making it suitable for complex industrial applications requiring high availability and scalability.
+\textbf{KTWIN}~\cite{Wermann_Wickboldt_2025}
+    is an open-source Kubernetes-based serverless platform for building and operating digital twins.
+Developed as a novel approach to address the limitations of existing vendor-specific DT platforms,
+    KTWIN provides a cloud-native, vendor-agnostic solution that enables deployment across 
+    any Kubernetes cluster—whether on-premises, at the edge, or in multi-cloud environments.
+
+KTWIN extends DTDL to bridge the gap between 
+    domain modeling and technical deployment specifications.
+While DTDL traditionally focuses on entity definitions and relationships,
+    KTWIN's enhanced specification allows domain experts to configure
+    underlying infrastructure aspects such as CPU allocation, memory requirements, 
+    auto-scaling policies, and container deployment settings—all within the same ontology-based definition.
+
+KTWIN's modular architecture comprises control plane and application plane components.
+The control plane manages twin definitions, relationships, and orchestration through Kubernetes APIs,
+    while the application plane handles real-time event processing, data storage, and twin services execution.
+This separation enables independent scaling and evolution of different system aspects while 
+    maintaining semantic consistency across the twin graph.
+
+While KTWIN represents a significant advancement in open-source DT platforms,
+    current implementations still rely on predefined routing patterns and centralized orchestration.
+This creates opportunities for enhanced interoperability mechanisms that could enable
+    more dynamic, decentralized collaboration between autonomous DT systems—
+    a gap that agent-mediated approaches could address.
 
 \textbf{Eclipse Ditto} is a framework for building digital twins of physical devices,
     focusing on managing and synchronizing the state between physical assets and their digital representations.
@@ -56,7 +77,8 @@ Both frameworks represent different approaches to DT implementation,
     this research aims to address through agent-mediated communication protocols.
 
 % Digital Twin Consortium
-The \textbf{Digital Twin Consortium} has emerged as a key organization driving standardization and best practices in DT development.
+The \textbf{Digital Twin Consortium}~\cite{Budiardjo_2021}
+    has emerged as a key organization driving standardization and best practices in DT development.
 Their Digital Twin System Interoperability Framework outlines seven interoperability concepts:
     system-centric design,
     model-based approach,
@@ -64,7 +86,7 @@ Their Digital Twin System Interoperability Framework outlines seven interoperabi
     state-based interactions,
     federated repositories,
     actionable information, and
-    scalable mechanisms \cite{Budiardjo_2021}.
+    scalable mechanisms.
 This framework provides valuable guidance but primarily targets manufacturing contexts,
     leaving gaps in cross-domain semantic interoperability.
 
@@ -96,34 +118,117 @@ While DestinE focuses on Earth system modeling, its architectural principles are
 
 \section{AI Agents}
 
-Artificial Intelligence Agents are computational systems that perceive their environment and take actions to achieve specific goals \cite{Russell_2020}.
+Artificial Intelligence Agents are computational systems that perceive their environment through
+    sensors and take actions via actuators to achieve specific goals.
+Russell and Norvig define an agent as
+    "anything that can be viewed as perceiving its environment through sensors and acting upon that environment through actuators"~\cite{Russell_2020}.
 In the context of digital ecosystems, AI agents can act as autonomous intermediaries that
     facilitate communication, negotiation, and coordination between heterogeneous systems.
 
-AI agents exhibit several characteristics that make them suitable for addressing DT interoperability challenges:
+AI agents exhibit several key characteristics that make them particularly suitable for addressing DT interoperability challenges:
 \begin{itemize}
-    \item \textbf{Autonomy}: Ability to operate without direct human intervention
-    \item \textbf{Reactivity}: Capacity to perceive and respond to environmental changes
-    \item \textbf{Pro-activeness}: Goal-directed behavior that initiates interactions
-    \item \textbf{Social Ability}: Capability to communicate with other agents and systems
+    \item \textbf{Autonomy}:
+    Ability to operate without direct human intervention,
+        making decisions based on their programmed objectives and environmental observations
+    \item \textbf{Reactivity}:
+    Capacity to perceive environmental changes through
+        sensors and respond appropriately in a timely manner
+    \item \textbf{Pro-activeness}:
+    Goal-directed behavior that enables agents to initiate interactions and
+        take initiative to achieve their objectives
+    \item \textbf{Social Ability}:
+    Capability to communicate and cooperate with other agents and systems
+        through agent communication languages and protocols
 \end{itemize}
+
+These characteristics enable AI agents to function as
+    mediators that can bridge semantic gaps between different DT systems,
+    facilitating interoperability without requiring extensive refactoring of existing infrastructures.
 
 \subsection{AI Agent Protocols}
 
-Agent protocols define the communication patterns and interaction mechanisms that enable coordinated behavior in multi-agent systems. Several protocols have emerged as standards for agent-mediated communication.
+Agent protocols define the communication patterns and interaction mechanisms that enable coordinated behavior in multi-agent systems.
+Several protocols have emerged as standards for agent-mediated communication.
 
-\textbf{Model Context Protocol (MCP)} is an open protocol that enables AI applications to connect to external data sources and tools through standardized interfaces. MCP provides a framework for semantic mapping between different data models, allowing systems to exchange information while preserving their internal representations. The protocol's focus on context-aware data retrieval and tool invocation makes it particularly relevant for DT interoperability scenarios where systems need to understand and respond to each other's capabilities and requirements.
+\textbf{Model Context Protocol (MCP)}~\cite{Anthropic_2024}
+    is an open-source standard that enables AI applications to
+    connect to external data sources, tools, and workflows through
+    standardized interfaces.
+MCP implements a JSON-RPC 2.0 based exchange protocol—providing a unified way to
+    connect AI systems to heterogeneous external systems including 
+    databases, APIs, file systems, and specialized services.
 
-\textbf{Agent-to-Agent (A2A) Protocols} encompass various standards for direct communication between autonomous agents. These protocols typically include mechanisms for agent discovery, capability advertisement, task delegation, and result sharing. A2A protocols enable the emergence of complex behaviors through simple local interactions, making them suitable for large-scale DT ecosystems where centralized control is impractical.
+MCP follows a client-server architecture where
+    an AI application (MCP host) establishes connections to one or more MCP servers through dedicated MCP clients.
+Each client maintains a one-to-one connection with its corresponding server, enabling the AI application to
+    access distributed capabilities while preserving system boundaries.
+The protocol operates through two distinct layers:
+    a data layer that defines message structure and semantics, and
+    a transport layer that manages communication channels through either standard input/output streams (stdio) for local processes or HTTP for remote servers.
 
-Both MCP and A2A protocols provide building blocks for the agent-mediated interoperability approach proposed in this research, addressing the semantic gaps that hinder current DT integration efforts.
+The protocol defines three core primitives that servers can expose to clients:
+\begin{itemize}
+    \item \textbf{Tools}: Executable functions for performing actions
+    \item \textbf{Resources}: Data sources providing contextual information
+    \item \textbf{Prompts}: Reusable templates for structuring AI interactions
+\end{itemize}
+Additionally, MCP enables servers to access client capabilities through
+\begin{itemize}
+    \item \textbf{Sampling}: Requesting language model completions
+    \item \textbf{Elicitation}: Requesting user input
+    \item \textbf{Logging}: Sending debug information
+\end{itemize}
+This bidirectional capability exchange, combined with real-time notifications for dynamic updates,
+    makes MCP particularly relevant for DT interoperability scenarios where
+    systems need to discover, understand, and dynamically respond to each other's evolving capabilities
+    while maintaining semantic coherence across different domain models.
+
+\textbf{Agent-to-Agent (A2A) Protocol}~\cite{Google_A2A_2025}
+    is an open standard that enables seamless communication and collaboration between AI agents, providing a
+    common language for agents built using diverse frameworks and by different vendors.
+Unlike approaches that wrap agents as tools (limiting their negotiation capabilities),
+    A2A allows agents to communicate in their native modalities,
+    preserving their autonomy while enabling complex multi-turn interactions such as negotiation and clarification.
+
+A2A follows a client-server architecture with three core actors:
+    users (human operators or automated services),
+    A2A clients (applications or agents acting on behalf of users), and
+    A2A servers (AI agents exposing HTTP endpoints implementing the A2A protocol).
+The protocol emphasizes \emph{opaque execution}, where
+    agents collaborate effectively without exposing their internal logic, memory, or proprietary tools,
+    preserving intellectual property while enhancing security.
+
+The protocol defines several fundamental communication elements that enable sophisticated agent interactions:
+\begin{itemize}
+    \item \textbf{Agent Cards}: JSON metadata documents describing an agent's identity, capabilities, endpoint, skills, and authentication requirements
+    \item \textbf{Tasks}: Stateful units of work with unique IDs and defined lifecycles, facilitating tracking of long-running operations
+    \item \textbf{Messages}: Single turns of communication containing content and roles, supporting multi-turn conversations
+    \item \textbf{Artifacts}: Tangible outputs generated during task execution, providing structured and retrievable results
+\end{itemize}
+
+Both MCP and A2A protocols provide building blocks for the agent-mediated interoperability approach proposed in this research,
+    addressing the semantic gaps that hinder current DT integration efforts.
 
 \subsection{AI Agent Frameworks}
 
 Several frameworks facilitate the development and deployment of AI agents, providing tools for agent orchestration, communication, and task execution.
 
-\textbf{LangChain} is a framework for developing applications powered by language models, with specific capabilities for building conversational agents and tool-using systems. LangChain provides abstractions for connecting LLMs to external data sources and APIs, making it suitable for creating agents that can mediate between different DT systems with natural language understanding capabilities.
+\textbf{LangChain}~\cite{LangChainOverview}
+    is a framework designed to be the easiest way to start building agents and applications powered by large language models.
+With standardized model interfaces, LangChain enables developers to
+    avoid vendor lock-in while building sophisticated agent systems.
+The framework provides pre-built agent architectures and model integrations that facilitate
+    rapid prototyping and development of LLM-powered applications.
 
-\textbf{LlamaIndex} focuses on data ingestion and retrieval for LLM applications, providing sophisticated indexing and querying capabilities across heterogeneous data sources. This framework is particularly relevant for DT interoperability scenarios where agents need to access and reason over distributed knowledge bases with different schemas and ontologies.
+LangChain's tool system allows LLMs to dynamically use external functions and access unstructured data,
+    making it particularly suitable for creating agents that can mediate between different DT systems with natural language understanding capabilities.
 
-These frameworks, combined with specialized agent protocols, provide the technical foundation for implementing the digital ecosystem architecture proposed in this research—enabling autonomous DTs to achieve semantic interoperability without sacrificing their domain-specific optimizations.
+\textbf{Agent Development Kit (ADK)}~\cite{googleAgentDevelopmentKit}
+    is a flexible and modular framework developed by Google for developing and deploying AI agents.
+While optimized for Gemini and the Google ecosystem, ADK is model-agnostic, deployment-agnostic, and
+    built for compatibility with other frameworks.
+ADK provides tools for creating, deploying, and orchestrating AI agent architectures that range from simple tasks to complex workflows.
+
+These frameworks, combined with specialized agent protocols, provide the
+    technical foundation for implementing the digital ecosystem architecture proposed in this research—enabling
+    autonomous DTs to achieve semantic interoperability without sacrificing their domain-specific optimizations.
