@@ -40,7 +40,8 @@ This research specifically addresses Level 6 interoperability,
 
 \subsection{Digital Twins Frameworks}
 
-Several open-source frameworks have emerged to support DT development, each with different architectural approaches and interoperability capabilities.
+Several open-source frameworks have emerged to support DT development, each with different
+    architectural approaches and interoperability capabilities.
 
 \textbf{KTWIN}~\cite{Wermann_Wickboldt_2025}
     is an open-source Kubernetes-based serverless platform for building and operating digital twins.
@@ -67,16 +68,33 @@ This creates opportunities for enhanced interoperability mechanisms that could e
     more dynamic, decentralized collaboration between autonomous DT systems—
     a gap that agent-mediated approaches could address.
 
-\textbf{Eclipse Ditto} is a framework for building digital twins of physical devices,
+\textbf{Eclipse Ditto}~\cite{eclipseEclipseDittoOpen2025}
+    is a framework for building digital twins of physical devices,
     focusing on managing and synchronizing the state between physical assets and their digital representations.
 Ditto provides a rich API for interacting with digital twins and supports various communication protocols,
     making it particularly suited for IoT scenarios where device management and state synchronization are critical.
 
-Both frameworks represent different approaches to DT implementation,
+Eclipse Ditto implements the digital twin software pattern in IoT contexts,
+    mirroring potentially millions of physical "Things" (sensors, smart heating systems, connected cars, etc.)
+    with their virtual, cloud-based counterparts in the digital world.
+This approach simplifies IoT solution development by enabling software developers to interact with
+    physical devices through their digital twins using standard web service APIs,
+    without requiring knowledge of specific device connection protocols or physical locations.
+
+Ditto's domain model provides a flexible, agnostic approach to Thing data structure through two core elements:
+    \textbf{Attributes} for managing static metadata as JSON objects that change infrequently, and
+    \textbf{Features} for managing dynamic state data such as sensor readings or configuration parameters.
+
+While Ditto excels at device-level digital twin management and provides robust IoT integration capabilities,
+    it primarily focuses on individual Thing synchronization rather than cross-domain semantic interoperability.
+The framework's strength in maintaining device state consistency complements but does not address
+    the broader challenges of enabling collaboration between heterogeneous DT systems with different ontologies—
+    gaps that agent-mediated approaches could bridge.
+
+Both KTWIN and Ditto represent different approaches to DT implementation,
     but face challenges in achieving semantic interoperability across domains—a gap 
     this research aims to address through agent-mediated communication protocols.
 
-% Digital Twin Consortium
 The \textbf{Digital Twin Consortium}~\cite{Budiardjo_2021}
     has emerged as a key organization driving standardization and best practices in DT development.
 Their Digital Twin System Interoperability Framework outlines seven interoperability concepts:
@@ -90,31 +108,122 @@ Their Digital Twin System Interoperability Framework outlines seven interoperabi
 This framework provides valuable guidance but primarily targets manufacturing contexts,
     leaving gaps in cross-domain semantic interoperability.
 
-\section{Digital Environment}
+\section{Digital Ecosystems}
 
-The concept of a \emph{Digital Environment}, as introduced by~\cite{Nativi_2021} in the Destination Earth (DestinE) context, represents
+The concept of a \emph{Digital Ecosystem} (DE), as introduced by~\cite{Nativi_2021} in the Destination Earth (DestinE) context, represents
     a paradigm shift in how complex systems interact digitally.
-A Digital Environment can be understood as an ecosystem where multiple digital twins coexist, interact, and collaborate 
+A Digital Ecosystem can be understood as an ecosystem where multiple digital twins coexist, interact, and collaborate 
     to address complex, cross-domain challenges that individual systems cannot solve independently.
 
-In the DestinE implementation, the Digital Environment architecture enables the creation of multiple digital twins
-    representing different aspects of the Earth system (climate, oceans, atmosphere, etc.) that can
-    interoperate through standardized interfaces and shared data spaces.
-This approach recognizes that no single organization or system can encompass the complexity of global challenges,
-    requiring instead a federated approach where specialized DTs maintain their autonomy
-    while contributing to collective intelligence.
+Unlike traditional system-of-systems approaches that rely on predefined standards and centralized coordination,
+    Digital Ecosystems embrace an evolutionary paradigm inspired by natural ecosystems.
+This paradigm focuses on a holistic view of diverse and autonomous entities (the "biotic" component)
+    sharing a common environment (the "abiotic" component) where they interact, evolve, and develop
+    new collaborative strategies while modifying their shared environment.
 
-The Digital Environment concept addresses several key requirements for large-scale DT ecosystems:
+The Digital Ecosystem approach addresses several critical requirements for large-scale DT collaboration:
 \begin{itemize}
     \item \textbf{Federated Architecture}: Systems maintain independence while participating in collective workflows
     \item \textbf{Semantic Interoperability}: Meaningful data exchange across different ontological frameworks
     \item \textbf{Data Sovereignty}: Control over data sharing and usage rights
     \item \textbf{Scalable Collaboration}: Mechanisms for systems to discover and interact with relevant partners
+    \item \textbf{Emergent Behavior}: Value generation through unpredictable interactions between autonomous systems
 \end{itemize}
 
-While DestinE focuses on Earth system modeling, its architectural principles are highly relevant to other domains requiring cross-DT collaboration.
-% However, current implementations rely heavily on predefined standards and centralized coordination, which
-%     may not scale to dynamic, multi-stakeholder environments where systems evolve independently.
+A DE constitutive mechanism is achieved when ecosystem-wide common value provides choices for
+    enterprise systems to fulfill their expected enterprise value in holistic interactions.
+This requires careful balance between belonging (to the ecosystem) versus autonomy (from the ecosystem),
+    with these compromises evolving dynamically as systems adapt to changing requirements.
+
+\subsection{Digital Ecosystem Information Architecture}
+
+Digital Ecosystems dealing with DTs of the Earth share a set of main digital entities and enabling services
+    that can be grouped into three principal strands: policy/business entities, framework/software entities,
+    and constituent infrastructure entities.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.9\textwidth]{figures/de-high-level-arch.png}
+    \caption{Main high-level entities (and their simplified relationships) shared by a DE from~\cite{Nativi_2021}}
+    \label{fig:de_info_arch}
+\end{figure}
+
+The information architecture illustrated in Figure~\ref{fig:de_info_arch} supports several conceptual and digital entities:
+
+\textbf{Digital Twins (DTs)} represent the domain-specific virtual replicas recognized by use cases
+    that the ecosystem supports, such as disaster risk management, climate adaptation, and digital oceans.
+Each DT maintains bidirectional data exchange with its physical counterpart while
+    participating in ecosystem-wide collaboration patterns.
+
+\textbf{Digital Threads} constitute the flow of data fueling digital insights across the ecosystem,
+    maintaining records of entities lifecycle from design to decommission.
+Digital threads are crucial for conceiving, implementing, reusing, and assessing DTs,
+    typically implemented through workflows and service orchestration processes that enable
+    cross-system data lineage and provenance tracking.
+
+\textbf{Digital/Virtual Resources} encompass distributed assets including:
+    datasets with metadata schemas and associated data streams,
+    process-based analytical software with scientific algorithms and workflows,
+    learning-based AI analytical software with neural network models,
+    and composite DTs that result from orchestrated combinations of elementary DT instances.
+
+\textbf{Virtual Network Services} provide cloud-based functions that simplify ecosystem networking
+    by bringing together distant and disparate resources efficiently.
+These services implement multiple combinations of network functions across remote and cloud locations,
+    optimize automation and orchestration services, and enable rapid service scaling.
+
+This information architecture enables semantic interoperability across heterogeneous systems
+    while preserving the autonomy and domain-specific optimizations of individual DTs.
+The shared conceptual framework facilitates discovery, understanding, and dynamic collaboration
+    without requiring extensive standardization of underlying system implementations.
+
+% \subsection{Digital Ecosystem Virtual Cloud Layer and Orchestration Services}
+
+% The Digital Ecosystem virtual cloud layer provides the technological foundation for
+%     multi-cloud orchestration and resource management across distributed, heterogeneous infrastructures.
+% This layer abstracts underlying complexity while enabling transparent access to
+%     computing, storage, and analytical resources distributed across the ecosystem.
+
+% \textbf{Virtual Cloud Paradigm}
+% The virtual cloud implements a middleware framework that allows execution of tasks and applications
+%     on multi-cloud environments, exposing them as unified, consistent virtual capacity.
+% This approach enables organizations to increase efficiency by choosing appropriate services and providers
+%     for different use cases while managing security and performance challenges in multi-cloud architectures.
+
+% The virtual cloud layer virtualizes operational infrastructures through mediation and brokering services,
+%     publishing open, common, and consistent network services and APIs to clients.
+% This virtualization allows multi-cloud infrastructures to remain substantially autonomous and evolve freely,
+%     avoiding propagation of changes to DTs and client applications while supporting transparent addition
+%     of new operational infrastructures to enrich the ecosystem.
+
+% \textbf{Orchestration Architecture}
+% Virtual cloud orchestration utilizes software instruments to manage interconnections and interactions
+%     among disparate systems constituting the multi-cloud infrastructure.
+% The orchestration strategy connects automated tasks into cohesive workflows,
+%     balancing multiple optimization criteria including data movement minimization,
+%     analytics time lapse minimization, and energy consumption minimization
+%     while preserving distributed data ownership and security constraints.
+
+% The orchestration framework comprises several key components:
+% \begin{itemize}
+%     \item \textbf{Infrastructure Resources Orchestrator}: Implements resource orchestration and scalability
+%         with interoperability arrangements for transparent job execution across different computing infrastructures
+%     \item \textbf{Data and Analytics Software Broker}: Enables discoverability and access of distributed
+%         data and analytical software resources, implementing required mediation and harmonization tasks
+%     \item \textbf{Task Execution Optimizer}: Optimizes task execution based on configurable parameters,
+%         recognizing optimal infrastructure placement and routing execution requests accordingly
+% \end{itemize}
+
+% This technological framework enables the separation of concerns across different stakeholder groups—
+%     ecosystem users and clients, organizations steering the ecosystem,
+%     and enterprises managing contributing infrastructures—while supporting both
+%     Service-Oriented Architecture (SOA) and Resource-Oriented Architecture (ROA) patterns.
+
+While Digital Ecosystems provide a robust framework for large-scale DT collaboration,
+    current implementations still face challenges in achieving truly dynamic, autonomous interoperability.
+The need for shared conceptual frameworks
+    can create barriers to spontaneous collaboration between systems with different
+    domain ontologies and operational constraints—gaps that agent-mediated approaches could address.
 
 \section{AI Agents}
 
