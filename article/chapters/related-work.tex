@@ -1,0 +1,167 @@
+\chapter{Related work}
+\label{chap:related-work}
+
+To better understand the current landscape regarding DT interoperability, we conducted a
+    systematic literature review (SRL) following the guidelines proposed by~\cite{kitchenham2007}.
+This allows a through and unbiased approach for literature summarization while ensuring
+    repeatability, auditability and transparency.
+We adapted the SLR process to this work scope, conducting the following steps:
+
+\begin{enumerate}
+    \item Define research question
+    \item Selection of Digital Libraries
+    \item Inclusion and exclusion criteria
+    \item Primary study selection
+    \item Data extraction
+    \item Review synthesis
+\end{enumerate}
+
+\section{Research questions}
+
+The following research questions builds the foundation for this work, focusing on
+    cross-domain DT interoperability solutions powered by AI agents:
+
+\begin{enumerate}[label=RQ\arabic*:]
+    \item \label{rq:digital-twin} What are the recent advances for Digital Twin interoperability?
+    \item \label{rq:ai-agents} Have AI agents been applied to address Digital Twin interoperability challenges?
+    \item \label{rq:cross-domain} How can AI Agent protocols be designed to 
+        enable semantic interoperability to solve
+        cross-domain use cases between heterogeneous Digital Twin systems?
+\end{enumerate}
+
+\section{Search process}
+
+The search process is a automatic search of specific journal papers since 2020 in 
+    Digital Libraries (DLs) presented on Table~\ref{tab:digital-library}.
+Several constrains were defined for DL selection, such as
+    open access to articles through institutional authentication.
+Also, the DL must provide advanced search with boolean operator support for 
+    author keywords field exclusively.
+
+\begin{table}[H]
+    \centering
+    \caption{Selected Digital Libraries}
+    \label{tab:digital-library}
+    \begin{tabular}{c | l | l}
+        \textbf{ID} & \textbf{Digital Library} & \textbf{URL} \\
+        \hline
+        IEEE & IEEE Xplore   & \url{https://ieeexplore.ieee.org} \\
+        SC   & ScienceDirect & \url{https://www.sciencedirect.com} \\
+        MDPI & MDPI          & \url{https://www.mdpi.com} \\
+    \end{tabular}
+\end{table}
+
+To delimit the RSL scope within research questions boundaries, three keywords sets, restricted to authors, are defined below.
+The search query attempts to find works which authors explicit covers DT, AI and interoperability.
+Additionally, the query shall be adapted to each DL search syntax and field constraints.
+
+\begin{lstlisting}[language=SQL, label=lst:search-query, caption=Search Query Structure, basicstyle=\ttfamily\small, breaklines, breakatwhitespace]
+("digital twin") AND 
+("interoperability" OR "cross-domain" OR "integrated platform") AND 
+("agent protocol" OR "ai agent" OR "autonomous agent" OR "multi-agent" OR "agent-mediated" OR "agent communication" OR "large language model" OR "llm" OR "generative ai")
+\end{lstlisting}
+
+\section{Inclusion criteria}
+
+English articles published since Jan 1 2020 that comply with
+    at least one of following criteria must be included:
+
+\begin{itemize}
+    \item Studies about semantic interoperability or cross-domain integration between heterogeneous DT systems
+    \item Works involving DTs with AI agents, multi-agent systems or autonomous agents
+    \item Research proposing protocols or frameworks applicable for heterogeneous DT systems
+\end{itemize}
+
+\section{Exclusion criteria}
+
+Any non-english paper of The following types must be excluded:
+
+\begin{itemize}
+    \item Pure theoretical papers without any empirical validation, simulation, or prototype implementation
+    \item Duplicated publications
+    \item Studies not addressing at least one research question
+    \item Articles without clear objectives or outcomes
+    \item Work focused on single-domain DT without addressing interoperability or cross-domain integration
+\end{itemize}
+
+\section{Primary study selection process}
+
+This review was designed to be performed by a single reviewer.
+First, the reviewer conducts the automated search. The Listing~\ref{lst:search-query} shall be applied.
+Afterwards, the abstract, introduction and conclusion chapters are assessed
+    based on inclusion and exclusion criteria.  
+
+\section{Quality assessment}
+
+\section{Data collection}
+
+\section{Data analysis}
+
+\begin{figure}[H]
+    \caption{PRISMA 2020 Flow Diagram}
+    \label{fig:prisma}
+    \resizebox{\textwidth}{!}{
+    \prismaflowstart
+        % Identification Phase
+        % Individual database nodes
+        \prismaflownode{n1a}{}{Records identified from IEEE (n = 1)}{};
+        \prismaflownode{n1b}{right=of n1a}{Records identified from SD (n = 13)}{};
+        \prismaflownode{n1c}{right=of n1b}{Records identified from MDPI (n = 1)}{};
+        % Total records node
+        \prismaflownode{n1total}{below=of n1b}{Total records identified (n = 1+13+1)}{};
+        % Additional sources
+        \prismaflownode{n1add}{right=of n1total}{Additional records identified through other sources (n = 0)}{};
+        % Remove duplicates
+        \prismaflownode{n2}{below=of n1total}{Records after duplicates removed (n = 15)}{n1total};
+        % Edges of n1
+        \prismaflowarrow{n1a}{n1total};
+        \prismaflowarrow{n1b}{n1total};
+        \prismaflowarrow{n1c}{n1total};
+        \prismaflowarrow{n1add}{n1total};
+        
+        % \prismaflownode{n1a}{left=of tc}{Records identified through database searching (n = 251)}{};
+        % \prismaflownode{n1b}{right=of tc}{Additional records identified through other sources (n = 0)}{};
+        % \prismaflownode{n2}{below=of tc |- n1a.south}{Records after duplicates removed (n = 41)}{n1a};
+        % \prismaflowarrow{n1b}{n2};
+
+        % Screening Phase
+        \prismaflownode{n3}{below=of n2}{Records screened (n = ?)}{n2};
+        \prismaflownode{n3r}{right=of n3}{Records excluded (n = ?)}{};
+        \prismaflowarrow{n3}{n3r};
+
+        % Eligibility Phase
+        \prismaflownode{n4}{below=of n3}{Full-text articles assessed for eligibility (n = ?)}{n3};
+        \prismaflownode{n4r}{right=of n4}{Full-text articles excluded, with reasons (n = ?) \\ - Not Relevant (n = ?) \\ - Not Open/Available paper (n = ?)}{};
+        \prismaflowarrow{n4}{n4r};
+
+        % Inclusion Phase
+        \prismaflownode{n5}{below=of n4}{Studies included in qualitative synthesis (n = ?)}{n4};
+        \prismaflownode{n6}{below=of n5}{Studies included in quantitative synthesis (meta-analysis)}{n5};
+
+        % Labels
+        \prismalabel{1.3*\mh}{n1a.west |- {$(n1b)!0.6!(n1total)$}}{Identification};
+        % \prismalabel{1.3*\mh}{n1a.west}{Identification};
+        \prismalabel{1.3*\mh}{n1a.west |- {$(n2)!0.6!(n3)$}}{Screening};
+        \prismalabel{1.3*\mh}{n1a.west |- {$(n4)!0.2!(n5)$}}{Eligibility};
+        \prismalabel{1.3*\mh}{n1a.west |- n6}{Included};
+
+    \prismaflowend
+    }
+\end{figure}
+
+
+
+% • Systematic reviews start by defining a review protocol that specifies the research question being addressed and the methods that will be used to perform the review.
+% • Systematic reviews are based on a defined search strategy that aims to detect as much of the relevant literature as possible.
+% • Systematic reviews document their search strategy so that readers can assess their rigour and the completeness and repeatability of the process (bearing in mind that searches of digital libraries are almost impossible to replicate).
+% • Systematic reviews require explicit inclusion and exclusion criteria to assess each potential primary study.
+% • Systematic reviews specify the information to be obtained from each primary study including quality criteria by which to evaluate each primary study.
+% • A systematic review is a prerequisite for quantitative meta-analysis.
+
+
+% Describe we're using SLR approach
+
+% Describe search strategy (Digital Library databases, keywords)
+
+
+
