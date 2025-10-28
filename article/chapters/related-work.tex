@@ -1,19 +1,20 @@
 \chapter{Related work}
 \label{chap:related-work}
 
-To better understand the current landscape regarding DT interoperability, we conducted a
+To identify gaps in the current landscape regarding DT interoperability, we conducted a
     systematic literature review (SRL) following the guidelines proposed by~\cite{kitchenham2007}.
+We adapted this review to focus on gap identification by incorporated elements from the
+    PRISMA-ScR checklist~\cite{tricco2018}.
 This allows a through and unbiased approach for literature summarization while ensuring
     repeatability, auditability and transparency.
-We adapted the SLR process to this work scope, conducting the following steps:
+The review process is defined by the following steps:
 
 \begin{enumerate}
     \item Define research question
     \item Selection of Digital Libraries
     \item Inclusion and exclusion criteria
     \item Primary study selection
-    \item Data extraction
-    \item Review synthesis
+    \item Data extraction and analysis
 \end{enumerate}
 
 \section{Research questions}
@@ -89,13 +90,16 @@ Any non-english paper of The following types must be excluded:
 This review was designed to be performed by a single reviewer.
 First, the reviewer conducts the automated search. The Listing~\ref{lst:search-query} shall be applied.
 Afterwards, the abstract, introduction and conclusion chapters are assessed
-    based on inclusion and exclusion criteria.  
+    based on inclusion and exclusion criteria.
 
-\section{Quality assessment}
+\section{Data extraction and analysis}
 
-\section{Data collection}
+In the full-text review process, concepts related to DTs, AI and interoperability have been extracted.
+Studies were tailored to our research questions following PRISMA-ScR guidelines for data charting.
+This study presents both a structured comparison (Table~\ref{tab:related-work-comparison}) and detailed summaries of 
+each study.
 
-\section{Data analysis}
+\section{Results}
 
 \begin{figure}[H]
     \caption{PRISMA 2020 Flow Diagram}
@@ -104,64 +108,47 @@ Afterwards, the abstract, introduction and conclusion chapters are assessed
     \prismaflowstart
         % Identification Phase
         % Individual database nodes
-        \prismaflownode{n1a}{}{Records identified from IEEE (n = 1)}{};
-        \prismaflownode{n1b}{right=of n1a}{Records identified from SD (n = 13)}{};
-        \prismaflownode{n1c}{right=of n1b}{Records identified from MDPI (n = 1)}{};
-        % Total records node
-        \prismaflownode{n1total}{below=of n1b}{Total records identified (n = 1+13+1)}{};
-        % Additional sources
-        \prismaflownode{n1add}{right=of n1total}{Additional records identified through other sources (n = 0)}{};
-        % Remove duplicates
-        \prismaflownode{n2}{below=of n1total}{Records after duplicates removed (n = 15)}{n1total};
-        % Edges of n1
-        \prismaflowarrow{n1a}{n1total};
-        \prismaflowarrow{n1b}{n1total};
-        \prismaflowarrow{n1c}{n1total};
-        \prismaflowarrow{n1add}{n1total};
+        \prismaflownode{n1}{}{Records identified from
+            
+        IEEE (n = 1)
         
-        % \prismaflownode{n1a}{left=of tc}{Records identified through database searching (n = 251)}{};
-        % \prismaflownode{n1b}{right=of tc}{Additional records identified through other sources (n = 0)}{};
-        % \prismaflownode{n2}{below=of tc |- n1a.south}{Records after duplicates removed (n = 41)}{n1a};
-        % \prismaflowarrow{n1b}{n2};
-
+        SD (n = 13)
+        
+        MDPI (n = 1)}{};
+        
         % Screening Phase
-        \prismaflownode{n3}{below=of n2}{Records screened (n = ?)}{n2};
+        \prismaflownode{n3}{below=of n1}{Records screened (n = 15)}{n1};
         \prismaflownode{n3r}{right=of n3}{Records excluded (n = ?)}{};
         \prismaflowarrow{n3}{n3r};
 
         % Eligibility Phase
         \prismaflownode{n4}{below=of n3}{Full-text articles assessed for eligibility (n = ?)}{n3};
-        \prismaflownode{n4r}{right=of n4}{Full-text articles excluded, with reasons (n = ?) \\ - Not Relevant (n = ?) \\ - Not Open/Available paper (n = ?)}{};
+        \prismaflownode{n4r}{right=of n4}{Full-text articles excluded \\ - Not Relevant (n = ?) \\ - Not Open/Available paper (n = ?)}{};
         \prismaflowarrow{n4}{n4r};
 
         % Inclusion Phase
         \prismaflownode{n5}{below=of n4}{Studies included in qualitative synthesis (n = ?)}{n4};
-        \prismaflownode{n6}{below=of n5}{Studies included in quantitative synthesis (meta-analysis)}{n5};
 
         % Labels
-        \prismalabel{1.3*\mh}{n1a.west |- {$(n1b)!0.6!(n1total)$}}{Identification};
-        % \prismalabel{1.3*\mh}{n1a.west}{Identification};
-        \prismalabel{1.3*\mh}{n1a.west |- {$(n2)!0.6!(n3)$}}{Screening};
-        \prismalabel{1.3*\mh}{n1a.west |- {$(n4)!0.2!(n5)$}}{Eligibility};
-        \prismalabel{1.3*\mh}{n1a.west |- n6}{Included};
+        \prismalabel{1.3*\mh}{n1.west}{Identification};
+        \prismalabel{1.3*\mh}{n1.west |- {$(n1)!0.75!(n4)$}}{Screening};
+        \prismalabel{1.3*\mh}{n1.west |- n5}{Included};
 
     \prismaflowend
     }
 \end{figure}
 
-
-
-% • Systematic reviews start by defining a review protocol that specifies the research question being addressed and the methods that will be used to perform the review.
-% • Systematic reviews are based on a defined search strategy that aims to detect as much of the relevant literature as possible.
-% • Systematic reviews document their search strategy so that readers can assess their rigour and the completeness and repeatability of the process (bearing in mind that searches of digital libraries are almost impossible to replicate).
-% • Systematic reviews require explicit inclusion and exclusion criteria to assess each potential primary study.
-% • Systematic reviews specify the information to be obtained from each primary study including quality criteria by which to evaluate each primary study.
-% • A systematic review is a prerequisite for quantitative meta-analysis.
-
-
-% Describe we're using SLR approach
-
-% Describe search strategy (Digital Library databases, keywords)
-
-
+\begin{table}[H]
+    \centering
+    \caption{Comparative Analysis of Related Work}
+    \label{tab:related-work-comparison}
+    \resizebox{\textwidth}{!}{
+    \begin{tabular}{l|c|c|c|c|c|p{4cm}}
+        \textbf{Reference} & \textbf{DT Interop.} & \textbf{AI Agents} & \textbf{Domains} & \textbf{Protocol / Framework} & \textbf{Validation} & \textbf{Gap/Difference} \\
+        \hline
+        Author (2023) & Yes & No & No & N/A & Prototype & Single-domain only \\
+        % ... more rows
+    \end{tabular}
+}
+\end{table}
 
