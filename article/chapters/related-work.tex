@@ -1,13 +1,13 @@
 \chapter{Related work}
 \label{chap:related-work}
 
-To identify gaps in the current landscape regarding DT interoperability, we conducted a
-    systematic literature review (SRL) following the guidelines proposed by~\cite{kitchenham2007}.
-We adapted this review to focus on gap identification by incorporated elements from the
-    PRISMA-ScR checklist~\cite{tricco2018}.
-This allows a through and unbiased approach for literature summarization while ensuring
-    repeatability, auditability and transparency.
-The review process is defined by the following steps:
+A scoping review was conducted following the PRISMA-ScR reporting guidelines~\cite{tricco2018}
+    to identify gaps in the current landscape regarding DT interoperability.
+This review scope has been reduced to focus on gap identification of 8-12 highly relevant studies
+    rather than comprehensive literature coverage.
+This allows to synthesize evidence and assess the scope of literature on a topic while ensuring
+    auditability and transparency.
+The review process followed these steps:
 
 \begin{enumerate}
     \item Define research question
@@ -19,25 +19,29 @@ The review process is defined by the following steps:
 
 \section{Research questions}
 
-The following research questions builds the foundation for this work, focusing on
+The following research questions build the foundation for this work, focusing on
     cross-domain DT interoperability solutions powered by AI agents:
 
 \begin{enumerate}[label=RQ\arabic*:]
     \item \label{rq:digital-twin} What are the recent advances for Digital Twin interoperability?
     \item \label{rq:ai-agents} Have AI agents been applied to address Digital Twin interoperability challenges?
-    \item \label{rq:cross-domain} How can AI Agent protocols be designed to 
+    \item \label{rq:cross-domain} What are the challenges for designing 
+        AI Agent protocols to 
         enable semantic interoperability to solve
         cross-domain use cases between heterogeneous Digital Twin systems?
 \end{enumerate}
 
 \section{Search process}
 
-The search process is a automatic search of specific journal papers since 2020 in 
+The search process consisted in an automatic search of specific journal papers since 2020 in 
     Digital Libraries (DLs) presented on Table~\ref{tab:digital-library}.
-Several constrains were defined for DL selection, such as
+Several constraints were defined for DL selection, such as
     open access to articles through institutional authentication.
 Also, the DL must provide advanced search with boolean operator support for 
-    author keywords field exclusively.
+    title, abstract and keywords fields.
+Target primary study is at least 8 and at most 12 works among DLs.
+If screening outcomes few articles, expand to extra DLs interactively until
+    achieving minimum coverage.
 
 \begin{table}[H]
     \centering
@@ -52,8 +56,8 @@ Also, the DL must provide advanced search with boolean operator support for
     \end{tabular}
 \end{table}
 
-To delimit the RSL scope within research questions boundaries, three keywords sets, restricted to authors, are defined below.
-The search query attempts to find works which authors explicit covers DT, AI and interoperability.
+To delimit the scope within research questions boundaries, three keyword sets have been defined.
+The search query attempts to find works in which the authors explicitly cover DT, AI and interoperability.
 Additionally, the query shall be adapted to each DL search syntax and field constraints.
 
 \begin{lstlisting}[language=SQL, label=lst:search-query, caption=Search Query Structure, basicstyle=\ttfamily\small, breaklines, breakatwhitespace]
@@ -75,10 +79,9 @@ English articles published since Jan 1 2020 that comply with
 
 \section{Exclusion criteria}
 
-Any non-english paper of The following types must be excluded:
+Any non-English paper or publication of the following types must be excluded:
 
 \begin{itemize}
-    \item Pure theoretical papers without any empirical validation, simulation, or prototype implementation
     \item Duplicated publications
     \item Studies not addressing at least one research question
     \item Articles without clear objectives or outcomes
@@ -87,7 +90,7 @@ Any non-english paper of The following types must be excluded:
 
 \section{Primary study selection process}
 
-This review was designed to be performed by a single reviewer.
+This review was designed to be performed by a single reviewer due to this work scope and time constraints.
 First, the reviewer conducts the automated search. The Listing~\ref{lst:search-query} shall be applied.
 Afterwards, the abstract, introduction and conclusion chapters are assessed
     based on inclusion and exclusion criteria.
@@ -96,8 +99,8 @@ Afterwards, the abstract, introduction and conclusion chapters are assessed
 
 In the full-text review process, concepts related to DTs, AI and interoperability have been extracted.
 Studies were tailored to our research questions following PRISMA-ScR guidelines for data charting.
-This study presents both a structured comparison (Table~\ref{tab:related-work-comparison}) and detailed summaries of 
-each study.
+This study presents both a detailed summaries of each study and a 
+    structured comparison (Table~\ref{tab:related-work-comparison}).
 
 \section{Results}
 
