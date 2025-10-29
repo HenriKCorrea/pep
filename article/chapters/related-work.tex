@@ -37,10 +37,7 @@ The search process consisted in an automatic search of specific journal papers s
 Several constraints were defined for DL selection, such as
     open access to articles through institutional authentication.
 Also, the DL must provide advanced search with boolean operator support for 
-    title, abstract and keywords fields.
-Target primary study is at least 8 and at most 12 works among DLs.
-If screening outcomes few articles, expand to extra DLs interactively until
-    achieving minimum coverage.
+    title, abstract and keywords fields. 
 
 \begin{table}[H]
     \centering
@@ -72,8 +69,8 @@ English articles published since Jan 1 2020 that comply with
 
 \begin{itemize}
     \item Studies about semantic interoperability or cross-domain integration between heterogeneous DT systems
-    \item Works involving DTs with AI agents, multi-agent systems or autonomous agents
-    \item Research proposing protocols or frameworks applicable for heterogeneous DT systems
+    \item Studies applying AI agents, multi-agent systems, or autonomous agents to Digital Twin system
+    \item Research proposing agent-based protocols or frameworks designed for heterogeneous DT systems
 \end{itemize}
 
 \section{Exclusion criteria}
@@ -82,9 +79,11 @@ Any non-English paper or publication of the following types must be excluded:
 
 \begin{itemize}
     \item Duplicated publications
-    \item Studies not addressing at least one research question
-    \item Articles without clear objectives or outcomes
     \item Work focused on single-domain DT without addressing interoperability or cross-domain integration
+    \item Articles without clearly stated research objectives, methodology or contribution
+    \item Papers without full-text access
+    \item Secondary studies (reviews, surveys)
+    \item non-peer-reviewed (preprints, working papers)
 \end{itemize}
 
 \section{Primary study selection process}
@@ -93,6 +92,17 @@ This review was designed to be performed by a single reviewer due to this work s
 First, the reviewer conducts the automated search. The Listing~\ref{lst:search-query} shall be applied.
 Afterwards, the abstract, introduction and conclusion chapters are assessed
     based on inclusion and exclusion criteria.
+
+Target primary study is at least 8 and at most 12 works among DLs.
+If screening outcomes fewer than articles 8, expand to extra DLs interactively until
+    achieving minimum coverage.
+In contrast, if more than 12 papers are included,
+    the selection will be reduced to 12 studies through prioritization based on:
+    (1) Research questions coverage;
+    (2) Publication recency; and
+    (3) Citation count.
+This approach is acceptable since formal quality assessment is not
+    required in scope review methodology.
 
 \section{Data extraction and analysis}
 
