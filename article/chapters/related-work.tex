@@ -155,12 +155,48 @@ This study presents both a detailed summaries of each study and a
     \caption{Comparative Analysis of Related Work}
     \label{tab:related-work-comparison}
     \resizebox{\textwidth}{!}{
-    \begin{tabular}{l|c|c|c|c|c|p{4cm}}
-        \textbf{Reference} & \textbf{DT Interop.} & \textbf{AI Agents} & \textbf{Domains} & \textbf{Protocol / Framework} & \textbf{Validation} & \textbf{Gap/Difference} \\
+    \begin{tabular}{l|c|c|c|p{2.5cm}|p{2.2cm}|p{6.5cm}}
+        \textbf{Reference} & \textbf{DT} & \textbf{AI} & \textbf{XD} & \textbf{Protocol/ Framework} & \textbf{Validation} & \textbf{Gap/Difference from This Research} \\
+        \hline\hline
+        
+        \cite{quirin2025} & Y & N & N & AAS submodels & Robot task allocation & 
+        Individual DT autonomy; lacks agent-mediated semantic interoperability \\
         \hline
-        Author (2023) & Yes & No & No & N/A & Prototype & Single-domain only \\
-        % ... more rows
+        
+        \cite{sakurada2022} & Y & Y & N & JADE + AAS & Industrial automation & 
+        MAS within single domain; no cross-domain agent protocols for Digital Ecosystems \\
+        \hline
+        
+        \cite{sonnenberg2025a} & Y & Y & N & KG + AAS & AAS prototype & 
+        AI agents for data access; not for autonomous semantic negotiation \\
+        \hline
+        
+        \cite{morabito2025a} & Y & Y & N & Modular + GenAI & Smart campus & 
+        GenAI for analytics; lacks autonomous agent protocols for cross-domain DT collaboration \\
+        \hline
+        
+        \cite{diorio2025a} & Y & Y & Y & AAS + RAMI 4.0 & 3 industrial pilots & 
+        Multi-pilot Digital Ecosystem within manufacturing; no cross-sector agent-mediated interoperability \\
+        \hline
+        
+        \cite{juarez2025a} & Y & Y & N & NGSI-LD + agents & Synthetic mfg data & 
+        Agents for intra-domain orchestration; no cross-domain semantic mapping protocols \\
+        \hline
+        
+        \cite{hurtado2025a} & Y & Y & N & AAS + CSS + OWL + FIPA & Robotic logistics & 
+        FIPA agents within unified standard stack; no autonomous negotiation for heterogeneous ecosystems \\
+        \hline
+        
+        \cite{karapanagiotis2025a} & Y & Y & Y & IOF + RAG-LLM & Construction + Mfg & 
+        Shared ontology (IOF) required; human-AI teaming; lacks autonomous DT-to-DT agent protocols \\
+        \hline\hline
+        
+        \textbf{This work} & \textbf{Y} & \textbf{Y} & \textbf{Y} & \textbf{AI Agent Protocols} & \textbf{Smart City $\leftrightarrow$ Energy Grid} & 
+        \textbf{Autonomous AI Agent Protocols for cross-domain semantic interoperability in Digital Ecosystems without shared ontology} \\
+        
     \end{tabular}
-}
+    }
 \end{table}
 
+\vspace{0.5em}
+\noindent\textbf{Legend:} DT = Digital Twin Interoperability; AI = AI Agents/Multi-Agent Systems; XD = Cross-Domain; Y = Yes; N = No; KG = Knowledge Graph; Mfg = Manufacturing
