@@ -108,10 +108,36 @@ This approach is acceptable since formal quality assessment is not
 
 In the full-text review process, concepts related to DTs, AI and interoperability have been extracted.
 Studies were tailored to our research questions following PRISMA-ScR guidelines for data charting.
-This study presents both a detailed summaries of each study and a 
+For the comparative analysis (Table~\ref{tab:related-work-comparison}), the AI column specifically evaluates 
+    whether AI agents or multi-agent systems are employed to address DT interoperability challenges,
+    rather than merely being present in the DT system for other purposes (e.g., analytics, optimization).
+This study presents both detailed summaries of each study and a 
     structured comparison (Table~\ref{tab:related-work-comparison}).
 
 \section{Results}
+
+
+%% Paragraph per paper
+%%% - What DT interoperability issue the paper address?
+%%% - Is AI agent technology being applied to solve the DT interoperability issue?
+%%% - Is the validation performed on a cross-domain use case between heterogeneous Digital Twin systems?
+
+\cite{morabito2025a} present a DT framework for mobile network domain, aiming to improve
+    connectivity and resource utilization.
+The DT system is contextualized as a digital representation of the network defined as \emph{Campus Area Network},
+    comprising heterogeneous devices (e.g.: smartphones) and network access technologies (e.g.: cellular 4G, WiFi and Bluetooth).
+Data is exchanged between subsystems through Message Queuing Telemetry Transport (MQTT).
+The framework is tested in an open working space at the University of Helsinki.
+Although LLMs(Large Language Models) are discussed as a opportunity to enhance interoperability by generating data schemas,
+    their work only uses AI to process analytics within DT framework to perform descriptive, diagnostic, predictive and prescriptive analysis.
+
+
+
+%% Prisma ScR Items
+%%
+%% PRISMA-ScR 20 Results of Individual Sources of Evidence - For each included source of evidence, present the relevant data that were charted that relate to the review questions and objectives.
+%% PRISMA-ScR 24 Summary of Evidence - Summarize the main results (including an overview of concepts, themes, and types of evidence available), link to the review questions and objectives, and consider the relevance to key groups.
+%% PRISMA-ScR 26 Conclusions - Provide a general interpretation of the results with respect to the review questions and objectives, as well as potential implications or next steps.
 
 % \begin{figure}[H]
 %     \caption{PRISMA 2020 Flow Diagram}
@@ -171,7 +197,7 @@ This study presents both a detailed summaries of each study and a
         AI agents for data access; not for autonomous semantic negotiation \\
         \hline
         
-        \cite{morabito2025a} & Y & Y & N & Modular + GenAI & Smart campus & 
+        \cite{morabito2025a} & Y & N & N & MQTT & Campus Area Network & 
         GenAI for analytics; lacks autonomous agent protocols for cross-domain DT collaboration \\
         \hline
         
