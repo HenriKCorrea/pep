@@ -131,7 +131,20 @@ The framework is tested in an open working space at the University of Helsinki.
 Although LLMs(Large Language Models) are discussed as a opportunity to enhance interoperability by generating data schemas,
     their work only uses AI to process analytics within DT framework to perform descriptive, diagnostic, predictive and prescriptive analysis.
 
-
+\cite{juarez2025a} proposes a semantic, modular solution for DT orchestration in industrial environments. 
+The architecture is designed to provide
+    real-time coordination, semantic interoperability and adaptive decision-making.
+Interoperability is achieved through the orchestration layer that defines a
+    Multi-Agent-System (MAS) with semantic APIs (Application Programming Interface) following
+    the NGSI-LD standard.
+The layer is composed by a management agent and recommendation agent.
+Incoming data carries semantic context used by the agents to decide which task from a optimization layer shall be triggered and
+    how to route the flow of execution.
+The optimization layer hosts four independent AI agents to fulfill tasks such as 
+    threshold monitoring, anomaly detection, behavioral classification and pattern optimization. 
+A simulation has been carried out producing synthetic data for machining, assembly and inspection tasks.
+In spite of semantic interoperability contributions, validation in a cross-domain environment presents an opportunity for future work.
+Moreover, AI techniques are applied for analytics purposes, whereas the potential of AI agents in the orchestration layer remains an open research direction.
 
 %% Prisma ScR Items
 %%
@@ -205,8 +218,8 @@ Although LLMs(Large Language Models) are discussed as a opportunity to enhance i
         Multi-pilot Digital Ecosystem within manufacturing; no cross-sector agent-mediated interoperability \\
         \hline
         
-        \cite{juarez2025a} & Y & Y & N & NGSI-LD + agents & Synthetic mfg data & 
-        Agents for intra-domain orchestration; no cross-domain semantic mapping protocols \\
+        \cite{juarez2025a} & Y & Y & N & NGSI-LD + MAS & Synthetic data & 
+        Semantic orchestration within manufacturing domain; lacks cross-domain agent negotiation protocols \\
         \hline
         
         \cite{hurtado2025a} & Y & Y & N & AAS + CSS + OWL + FIPA & Robotic logistics & 
@@ -225,4 +238,17 @@ Although LLMs(Large Language Models) are discussed as a opportunity to enhance i
 \end{table}
 
 \vspace{0.5em}
-\noindent\textbf{Legend:} DT = Digital Twin Interoperability; AI = AI Agents/Multi-Agent Systems; XD = Cross-Domain; Y = Yes; N = No; KG = Knowledge Graph; Mfg = Manufacturing
+\noindent\textbf{Legend:}
+    DT~=~Digital~Twin~Interoperability;
+    AI~=~AI Agents/Multi-Agent~Systems;
+    XD~=~Cross-Domain;
+    Y~=~Yes;
+    N~=~No;
+    AAS~=~Asset~Administration~Shell;
+    KG~=~Knowledge~Graph;
+    MAS~=~Multi-Agent~System;
+    Mfg~=~Manufacturing;
+    GenAI~=~Generative~AI;
+    IOF~=~Industrial~Ontologies~Foundry;
+    RAG~=~Retrieval-Augmented~Generation;
+    LLM~=~Large~Language~Model
