@@ -148,6 +148,23 @@ The framework is tested in an open working space at the University of Helsinki.
 Although LLMs(Large Language Models) are discussed as a opportunity to enhance interoperability by generating data schemas,
     their work only uses AI to process analytics within DT framework to perform descriptive, diagnostic, predictive and prescriptive analysis.
 
+\cite{hurtado2025a} implements the Self-configurable Manufacturing Industrial Agents (SMIA), a unified framework that
+    enables the automation of DTs that act as the functional and social representatives of their corresponding assets.
+Each agent is represented by a DT implemented as an industrial agent, self-configured based on the AAS of the
+    asset it represents, interpreting its functionality through the Capability-Skill-Service (CSS) model,
+    and exposing its capabilities as services available to the rest of the system.
+A CSS-based ontology is created by using (OWL) ontology,
+    adding semantic link to any element of the AAS model.
+SMIA uses SPADE (Smart Python Agent Development Environment) as MAS execution platform,
+    relying on the use of FIPA-ACL (Foundation for Intelligent Physical Agents)-(Agent Communication Language)
+    for inter-agent communication.
+Following the recommendations of FIPA for describing the behavior of agents,
+    SPADE provides finite state machine (FSM) behavior.
+The approach was validated in a simulated robotic logistics scenario, with the use case focused on
+    assessing the viability of the self-configuration process.
+Finally, authors recognize the need for AI agents, which could share or inherit agent capabilities,
+    enabling the execution of manufacturing plans.
+
 \cite{juarez2025a} proposes a semantic, modular solution for DT orchestration in industrial environments. 
 The architecture is designed to provide
     real-time coordination, semantic interoperability and adaptive decision-making.
@@ -233,9 +250,11 @@ Moreover, AI techniques are applied for analytics purposes, whereas the potentia
             Semantic orchestration within manufacturing domain;
             lacks cross-domain agent negotiation protocols \\
         \hline
-        
-        \cite{hurtado2025a} & Y & Y & N & AAS + CSS + OWL + FIPA & Robotic logistics & 
-        FIPA agents within unified standard stack; no autonomous negotiation for heterogeneous ecosystems \\
+
+        \cite{hurtado2025a} & Y & N & N & AAS + CSS + OWL + FIPA & Robotic logistics & 
+            FIPA agents within unified standard stack; 
+            design-time semantic configuration; 
+            no autonomous negotiation for heterogeneous ecosystems across domains \\
         \hline
         
         \cite{karapanagiotis2025a} & Y & Y & Y & IOF + RAG-LLM & Construction + Mfg & 
