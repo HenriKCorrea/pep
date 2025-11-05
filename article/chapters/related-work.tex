@@ -48,7 +48,7 @@ Also, the DL must provide advanced search with boolean operator support for
         \hline
         IEEE & IEEE Xplore   & \url{https://ieeexplore.ieee.org} \\
         SC   & ScienceDirect & \url{https://www.sciencedirect.com} \\
-        MDPI & MDPI          & \url{https://www.mdpi.com} \\
+        SL   & Springer Link & \url{https://link.springer.com} \\
     \end{tabular}
 \end{table}
 
@@ -175,13 +175,25 @@ The layer is composed by a management agent and recommendation agent.
 Incoming data carries semantic context used by the agents to decide which task from a optimization layer shall be triggered and
     how to route the flow of execution.
 The optimization layer hosts four independent AI agents to fulfill tasks such as 
-    (a)~threshold monitoring,
-    (b)~anomaly detection,
-    (c)~behavioral classification and
-    (d)~pattern optimization. 
+    (a)~anomaly detection,
+    (b)~behavioral classification,
+    (c)~pattern optimization and
+    (d)~threshold monitoring. 
 A simulation has been carried out producing synthetic data for machining, assembly and inspection tasks.
 In spite of semantic interoperability contributions, validation in a cross-domain environment presents an opportunity for future work.
 Moreover, AI techniques are applied for analytics purposes, whereas the potential of AI agents in the orchestration layer remains an open research direction.
+
+\cite{karapanagiotis2025a} proposes a Sliding Work Sharing (SWS) ontology built upon the Industrial Ontologies Foundry (IOF) 
+    to enable semantic interoperability and reasoning across diverse domains.
+The ontology formalizes concepts for Digital Twins, Human Digital Twins, and dynamic task flows 
+    to support human-AI teaming in cyber-physical systems.
+AI assistants leverage the ontology to provide contextual guidance to human operators, 
+    such as virtual troubleshooting recommendations in manufacturing and task allocation suggestions in construction.
+The approach is validated through cross-domain use cases involving collaborative robots and legacy systems.
+While the shared ontology facilitates semantic integration, 
+    it requires design-time alignment and does not address runtime semantic negotiation 
+    between heterogeneous DT systems without shared vocabularies.
+Nevertheless, SWS primary focus are human-AI interactions rather than autonomous DT-to-DT agent protocols.
 
 %% Prisma ScR Items
 %%
@@ -189,42 +201,48 @@ Moreover, AI techniques are applied for analytics purposes, whereas the potentia
 %% PRISMA-ScR 24 Summary of Evidence - Summarize the main results (including an overview of concepts, themes, and types of evidence available), link to the review questions and objectives, and consider the relevance to key groups.
 %% PRISMA-ScR 26 Conclusions - Provide a general interpretation of the results with respect to the review questions and objectives, as well as potential implications or next steps.
 
-% \begin{figure}[H]
-%     \caption{PRISMA 2020 Flow Diagram}
-%     \label{fig:prisma}
-%     \resizebox{\textwidth}{!}{
-%     \prismaflowstart
-%         % Identification Phase
-%         % Individual database nodes
-%         \prismaflownode{n1}{}{Records identified from
+\begin{figure}[H]
+    \caption{PRISMA 2020 Flow Diagram}
+    \label{fig:prisma}
+    \resizebox{\textwidth}{!}{
+    \prismaflowstart
+        % Identification Phase
+        % Individual database nodes
+        \prismaflownode{n1}{}{Records identified from
             
-%         IEEE (n = 1)
+        IEEE (n = 42)
         
-%         SD (n = 13)
+        SD (n = 13)
         
-%         MDPI (n = 1)}{};
+        SL (n = ?)}{};
+
+        \prismaflownode{n2}{below=of n1}{Records identified (n = 55)}{n1};
         
-%         % Screening Phase
-%         \prismaflownode{n3}{below=of n1}{Records screened (n = 15)}{n1};
-%         \prismaflownode{n3r}{right=of n3}{Records excluded (n = ?)}{};
-%         \prismaflowarrow{n3}{n3r};
+        % Screening Phase
+        \prismaflownode{n3}{below=of n2}{Records screened (n = 55)}{n2};
+        \prismaflownode{n3r}{right=of n3}{Records excluded (n = 50)
 
-%         % Eligibility Phase
-%         \prismaflownode{n4}{below=of n3}{Full-text articles assessed for eligibility (n = ?)}{n3};
-%         \prismaflownode{n4r}{right=of n4}{Full-text articles excluded \\ - Not Relevant (n = ?) \\ - Not Open/Available paper (n = ?)}{};
-%         \prismaflowarrow{n4}{n4r};
+        - No DT inter. focus (n = 34)
 
-%         % Inclusion Phase
-%         \prismaflownode{n5}{below=of n4}{Studies included in qualitative synthesis (n = ?)}{n4};
+        - Secondary study (n = 11)
+        
+        - No AI or Agent focus (n = 4)
 
-%         % Labels
-%         \prismalabel{1.3*\mh}{n1.west}{Identification};
-%         \prismalabel{1.3*\mh}{n1.west |- {$(n1)!0.75!(n4)$}}{Screening};
-%         \prismalabel{1.3*\mh}{n1.west |- n5}{Included};
+        - No peer review (n = 1)
+        }{};
+        \prismaflowarrow{n3}{n3r};
 
-%     \prismaflowend
-%     }
-% \end{figure}
+        % Inclusion Phase
+        \prismaflownode{n4}{below=of n3}{Studies included in qualitative synthesis (n = 5)}{n3};
+
+        % Labels
+        \prismalabel{1.3*\mh}{n1.west |- {$(n1)!-0.0!(n4)$}}{Identification};
+        \prismalabel{1.3*\mh}{n1.west |- {$(n1)!0.5!(n4)$}}{Screening};
+        \prismalabel{1.3*\mh}{n1.west |- {$(n1)!1.0!(n4)$}}{Included};
+
+    \prismaflowend
+    }
+\end{figure}
 
 \begin{table}[H]
     \centering
@@ -257,11 +275,11 @@ Moreover, AI techniques are applied for analytics purposes, whereas the potentia
             no autonomous negotiation for heterogeneous ecosystems across domains \\
         \hline
         
-        \cite{karapanagiotis2025a} & Y & Y & Y & IOF + RAG-LLM & Construction + Mfg & 
+        \cite{karapanagiotis2025a} & Y & N & Y & IOF + SWS & Construction + Mfg & 
             Shared ontology (IOF) required;
             human-AI teaming;
             lacks autonomous DT-to-DT agent protocols \\
-        \hline\hline
+        \hline
         
         \textbf{This work} & \textbf{Y} & \textbf{Y} & \textbf{Y} & \textbf{AI Agent Protocols} & \textbf{Smart City $\leftrightarrow$ Energy Grid} & 
         \textbf{Autonomous AI Agent Protocols for cross-domain semantic interoperability in Digital Ecosystems without shared ontology} \\
