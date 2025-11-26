@@ -1,0 +1,125 @@
+@startuml digital-twin-architecture
+!define RECTANGLE class
+
+skinparam componentStyle rectangle
+skinparam linetype ortho
+
+' Styling
+skinparam component {
+    BackgroundColor<<platform>> LightSkyBlue
+    BackgroundColor<<agent>> LightGreen
+    BackgroundColor<<orchestration>> LightYellow
+    BackgroundColor<<external>> LightGray
+}
+
+skinparam node {
+    BackgroundColor<<k8s>> AliceBlue
+    BorderColor<<k8s>> Navy
+}
+
+' External Layer
+package "Service API Layer" {
+    [External Client] <<external>>
+}
+
+' Orchestration Layer
+package "Orchestration Layer" {
+    [Orchestration Agent] <<orchestration>>
+    database "Coordination\nService" as coord
+}
+
+' Mediation Layer
+package "Mediation Layer (Agent-Based)" {
+    package "Smart City Agent" {
+        [SmartCity Agent] <<agent>>
+        [MCP Server\n(KTWIN)] as mcp_ktwin
+        component "A2A Protocol\nHandler" as a2a_sc
+    }
+    
+    package "Energy Grid Agent" {
+        [EnergyGrid Agent] <<agent>>
+        [MCP Server\n(Ditto)] as mcp_ditto
+        component "A2A Protocol\nHandler" as a2a_eg
+    }
+}
+
+' Platform Layer
+node "KTWIN Cluster" <<k8s>> {
+    package "Smart City DT Platform" <<platform>> {
+        [KTWIN Core] as ktwin
+        database "DTDL Schema\n(smartcities)" as dtdl_sc
+        [ChargingStation\nTwins] as cs_twins
+        queue "RabbitMQ" as rmq_ktwin
+    }
+}
+
+node "Eclipse Ditto Cluster" <<k8s>> {
+    package "Energy Grid DT Platform" <<platform>> {
+        [Ditto Core] as ditto
+        database "Thing Model\n(CIM-based)" as thing_model
+        [Transformer\nTwins] as trans_twins
+        [UsagePoint\nTwins] as up_twins
+        queue "RabbitMQ" as rmq_ditto
+    }
+}
+
+' Connections - Service API to Orchestration
+[External Client] --> [Orchestration Agent] : Cross-domain\nquery/command
+
+' Orchestration to Agents
+[Orchestration Agent] --> [SmartCity Agent] : Route request
+[Orchestration Agent] --> [EnergyGrid Agent] : Route request
+[Orchestration Agent] ..> coord : Manage state
+
+' Agent to MCP (Resource Discovery)
+[SmartCity Agent] --> mcp_ktwin : Schema\nintrospection
+[EnergyGrid Agent] --> mcp_ditto : Schema\nintrospection
+
+' A2A Protocol (Semantic Negotiation)
+a2a_sc <--> a2a_eg : Semantic\nmapping\nnegotiation
+
+' MCP to Platform
+mcp_ktwin --> ktwin : Query schema/\nentities
+mcp_ditto --> ditto : Query schema/\nentities
+
+' Platform Internal
+ktwin --> dtdl_sc : Use ontology
+ktwin --> cs_twins : Manage
+ktwin --> rmq_ktwin : Event stream
+
+ditto --> thing_model : Use model
+ditto --> trans_twins : Manage
+ditto --> up_twins : Manage
+ditto --> rmq_ditto : Event stream
+
+' Notes
+note right of [SmartCity Agent]
+  Specializes in:
+  - DTDL ontology
+  - opendigitaltwins-smartcities
+  - Spatial reasoning
+end note
+
+note right of [EnergyGrid Agent]
+  Specializes in:
+  - CIM-based ontology
+  - Thing model translation
+  - Grid topology mapping
+end note
+
+note bottom of a2a_sc
+  A2A Protocol enables:
+  - Semantic equivalence proposals
+  - Mapping negotiation
+  - Cross-domain coordination
+end note
+
+note bottom of mcp_ktwin
+  MCP Protocol exposes:
+  - Entity types (ChargingStation)
+  - Properties (maxPowerKW, location)
+  - Query capabilities
+  - Real-time metadata
+end note
+
+@enduml
