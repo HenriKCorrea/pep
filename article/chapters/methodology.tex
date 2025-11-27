@@ -1,29 +1,40 @@
 \chapter{Methodology}
 \label{chap:methodology}
 
-This chapter describes the research methodology employed to investigate how AI Agent Protocols can enable semantic interoperability between heterogeneous Digital Twin systems.
-The research follows a Design Science Research (DSR) approach, focusing on the design, development, and evaluation of a novel Digital Ecosystem architecture that leverages agent-mediated communication to solve cross-domain coordination challenges.
+This chapter describes the research methodology employed to investigate how AI Agent Protocols can enable semantic interoperability between
+    heterogeneous Digital Twin systems.
+The research follows a Design Science Research (DSR) approach, focusing on
+    the design, development, and evaluation of a novel Digital Ecosystem architecture that leverages
+    agent-mediated communication to solve cross-domain coordination challenges.
 
 \section{Research Design}
 \label{sec:research-design}
 
-This research adopts the Design Science Research methodology proposed by Peffers et al.~\cite{peffers2007}, which provides a systematic framework for developing and evaluating Information Technology (IT) artifacts that address identified organizational problems.
-DSR is particularly appropriate for this work because it emphasizes the creation and evaluation of purposeful artifacts---in this case, a Digital Ecosystem architecture and its proof-of-concept implementation.
+This research adopts the Design Science Research methodology proposed by Peffers et al.~\cite{peffers2007}, which provides a
+    systematic framework for developing and evaluating Information Technology (IT) artifacts that address identified organizational problems.
+DSR is particularly appropriate for this work because it emphasizes the creation and evaluation of purposeful artifacts---in this case,
+    a Digital Ecosystem architecture and its proof-of-concept implementation.
 
 The DSR process consists of six iterative activities:
 
 \begin{enumerate}
-    \item \textbf{Problem Identification and Motivation:} Addressed in Chapters~\ref{chap:introduction} and~\ref{chap:related-work}, identifying the semantic interoperability challenge in heterogeneous DT systems.
+    \item \textbf{Problem Identification and Motivation:}
+    Addressed in Chapters~\ref{chap:introduction} and~\ref{chap:related-work}, identifying the semantic interoperability challenge in heterogeneous DT systems.
     
-    \item \textbf{Objectives of a Solution:} Defined in Chapter~\ref{chap:objectives}, focusing on agent-mediated interoperability while preserving system autonomy.
+    \item \textbf{Objectives of a Solution:}
+    Defined in Chapter~\ref{chap:objectives}, focusing on agent-mediated interoperability while preserving system autonomy.
     
-    \item \textbf{Design and Development:} Described in Sections~\ref{sec:architecture-design} and~\ref{sec:implementation}, covering the Digital Ecosystem architecture and agent protocol integration.
+    \item \textbf{Design and Development:}
+    Described in Sections~\ref{sec:architecture-design} and~\ref{sec:implementation}, covering the Digital Ecosystem architecture and agent protocol integration.
     
-    \item \textbf{Demonstration:} Presented in Section~\ref{sec:use-case}, using a realistic cross-domain scenario involving Smart City and Energy Grid DTs.
+    \item \textbf{Demonstration:}
+    Presented in Section~\ref{sec:use-case}, using a realistic cross-domain scenario involving Smart City and Energy Grid DTs.
     
-    \item \textbf{Evaluation:} Detailed in Section~\ref{sec:evaluation}, with metrics assessing semantic mapping capabilities, integration effort, and functional success.
+    \item \textbf{Evaluation:}
+    Detailed in Section~\ref{sec:evaluation}, with metrics assessing semantic mapping capabilities, integration effort, and functional success.
     
-    \item \textbf{Communication:} Fulfilled through this thesis and planned publications.
+    \item \textbf{Communication:}
+    Fulfilled through this thesis and planned publications.
 \end{enumerate}
 
 This methodology enables rigorous artifact development while maintaining flexibility to iterate based on implementation findings and evaluation results.
@@ -31,28 +42,36 @@ This methodology enables rigorous artifact development while maintaining flexibi
 \section{System Architecture Design}
 \label{sec:architecture-design}
 
-The proposed Digital Ecosystem architecture draws inspiration from the Destination Earth (DestinE) initiative's virtual cloud layer~\cite{Nativi_Craglia_2021}, adapting its principles for agent-mediated DT interoperability.
+The proposed Digital Ecosystem architecture draws inspiration from the Destination Earth (DestinE) initiative's virtual cloud layer~\cite{Nativi_Craglia_2021},
+    adapting its principles for agent-mediated DT interoperability.
 The architecture consists of three primary layers: DT platforms, mediation services, and orchestration.
 
 \subsection{Virtual Cloud Architecture}
 \label{subsec:virtual-cloud-arch}
 
-Following DestinE's architectural principles, the virtual cloud layer virtualizes heterogeneous operational infrastructure environments while providing unified access through standardized interfaces.
-For this research, a minimalist centralized orchestration approach has been selected to reduce implementation complexity while maintaining core capabilities for agent-mediated interoperability.
+Following DestinE's architectural principles, the virtual cloud layer virtualizes heterogeneous operational infrastructure environments while
+    providing unified access through standardized interfaces.
+For this research, a minimalist centralized orchestration approach has been selected to
+    reduce implementation complexity while maintaining core capabilities for agent-mediated interoperability.
 
 The virtual cloud architecture comprises:
 
 \begin{itemize}
-    \item \textbf{DT Platform Layer:} Independent KTWIN and Eclipse Ditto clusters, each maintaining domain-specific optimizations and ontologies.
+    \item \textbf{DT Platform Layer:}
+    Independent KTWIN and Eclipse Ditto clusters, each maintaining domain-specific optimizations and ontologies.
     
-    \item \textbf{Mediation Layer:} Agent-based services that broker semantic interactions between heterogeneous platforms using MCP for resource discovery and A2A for negotiation.
+    \item \textbf{Mediation Layer:}
+    Agent-based services that broker semantic interactions between heterogeneous platforms using MCP for resource discovery and A2A for negotiation.
     
-    \item \textbf{Orchestration Layer:} Centralized coordination services managing cross-domain requests and routing agent communications.
+    \item \textbf{Orchestration Layer:}
+    Centralized coordination services managing cross-domain requests and routing agent communications.
     
-    \item \textbf{Service API Layer:} Common interfaces for external clients to submit cross-domain queries without platform-specific knowledge.
+    \item \textbf{Service API Layer:}
+    Common interfaces for external clients to submit cross-domain queries without platform-specific knowledge.
 \end{itemize}
 
-This layered approach isolates platform heterogeneity from cross-domain coordination logic, enabling agents to focus on semantic mediation rather than protocol translation.
+This layered approach isolates platform heterogeneity from
+    cross-domain coordination logic, enabling agents to focus on semantic mediation rather than protocol translation.
 
 \subsection{Digital Twin Platform Selection}
 \label{subsec:platform-selection}
@@ -82,7 +101,8 @@ Key characteristics include:
     \item Extensive documentation and active community
 \end{itemize}
 
-The deliberate selection of platforms with similar messaging infrastructure (RabbitMQ) but different knowledge representations (DTDL vs. Thing model) creates realistic heterogeneity while maintaining implementation feasibility.
+The deliberate selection of platforms with similar messaging infrastructure (RabbitMQ) but
+    different knowledge representations (DTDL vs. Thing model) creates realistic heterogeneity while maintaining implementation feasibility.
 
 \subsection{Agent Integration Architecture}
 \label{subsec:agent-architecture}
@@ -109,21 +129,26 @@ When cross-domain coordination is required, agents use A2A to:
 \end{itemize}
 
 Each DT platform is paired with a dedicated agent that understands the platform's native knowledge representation.
-The SmartCity Agent (paired with KTWIN) specializes in DTDL-based smart city ontologies, while the EnergyGrid Agent (paired with Ditto) specializes in CIM-based grid ontologies translated to the Thing model.
+The SmartCity Agent (paired with KTWIN) specializes in DTDL-based smart city ontologies, while
+    the EnergyGrid Agent (paired with Ditto) specializes in CIM-based grid ontologies translated to the Thing model.
 These agents act as semantic translators, exposing their platform's capabilities through MCP while negotiating cross-domain mappings through A2A.
 
-A lightweight orchestration agent coordinates multi-platform interactions, routing requests to appropriate platform agents and aggregating responses.
-This centralized coordination simplifies the proof-of-concept while maintaining the agent autonomy principle---platform agents retain full control over their semantic mappings and never directly access other platforms.
+A lightweight orchestration agent coordinates multi-platform interactions,
+    routing requests to appropriate platform agents and aggregating responses.
+This centralized coordination simplifies the proof-of-concept while maintaining the agent autonomy principle---platform agents retain
+    full control over their semantic mappings and never directly access other platforms.
 
 \section{Cross-Domain Use Case Definition}
 \label{sec:use-case}
 
-To validate the agent-mediated interoperability approach, a realistic cross-domain scenario has been designed that requires cooperation between Smart City and Energy Grid DT systems.
+To validate the agent-mediated interoperability approach, a realistic cross-domain scenario has been designed that requires
+    cooperation between Smart City and Energy Grid DT systems.
 
 \subsection{Scenario Description: Dynamic EV Charging Coordination}
 \label{subsec:scenario-description}
 
-The use case addresses a practical urban energy management challenge: coordinating electric vehicle (EV) charging to prevent distribution grid overloads while maximizing charging service availability.
+The use case addresses a practical urban energy management challenge:
+    coordinating electric vehicle (EV) charging to prevent distribution grid overloads while maximizing charging service availability.
 
 \textbf{Problem Context:}
 During peak demand periods (e.g., 5-7 PM), large numbers of EVs require charging in urban areas.
@@ -160,31 +185,34 @@ Neither the Smart City DT nor the Energy Grid DT can solve this problem independ
 \subsection{Semantic Gap Characterization}
 \label{subsec:semantic-gaps}
 
-The scenario requires bridging multiple semantic gaps between the \texttt{opendigitaltwins-smartcities} ontology (KTWIN) and the CIM-based \texttt{opendigitaltwins-energygrid} ontology (Ditto):
+The scenario requires bridging multiple semantic gaps between the \texttt{opendigitaltwins-smartcities} ontology (KTWIN) and
+    the CIM-based \texttt{opendigitaltwins-energygrid} ontology (Ditto):
 
 \begin{table}[h]
-\centering
-\small
-\begin{tabular}{|p{3cm}|p{3cm}|p{6cm}|}
-\hline
-\textbf{Smart City Concept} & \textbf{Energy Grid Concept} & \textbf{Semantic Challenge} \\
-\hline
-\texttt{ChargingStation} (location entity) & \texttt{UsagePoint} (metering point) & Different abstraction levels: physical location vs. consumption measurement point \\
-\hline
-\texttt{chargingCapacity} (kW available) & \texttt{EquivalentLoad.activePower} (kW consumed) & Opposite perspectives: supply capacity vs. demand consumption \\
-\hline
-Geographic location (lat/lon) & Grid topology (substation/feeder hierarchy) & Spatial vs. topological representation requiring mapping \\
-\hline
-\texttt{hasChargingCapability} (boolean) & \texttt{UsagePoint} linked to \texttt{Transformer} & Binary property vs. relational topology \\
-\hline
-\texttt{ParkingSpot.occupancy} & Load forecasting window & Temporal granularity mismatch \\
-\hline
-\end{tabular}
-\caption{Semantic gaps requiring agent-mediated mapping}
-\label{tab:semantic-gaps}
+    \centering
+    \small
+    \begin{tabular}{|p{3cm}|p{3cm}|p{6cm}|}
+        \hline
+        \textbf{Smart City Concept} & \textbf{Energy Grid Concept} & \textbf{Semantic Challenge} \\
+        \hline
+        \texttt{ChargingStation} (location entity) & \texttt{UsagePoint} (metering point) & Different abstraction levels: physical location vs. consumption measurement point \\
+        \hline
+        \texttt{chargingCapacity} (kW available) & \texttt{EquivalentLoad.activePower} (kW consumed) & Opposite perspectives: supply capacity vs. demand consumption \\
+        \hline
+        Geographic location (lat/lon) & Grid topology (substation/feeder hierarchy) & Spatial vs. topological representation requiring mapping \\
+        \hline
+        \texttt{hasChargingCapability} (boolean) & \texttt{UsagePoint} linked to \texttt{Transformer} & Binary property vs. relational topology \\
+        \hline
+        \texttt{ParkingSpot.occupancy} & Load forecasting window & Temporal granularity mismatch \\
+        \hline
+    \end{tabular}
+    \caption{Semantic gaps requiring agent-mediated mapping}
+    \label{tab:semantic-gaps}
 \end{table}
 
-These gaps are representative of real-world DT integration challenges: different domains model the same physical infrastructure from different perspectives using domain-specific ontologies optimized for their use cases.
+These gaps are representative of real-world DT integration challenges:
+    different domains model the same physical infrastructure from different perspectives using
+    domain-specific ontologies optimized for their use cases.
 
 \subsection{Expected Agent Behaviors}
 \label{subsec:agent-behaviors}
@@ -225,12 +253,13 @@ This interaction demonstrates dynamic semantic mapping without pre-coordinated s
 \section{Implementation Methodology}
 \label{sec:implementation}
 
-The implementation follows an iterative agent-first development process, prioritizing early validation of the core agent protocol capabilities before full system integration.
+The implementation follows an iterative agent-first development process, prioritizing early
+    validation of the core agent protocol capabilities before full system integration.
 
 \subsection{Development Phases}
 \label{subsec:development-phases}
 
-\textbf{Phase 1: Agent Protocol Spike (Weeks 1-2)}
+\textbf{Sprint 1: Agent Protocol Spike}
 
 Focus: Validate MCP and A2A protocols work for semantic negotiation with minimal infrastructure.
 
@@ -247,7 +276,7 @@ Focus: Validate MCP and A2A protocols work for semantic negotiation with minimal
 
 \textit{Risk Mitigation:} Validating agent protocols early prevents wasted effort on DT infrastructure if protocols prove insufficient.
 
-\textbf{Phase 2: Single DT Platform Integration (Weeks 3-4)}
+\textbf{Sprint 2: Single DT Platform Integration}
 
 Focus: Integrate agents with real KTWIN deployment to validate platform introspection.
 
@@ -262,7 +291,7 @@ Focus: Integrate agents with real KTWIN deployment to validate platform introspe
 
 \textit{Deliverable:} SmartCity Agent dynamically querying KTWIN and recommending charging stations based on real twin data.
 
-\textbf{Phase 3: Heterogeneous Platform Integration (Weeks 5-7)}
+\textbf{Sprint 3: Heterogeneous Platform Integration}
 
 Focus: Add Ditto platform and demonstrate cross-platform semantic bridging.
 
@@ -276,9 +305,10 @@ Focus: Add Ditto platform and demonstrate cross-platform semantic bridging.
     \item Implement A2A semantic negotiation between SmartCity and EnergyGrid agents
 \end{itemize}
 
-\textit{Deliverable:} Agents successfully negotiate \texttt{ChargingStation} $\leftrightarrow$ \texttt{UsagePoint} mapping and answer cross-domain query: ``Which charging stations connect to Transformer T1?''
+\textit{Deliverable:} Agents successfully negotiate \texttt{ChargingStation} $\leftrightarrow$ \texttt{UsagePoint} mapping and answer cross-domain query:
+    ``Which charging stations connect to Transformer T1?''
 
-\textbf{Phase 4: Complete Use Case and Orchestration (Weeks 8-10)}
+\textbf{Sprint 4: Complete Use Case and Orchestration}
 
 Focus: Full scenario implementation with orchestration layer and evaluation.
 
@@ -363,12 +393,15 @@ To enable reproducible evaluation without requiring physical infrastructure, a s
     \item Geographic distribution representative of urban downtown area
 \end{itemize}
 
-Time-series event replay enables deterministic scenario execution for controlled evaluation while introducing configurable variability to test agent adaptability.
+Time-series event replay enables deterministic scenario execution for controlled evaluation while
+    introducing configurable variability to test agent adaptability.
 
 \section{Evaluation Methodology}
 \label{sec:evaluation}
 
-The evaluation assesses whether agent-mediated interoperability achieves the claimed benefits over traditional integration approaches across three dimensions: semantic capability, integration effort, and functional performance.
+The evaluation assesses whether agent-mediated interoperability achieves the claimed benefits over
+    traditional integration approaches across three dimensions:
+    semantic capability, integration effort, and functional performance.
 
 \subsection{Evaluation Criteria}
 \label{subsec:evaluation-criteria}
@@ -589,4 +622,5 @@ These considerations are outside the scope of this technical proof-of-concept bu
     \item Mitigation: Multiple complementary metrics, qualitative assessment
 \end{itemize}
 
-Despite these limitations, the research provides valuable insights into the feasibility and potential benefits of agent-mediated DT interoperability, establishing a foundation for future work addressing production deployment challenges.
+Despite these limitations, the research provides valuable insights into the feasibility and potential benefits of agent-mediated DT interoperability,
+    establishing a foundation for future work addressing production deployment challenges.
