@@ -2,7 +2,7 @@
 // README at: https://github.com/devcontainers/templates/tree/main/src/ubuntu
 {
 	"name": "TexLive - Podman",
-	"image": "henrikcorrea/latex-templates:latest",
+	"image": "docker.io/henrikcorrea/latex-templates:latest",
 
 	// Features to add to the dev container. More info: https://containers.dev/features.
 	// "features": {},
@@ -19,7 +19,8 @@
 			"extensions": [
 				"James-Yu.latex-workshop",
 				"PKief.material-icon-theme",
-				"GitHub.vscode-github-actions"
+				"GitHub.vscode-github-actions",
+				"hediet.vscode-drawio"
 			],
 			"settings": {
 				"workbench.colorTheme": "Default Dark Modern",

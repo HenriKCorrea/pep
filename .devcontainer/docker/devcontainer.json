@@ -19,7 +19,8 @@
 			"extensions": [
 				"James-Yu.latex-workshop",
 				"PKief.material-icon-theme",
-				"GitHub.vscode-github-actions"
+				"GitHub.vscode-github-actions",
+				"hediet.vscode-drawio"
 			],
 			"settings": {
 				"workbench.colorTheme": "Default Dark Modern",
