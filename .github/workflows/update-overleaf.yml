@@ -2,8 +2,6 @@ name: Update Overleaf article
 
 on:
   push:
-    branches: 
-      - main
     tags:
       - 'v*'
 
