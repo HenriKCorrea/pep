@@ -1,0 +1,71 @@
+name: Update Overleaf article
+
+on:
+  push:
+    branches: 
+      - main
+    tags:
+      - 'v*'
+    paths:
+      - 'article/**'
+
+jobs:
+  update-overleaf:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          lfs: true
+
+      - name: Clone Overleaf Git repository
+        env:
+          OVERLEAF_GIT_USER: ${{ secrets.OVERLEAF_GIT_USER }}
+          OVERLEAF_GIT_TOKEN: ${{ secrets.OVERLEAF_GIT_TOKEN }}
+          OVERLEAF_REPOSITORY_ID: ${{ secrets.OVERLEAF_REPOSITORY_ID }}
+        run: |
+          git clone https://${OVERLEAF_GIT_USER}:${OVERLEAF_GIT_TOKEN}@git.overleaf.com/${OVERLEAF_REPOSITORY_ID} overleaf-repo
+
+      - name: Copy article files to Overleaf repo
+        run: |
+          rsync -av --exclude='.latexmkrc' --exclude='.*' article/ overleaf-repo/
+
+      - name: Update Overleaf Repository
+        id: update-overleaf
+        working-directory: overleaf-repo
+        env:
+          TEXMF_REPO: https://github.com/henrikcorrea/texmf.git
+        run: |
+          git subtree pull --prefix=texmf $TEXMF_REPO main
+          git add .
+          if git status --porcelain | grep .; then
+            echo "changed=true" >> $GITHUB_OUTPUT
+          else
+            echo "changed=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Commit and push changes to Overleaf
+        if: steps.update-overleaf.outputs.changed == 'true'
+        working-directory: overleaf-repo
+        env:
+          OVERLEAF_GIT_USER: ${{ secrets.OVERLEAF_GIT_USER }}
+          OVERLEAF_GIT_TOKEN: ${{ secrets.OVERLEAF_GIT_TOKEN }}
+          OVERLEAF_REPOSITORY_ID: ${{ secrets.OVERLEAF_REPOSITORY_ID }}
+        run: |
+          git config user.name ${{ github.actor }}
+          git config user.email ${{ github.actor }}@users.noreply.github.com
+          git add .
+          git commit -m "Update article from GitHub Actions" || echo "No changes to commit"
+          git push https://${OVERLEAF_GIT_USER}:${OVERLEAF_GIT_TOKEN}@git.overleaf.com/${OVERLEAF_REPOSITORY_ID} HEAD:master
+
+# TODO:
+# - Copy contents of henrikcorrea/pep/article/* into git.overleaf.com/67eed6c5ea3465a8417292f3 repository
+#  - Constraint: Exclude .latexmkrc from copy operation (maybe just not copy hidden files).
+# - Update texmf git subtree on pep-henrique repository from henrikcorrea/texmf repository.
+
+# Wishlist for future improvements:
+# - Add a step to compile the LaTeX document and check for errors before syncing.
+#   - Compile article/article.tex using .devcontainer/docker/devcontainer.json, which uses henrikcorrea/latex-templates:latest Docker image.
+#   - If compilation fails, the action should fail and not proceed to sync with Overleaf.
+# - Add notifications (e.g., github push, email or Slack) on success or failure of the sync process.
+  
