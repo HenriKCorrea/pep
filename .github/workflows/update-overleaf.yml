@@ -26,17 +26,21 @@ jobs:
         run: |
           git clone https://${OVERLEAF_GIT_USER}:${OVERLEAF_GIT_TOKEN}@git.overleaf.com/${OVERLEAF_REPOSITORY_ID} overleaf-repo
 
-      - name: Copy article files to Overleaf repo
-        run: |
-          rsync -av --exclude='.latexmkrc' --exclude='.*' article/ overleaf-repo/
-
-      - name: Update Overleaf Repository
-        id: update-overleaf
+      - name: Update texmf subtree
         working-directory: overleaf-repo
         env:
           TEXMF_REPO: https://github.com/henrikcorrea/texmf.git
         run: |
           git subtree pull --prefix=texmf $TEXMF_REPO main
+
+      - name: Copy article files to Overleaf repo
+        run: |
+          rsync -av --exclude='.latexmkrc' --exclude='.*' article/ overleaf-repo/
+
+      - name: Add changes to Overleaf repo
+        id: update-overleaf
+        working-directory: overleaf-repo
+        run: |
           git add .
           if git status --porcelain | grep .; then
             echo "changed=true" >> $GITHUB_OUTPUT
