@@ -6,8 +6,6 @@ on:
       - main
     tags:
       - 'v*'
-    paths:
-      - 'article/**'
 
 jobs:
   update-overleaf:
