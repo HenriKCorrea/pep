@@ -185,8 +185,12 @@ Neither the Smart City DT nor the Energy Grid DT can solve this problem independ
 \subsection{Semantic Gap Characterization}
 \label{subsec:semantic-gaps}
 
-The scenario requires bridging multiple semantic gaps between the \texttt{opendigitaltwins-smartcities} ontology (KTWIN) and
-    the CIM-based \texttt{opendigitaltwins-energygrid} ontology (Ditto):
+The scenario requires bridging multiple semantic gaps between the
+    \texttt{smartcities} ontology (KTWIN) and the
+    \texttt{energygrid} ontology (Ditto).
+These gaps are representative of real-world DT integration challenges:
+    different domains model the same physical infrastructure from different perspectives using
+    domain-specific ontologies optimized for their use cases.
 
 \begin{table}[ht]
     \centering
@@ -209,10 +213,6 @@ The scenario requires bridging multiple semantic gaps between the \texttt{opendi
     \caption{Semantic gaps requiring agent-mediated mapping}
     \label{tab:semantic-gaps}
 \end{table}
-
-These gaps are representative of real-world DT integration challenges:
-    different domains model the same physical infrastructure from different perspectives using
-    domain-specific ontologies optimized for their use cases.
 
 \subsection{Expected Agent Behaviors}
 \label{subsec:agent-behaviors}
