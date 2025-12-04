@@ -195,19 +195,43 @@ These gaps are representative of real-world DT integration challenges:
 \begin{table}[ht]
     \centering
     \small
-    \begin{tabular}{|p{3cm}|p{3cm}|p{6cm}|}
+    \begin{tabular}{ | m{4cm} | m{4cm} | m{5cm} | }
         \hline
+
         \textbf{Smart City Concept} & \textbf{Energy Grid Concept} & \textbf{Semantic Challenge} \\
         \hline
-        \texttt{ChargingStation} (location entity) & \texttt{UsagePoint} (metering point) & Different abstraction levels: physical location vs. consumption measurement point \\
+
+            \texttt{EVChargingStation} 
+
+            (physical location) &
+            \texttt{UsagePoint}
+
+            (logical metering point) &
+            Different abstraction levels: physical infrastructure vs. logical measurement point \\
         \hline
-        \texttt{chargingCapacity} (kW available) & \texttt{EquivalentLoad.activePower} (kW consumed) & Opposite perspectives: supply capacity vs. demand consumption \\
+
+            \texttt{capacity}, \texttt{availableCapacity}
+            
+            (vehicles that can charge) &
+            \texttt{ratedPower}, \texttt{estimatedLoad}
+            
+            (power capacity and consumption) &
+            Different measurement units and semantics: vehicle count vs. electrical power metrics \\
         \hline
-        Geographic location (lat/lon) & Grid topology (substation/feeder hierarchy) & Spatial vs. topological representation requiring mapping \\
+
+            \texttt{amperage}
+        
+            (electrical properties) &
+            \texttt{ratedCurrent}
+            
+            (service ratings) &
+            Similar concepts with different property names and potentially different semantic intent \\
         \hline
-        \texttt{hasChargingCapability} (boolean) & \texttt{UsagePoint} linked to \texttt{Transformer} & Binary property vs. relational topology \\
-        \hline
-        \texttt{ParkingSpot.occupancy} & Load forecasting window & Temporal granularity mismatch \\
+
+            \texttt{status} enum
+            
+            (working, outOfService, etc.) &
+            \texttt{connectionState}, \texttt{amiBillingReady} & Operational state represented differently: service availability vs. connection/billing status \\
         \hline
     \end{tabular}
     \caption{Semantic gaps requiring agent-mediated mapping}
