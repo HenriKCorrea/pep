@@ -516,22 +516,29 @@ A unified semantic layer approach:
 \textbf{Comparative Analysis:}
 
 \begin{table}[ht]
-\centering
-\small
-\begin{tabular}{|l|c|c|c|}
-\hline
-\textbf{Evaluation Aspect} & \textbf{Manual API} & \textbf{Shared Ontology} & \textbf{Agent-Mediated} \\
-\hline
-Initial implementation time & Baseline & +50\% & +20\% \\
-Lines of integration code & Baseline & +30\% & -70\% \\
-Schema change impact & High & Medium & Low \\
-3rd system integration time & Baseline & +40\% & -60\% \\
-Runtime overhead & Low & Medium & Medium \\
-Semantic flexibility & None & Low & High \\
-\hline
-\end{tabular}
-\caption{Expected comparative results (to be validated)}
-\label{tab:baseline-comparison}
+    \centering
+    \small
+    \begin{tabular}{|l|c|c|c|}
+        \hline
+        
+            \textbf{Evaluation Aspect} & \textbf{Manual API} & \textbf{Shared Ontology} & \textbf{Agent-Mediated} \\
+        \hline
+        
+            Initial implementation time & Baseline & +50\% & +20\% \\
+        
+            Lines of integration code & Baseline & +30\% & -70\% \\
+        
+            Schema change impact & High & Medium & Low \\
+        
+            3rd system integration time & Baseline & +40\% & -60\% \\
+        
+            Runtime overhead & Low & Medium & Medium \\
+        
+            Semantic flexibility & None & Low & High \\
+        \hline
+    \end{tabular}
+    \caption{Expected comparative results (to be validated)}
+    \label{tab:baseline-comparison}
 \end{table}
 
 \subsection{Validation Approach}
@@ -567,84 +574,3 @@ The proof-of-concept will be validated through:
     \item Maintainability: estimated effort to update mappings vs. baseline
     \item Extensibility: feasibility analysis for adding Weather DT
 \end{itemize}
-
-\section{Ethical Considerations and Limitations}
-\label{sec:limitations}
-
-\subsection{Research Scope Boundaries}
-\label{subsec:scope-boundaries}
-
-This research explicitly excludes several important aspects of production DT systems:
-
-\textbf{Not Addressed:}
-\begin{itemize}
-    \item \textbf{Real-time guarantees:} No hard latency bounds or deterministic timing
-    \item \textbf{Security and authentication:} No encryption, access control, or authentication mechanisms
-    \item \textbf{Production deployment:} No high availability, disaster recovery, or operational monitoring
-    \item \textbf{Proprietary platform integration:} Focus limited to open-source platforms
-    \item \textbf{Legal and regulatory compliance:} No analysis of data governance or GDPR implications
-\end{itemize}
-
-\subsection{Simulation Limitations}
-\label{subsec:simulation-limitations}
-
-The simulation-based evaluation has inherent limitations:
-
-\begin{itemize}
-    \item \textbf{Simplified physics:} EV charging and grid load models are approximations of complex electrical systems
-    \item \textbf{Synthetic data:} Real-world operational data may exhibit patterns not captured in simulation
-    \item \textbf{Scale constraints:} Limited to 50 EVs and 3 transformers; larger-scale behavior unknown
-    \item \textbf{Controlled environment:} Lacks unpredictability of production systems (sensor failures, network issues, adversarial inputs)
-\end{itemize}
-
-\subsection{Generalizability Considerations}
-\label{subsec:generalizability}
-
-Results should be interpreted within context:
-
-\begin{itemize}
-    \item \textbf{Domain specificity:} Findings apply to Smart City $\leftrightarrow$ Energy Grid integration; other domain pairs may have different characteristics
-    \item \textbf{Ontology dependency:} Success depends on DTDL expressiveness; other knowledge representation formalisms may behave differently
-    \item \textbf{Agent reasoning:} LLM-based semantic reasoning quality depends on model capabilities and prompt engineering
-    \item \textbf{Platform selection:} KTWIN and Ditto share architectural similarities (event-driven, RabbitMQ); more divergent platforms may pose additional challenges
-\end{itemize}
-
-\subsection{Ethical Considerations}
-\label{subsec:ethical-considerations}
-
-While this research focuses on technical interoperability, several ethical dimensions merit acknowledgment:
-
-\begin{itemize}
-    \item \textbf{Energy access equity:} EV charging optimization algorithms should not systematically disadvantage certain user groups
-    \item \textbf{Data privacy:} Production implementations would require careful handling of location and consumption data
-    \item \textbf{Transparency:} Agent-mediated decision-making should be explainable to system operators
-    \item \textbf{Environmental impact:} Computational overhead of agent reasoning should be considered in sustainability analysis
-\end{itemize}
-
-These considerations are outside the scope of this technical proof-of-concept but would require attention in real-world deployments.
-
-\subsection{Threats to Validity}
-\label{subsec:threats-validity}
-
-\textbf{Internal Validity:}
-\begin{itemize}
-    \item Agent implementation quality may affect results independent of protocol design
-    \item Performance measurements may be influenced by hardware/network conditions
-    \item Mitigation: Multiple experimental runs, controlled environment, code review
-\end{itemize}
-
-\textbf{External Validity:}
-\begin{itemize}
-    \item Use case may not represent full spectrum of DT interoperability challenges
-    \item Open-source platforms may differ significantly from proprietary industrial systems
-    \item Mitigation: Clear scope definition, comprehensive related work comparison
-\end{itemize}
-
-\textbf{Construct Validity:}
-\begin{itemize}
-    \item Metrics may not fully capture ``semantic interoperability'' or ``system autonomy''
-    \item Mitigation: Multiple complementary metrics, qualitative assessment
-\end{itemize}
-
-Despite these limitations, the research provides valuable insights into the feasibility and potential benefits of agent-mediated DT interoperability,
-    establishing a foundation for future work addressing production deployment challenges.
