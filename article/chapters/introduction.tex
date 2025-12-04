@@ -2,35 +2,84 @@
 \label{chap:introduction}
 
 
-Digital Twins (DTs) are virtual representations of physical entities that enable monitoring, simulation, and optimization of complex systems throughout their lifecycle.
-By integrating data from sensors, IoT devices, and computational models, DTs provide actionable insights into the inner operations of systems and predict future behaviors in ways that traditional monitoring technologies cannot~\cite{Botín-Sanabria_2022}.
-Recent advances in artificial intelligence (AI), machine learning (ML), big data analytics, and ubiquitous connectivity have accelerated DT adoption across diverse domains, including smart cities, energy grids, healthcare, manufacturing, and agriculture~\cite{Kshetri_2021}.
+Digital Twins (DTs) are virtual representations of physical entities that
+    enable monitoring, simulation, and optimization of
+    complex systems throughout their lifecycle.
+By integrating data from sensors, IoT devices, and computational models,
+    DTs provide actionable insights into the inner operations of systems and
+    predict future behaviors in ways that
+    traditional monitoring technologies cannot~\cite{Botín-Sanabria_2022}.
+Recent advances in
+    artificial intelligence (AI),
+    machine learning (ML),
+    big data analytics, and
+    ubiquitous connectivity
+    have accelerated DT adoption across diverse domains, including
+    smart cities,
+    energy grids,
+    healthcare,
+    manufacturing, and
+    agriculture~\cite{Kshetri_2021}.
 
-DT applications range from single-asset monitoring---such as Shell's structural DT for the Bonga oilfield's facility---to high-fidelity geographical representations like the European Commission's Destination Earth initiative~\cite{Kshetri_2021}.
-These implementations demonstrate DTs' capacity to reduce operational costs, improve maintenance efficiency, and support decision-making under uncertainty.
-However, as DT ecosystems expand, cross-domain use cases emerge that require cooperation between heterogeneous DT platforms.
-For instance, a supply chain DT \cite{Gerlach_Zarnitz_2021} requires historical and real-time data from manufacturing DTs, warehousing DTs, and cargo DTs to optimize end-to-end operations.
-As DT adoption grows, the need for interoperability between such heterogeneous platforms becomes increasingly critical to unlock cross-domain value and enable collaborative solutions that transcend the boundaries of individual systems.
+DT applications range from
+    single-asset monitoring---such as Shell's structural DT for the Bonga oilfield's facility---to
+    high-fidelity geographical representations like the European Commission's Destination Earth initiative~\cite{Kshetri_2021}.
+These implementations demonstrate DTs' capacity to
+    reduce operational costs,
+    improve maintenance efficiency, and
+    support decision-making under uncertainty.
+However, as DT ecosystems expand, cross-domain use cases emerge that
+    require cooperation between heterogeneous DT platforms.
+For instance, a supply chain DT \cite{Gerlach_Zarnitz_2021} requires
+    historical and real-time data from
+    manufacturing DTs,
+    warehousing DTs, and
+    cargo DTs to
+    optimize end-to-end operations.
+As DT adoption grows, the need for interoperability between such
+    heterogeneous platforms becomes increasingly critical to
+    unlock cross-domain value and enable collaborative solutions that
+    transcend the boundaries of individual systems.
 
-
-Interoperability is the ability of different DT systems to seamlessly integrate and communicate despite using different standards, protocols, or ontologies.
-Standards like Digital Twins Definition Language (DTDL)~\cite{opendigitaltwins_2025} for smart cities and the Common Information Model (CIM)~\cite{Uslar_2012} for energy grids are used to describe the structure and behavior of digital twins.
-Despite the growing adoption of DTs, achieving interoperability between heterogeneous DT systems remains a significant challenge~\cite{Tripathi_2024}.
+Interoperability is the ability of different DT systems to
+    seamlessly integrate and communicate despite using
+    different standards, protocols, or ontologies.
+Standards like Digital Twins Definition Language (DTDL)~\cite{opendigitaltwins_2025} for smart cities and
+    the Common Information Model (CIM)~\cite{Uslar_2012} for energy grids are used to
+    describe the structure and behavior of digital twins.
+Despite the growing adoption of DTs,
+    achieving interoperability between heterogeneous DT systems
+    remains a significant challenge~\cite{Tripathi_2024}.
 Current integration approaches face several barriers:
 
 \begin{itemize}
-    \item \textbf{Technical interoperability:} The diversity of proprietary platforms, data formats, and communication protocols used across domains creates integration challenges. Most industrial software applications are proprietary, preventing widespread adoption of open-source solutions and complicating system integration.
+    \item \textbf{Technical interoperability:}
+    The diversity of proprietary platforms, data formats, and communication protocols
+        used across domains creates integration challenges.
+    Most industrial software applications are proprietary, preventing
+        widespread adoption of open-source solutions and complicating system integration.
     
-    \item \textbf{Semantic interoperability:} Different domains model their systems using domain-specific ontologies (e.g., DTDL for smart cities, CIM for energy grids) that require manual mapping and translation.
+    \item \textbf{Semantic interoperability:}
+    Different domains model their systems using domain-specific ontologies
+        (e.g., DTDL for smart cities, CIM for energy grids) that
+        require manual mapping and translation.
 
-    \item \textbf{Orchestration complexity:} Multiple DTs must coordinate physical-to-physical, virtual-to-virtual, and virtual-to-physical interactions to solve complex cross-domain problems that can't be solved by individual systems.
+    \item \textbf{Orchestration complexity:}
+    Multiple DTs must coordinate physical-to-physical, virtual-to-virtual, and virtual-to-physical interactions to
+        solve complex cross-domain problems that can't be solved by individual systems.
 
-    \item \textbf{Maintenance burden:} Existing integration solutions often rely on static, pre-coordinated schemas that break when systems evolve, placing significant cognitive load on domain experts to maintain integrations over time.
+    \item \textbf{Maintenance burden:}
+    Existing integration solutions often rely on static, pre-coordinated schemas that
+        break when systems evolve, placing significant cognitive load on domain experts
+        to maintain integrations over time.
 \end{itemize}
 
-These challenges highlight the need for flexible, non-intrusive interoperability solutions that can adapt to the diversity of existing DT implementations without requiring stakeholders to make disruptive changes to operational systems or abandon domain-optimized tools.
+These challenges highlight the need for flexible, non-intrusive interoperability solutions that can
+    adapt to the diversity of existing DT implementations without requiring stakeholders to make disruptive changes
+    to operational systems or abandon domain-optimized tools.
 
-Recent advances propose the concept of \emph{Digital Ecosystems} (DEs)---collaborative environments where autonomous DTs, stakeholders, and resources interact through open, common network services and APIs.
+Recent advances propose the concept of \emph{Digital Ecosystems} (DEs)---collaborative environments where
+    autonomous DTs, stakeholders, and resources interact through open, common network services and APIs.
 Nativi et al.~\cite{Nativi_2021} present the Destination Earth Digital Ecosystem, 
     which demonstrates how a virtual-cloud framework can provide interoperability between software components 
     by publishing a set of open, common, and consistent network services and related APIs.
@@ -39,8 +88,94 @@ This approach creates a paradox of autonomous yet cooperative entities by decoup
 
 Building on this vision, this research explores the use of AI Agent Protocols
     to facilitate semantic interoperability between DTs within such digital ecosystems.
-Rather than pursuing universal standards that require breaking changes to operational systems, agent-mediated negotiation and mapping can bridge the gap between diverse ontologies and data models.
-This approach aligns with Klar's framework for DT maturity~\cite{Klar_2024},
-    where semantic interoperability represents a critical advancement that enables DTs to cooperate meaningfully while preserving their domain-specific characteristics and stakeholder autonomy.
+Rather than pursuing universal standards that require breaking changes to operational systems,
+    agent-mediated negotiation and mapping can bridge the gap between diverse ontologies and data models.
+This approach aligns with Klar's framework for DT maturity~\cite{Klar_2024}, where
+    semantic interoperability represents a critical advancement that
+    enables DTs to cooperate meaningfully while preserving their
+    domain-specific characteristics and stakeholder autonomy.
 
-% This work extends the open-source KTWIN platform---a serverless Kubernetes-based DT framework that provides high-level abstraction without compromising scalability---with agent protocol capabilities to demonstrate cross-domain DT cooperation. The validation focuses on a Smart City and Energy Grid scenario, where KTWIN models traffic management and EV charging infrastructure using DTDL ontology for Smart Cities, while Eclipse Ditto manages energy grid operations using DTDL ontology for Energy Grids. Through MCP-enabled semantic interoperability, these heterogeneous systems can coordinate EV charging optimization strategies that neither could achieve independently, demonstrating how agent protocols advance DT maturity toward meaningful interoperability without requiring universal standards or breaking changes to existing systems.
+\section{Research Objectives}
+\label{sec:objectives}
+
+
+This research aims to address the critical challenge of
+    achieving semantic interoperability between heterogeneous Digital Twin (DT) systems while
+    preserving the autonomy and domain-specific optimizations of existing implementations.
+The main research question guiding this study is:
+
+\textbf{How can AI Agent Protocols improve Digital Twin systems interoperability while preserving existing system autonomy?}
+
+This question addresses the fundamental tension between
+    the need for cross-domain DT collaboration and
+    the practical constraints of maintaining operational systems that
+    have been optimized for specific domains and use cases.
+
+To answer the research question, this work pursues the following specific objectives:
+
+\begin{enumerate}
+    \item \textbf{Investigate AI Agent Protocols for DT Interoperability:} 
+    Conduct a comprehensive review of AI Agent Protocols and analyze their applicability to Digital Twin ecosystems.
+    This includes examining how agent-mediated communication can bridge semantic gaps between heterogeneous DT platforms
+      without requiring universal standards or breaking changes.
+
+    \item \textbf{Design a Digital Ecosystem Architecture:}
+    Define and formalize an architectural framework for Digital Ecosystems powered by AI Agent Protocols.
+      This architecture should enable autonomous DTs to cooperate through agent-mediated semantic mapping
+        while maintaining their domain-specific characteristics and stakeholder independence.
+
+    \item \textbf{Develop a Proof-of-Concept Implementation:}
+    Create a working prototype that demonstrates cross-domain DT interoperability using open-source frameworks.
+      The implementation will extend existing DT platforms with agent protocol capabilities to validate the proposed architectural approach.
+
+    \item \textbf{Evaluate Cross-Domain Use Case Performance:}
+    Conduct technical evaluation of the developed prototype using a realistic cross-domain scenario
+      that requires coordination between heterogeneous DT systems to solve problems that individual systems cannot address independently.
+\end{enumerate}
+
+\section{Expected Contributions}
+\label{sec:contributions}
+
+This research is expected to make the following contributions to the Digital Twin and distributed systems communities:
+
+\begin{itemize}
+    \item \textbf{Conceptual Framework for Agent-Mediated DT Interoperability:}
+    A novel theoretical framework that positions AI Agent Protocols as mediators for semantic interoperability in Digital Ecosystems,
+      extending current understanding of how autonomous systems can cooperate without sacrificing domain specificity.
+
+    \item \textbf{Digital Ecosystem Architecture:}
+    A formalized architectural pattern that demonstrates how agent protocols can be integrated into existing DT platforms
+      to enable cross-domain collaboration while maintaining system boundaries and stakeholder autonomy.
+
+    \item \textbf{Open-Source Implementation:}
+    A working prototype that extends open-source DT frameworks with AI Agent capabilities,
+      providing a reference implementation for researchers and practitioners interested in exploring agent-mediated DT interoperability.
+
+    \item \textbf{Cross-Domain Validation Scenario:}
+    A comprehensive evaluation using Smart City and Energy Grid DTs that demonstrates practical
+        benefits of the proposed approach in a realistic EV charging optimization use case.
+
+    \item \textbf{Literature Review:} A comprehensive analysis of AI Agent Protocols in the context of Digital Twin systems,
+      identifying gaps and opportunities for future research.
+\end{itemize}
+
+\section{Research Scope and Limitations}
+\label{sec:scope-limitations}
+
+This research focuses specifically on semantic interoperability challenges and
+    does not address all aspects of DT integration. The scope includes:
+
+\textbf{Included:} 
+Semantic mapping between different ontologies,
+  agent-mediated negotiation protocols, cross-domain optimization coordination, and
+  open-source DT platform extensions.
+
+\textbf{Excluded:}
+Network-level protocols,
+  security and authentication mechanisms,
+  real-time synchronization guarantees, and
+  proprietary DT platform integration.
+
+The evaluation will be limited to simulated environments and may not capture all complexities of production DT deployments.
+Results should be interpreted within the context of the specific use cases and platforms chosen for validation.
+

@@ -185,34 +185,58 @@ Neither the Smart City DT nor the Energy Grid DT can solve this problem independ
 \subsection{Semantic Gap Characterization}
 \label{subsec:semantic-gaps}
 
-The scenario requires bridging multiple semantic gaps between the \texttt{opendigitaltwins-smartcities} ontology (KTWIN) and
-    the CIM-based \texttt{opendigitaltwins-energygrid} ontology (Ditto):
+The scenario requires bridging multiple semantic gaps between the
+    \texttt{smartcities} ontology (KTWIN) and the
+    \texttt{energygrid} ontology (Ditto).
+These gaps are representative of real-world DT integration challenges:
+    different domains model the same physical infrastructure from different perspectives using
+    domain-specific ontologies optimized for their use cases.
 
 \begin{table}[ht]
     \centering
     \small
-    \begin{tabular}{|p{3cm}|p{3cm}|p{6cm}|}
+    \begin{tabular}{ | m{4cm} | m{4cm} | m{5cm} | }
         \hline
+
         \textbf{Smart City Concept} & \textbf{Energy Grid Concept} & \textbf{Semantic Challenge} \\
         \hline
-        \texttt{ChargingStation} (location entity) & \texttt{UsagePoint} (metering point) & Different abstraction levels: physical location vs. consumption measurement point \\
+
+            \texttt{EVChargingStation} 
+
+            (physical location) &
+            \texttt{UsagePoint}
+
+            (logical metering point) &
+            Different abstraction levels: physical infrastructure vs. logical measurement point \\
         \hline
-        \texttt{chargingCapacity} (kW available) & \texttt{EquivalentLoad.activePower} (kW consumed) & Opposite perspectives: supply capacity vs. demand consumption \\
+
+            \texttt{capacity}, \texttt{availableCapacity}
+            
+            (vehicles that can charge) &
+            \texttt{ratedPower}, \texttt{estimatedLoad}
+            
+            (power capacity and consumption) &
+            Different measurement units and semantics: vehicle count vs. electrical power metrics \\
         \hline
-        Geographic location (lat/lon) & Grid topology (substation/feeder hierarchy) & Spatial vs. topological representation requiring mapping \\
+
+            \texttt{amperage}
+        
+            (electrical properties) &
+            \texttt{ratedCurrent}
+            
+            (service ratings) &
+            Similar concepts with different property names and potentially different semantic intent \\
         \hline
-        \texttt{hasChargingCapability} (boolean) & \texttt{UsagePoint} linked to \texttt{Transformer} & Binary property vs. relational topology \\
-        \hline
-        \texttt{ParkingSpot.occupancy} & Load forecasting window & Temporal granularity mismatch \\
+
+            \texttt{status} enum
+            
+            (working, outOfService, etc.) &
+            \texttt{connectionState}, \texttt{amiBillingReady} & Operational state represented differently: service availability vs. connection/billing status \\
         \hline
     \end{tabular}
     \caption{Semantic gaps requiring agent-mediated mapping}
     \label{tab:semantic-gaps}
 \end{table}
-
-These gaps are representative of real-world DT integration challenges:
-    different domains model the same physical infrastructure from different perspectives using
-    domain-specific ontologies optimized for their use cases.
 
 \subsection{Expected Agent Behaviors}
 \label{subsec:agent-behaviors}
@@ -401,64 +425,64 @@ Time-series event replay enables deterministic scenario execution for controlled
 
 The evaluation assesses whether agent-mediated interoperability achieves the claimed benefits over
     traditional integration approaches across three dimensions:
-    semantic capability, integration effort, and functional performance.
-
-\subsection{Evaluation Criteria}
-\label{subsec:evaluation-criteria}
-
-\textbf{Research Question:} How can AI Agent Protocols improve Digital Twin systems interoperability while preserving existing system autonomy?
-
-This question is operationalized through three evaluation criteria:
-
-\begin{enumerate}
-    \item \textbf{Semantic Interoperability:} Can agents dynamically establish semantic mappings between heterogeneous ontologies without pre-coordination?
-    
-    \item \textbf{Integration Effort:} Does the agent approach reduce implementation and maintenance burden compared to traditional integration?
-    
-    \item \textbf{Functional Effectiveness:} Does agent-mediated coordination successfully solve the cross-domain use case?
-\end{enumerate}
-
-\subsection{Metrics Definition}
-\label{subsec:metrics-definition}
+    semantic capability, integration effort, and functional performance. 
+Table~\ref{tab:evaluation-metrics} covers these dimensions through several quantitative metrics.
+These metrics collectively provide evidence for evaluating 
+    DT interoperability improved by AI agent protocols while preserving system autonomy.
 
 \begin{table}[H]
-\centering
-\small
-\begin{tabular}{|p{4cm}|p{4cm}|p{4.5cm}|}
-\hline
-\textbf{Metric} & \textbf{Measurement Method} & \textbf{Target Value} \\
-\hline
-\multicolumn{3}{|c|}{\textit{Semantic Interoperability}} \\
-\hline
-Semantic mapping coverage & \% of required concept mappings successfully established & >90\% \\
-\hline
-Zero-configuration integration & Number of manual semantic mappings required & 0 (fully automated) \\
-\hline
-Schema evolution tolerance & System adapts when new property added to ChargingStation? & Yes (no code changes) \\
-\hline
-Mapping negotiation time & Time for agents to establish initial mappings & <30 seconds \\
-\hline
-\multicolumn{3}{|c|}{\textit{Integration Effort}} \\
-\hline
-Implementation complexity & Lines of integration code (excluding agent framework) & <500 LOC \\
-\hline
-Configuration burden & Number of configuration files/mappings & <5 config files \\
-\hline
-Time to extend & Estimated hours to add 3rd DT platform (Weather) & <8 hours \\
-\hline
-\multicolumn{3}{|c|}{\textit{Functional Effectiveness}} \\
-\hline
-Cross-domain query success & \% of queries returning correct combined results & >95\% \\
-\hline
-Charging task completion & \% of 50 EVs successfully charged & 100\% \\
-\hline
-Grid constraint satisfaction & \% of time transformers remain below 95\% capacity & 100\% \\
-\hline
-Response time & End-to-end latency for charging assignment request & <5 seconds \\
-\hline
-\end{tabular}
-\caption{Evaluation metrics and targets}
-\label{tab:evaluation-metrics}
+    \centering
+    \small
+    \begin{tabular}{|p{5cm}|p{5cm}|p{3cm}|}
+        \hline
+        
+            \textbf{Metric} & \textbf{Measurement Method} & \textbf{Target Value} \\
+        \hline
+        
+            \multicolumn{3}{|c|}{\textit{Semantic Interoperability}} \\
+        \hline
+        
+            Semantic mapping coverage & \% of required concept mappings successfully established & >90\% \\
+        \hline
+        
+            Zero-configuration integration & Number of manual semantic mappings required & 0 (fully automated) \\
+        \hline
+        
+            Schema evolution tolerance & System adapts when new property added to ChargingStation? & Yes (no code changes) \\
+        \hline
+        
+            Mapping negotiation time & Time for agents to establish initial mappings & <30 seconds \\
+        \hline
+        
+            \multicolumn{3}{|c|}{\textit{Integration Effort}} \\
+        \hline
+        
+            Implementation complexity & Lines of integration code (excluding agent framework) & <500 LOC \\
+        \hline
+        
+            Configuration burden & Number of configuration files/mappings & <5 config files \\
+        \hline
+        
+            Time to extend & Estimated hours to add 3rd DT platform (Weather) & <8 hours \\
+        \hline
+        
+            \multicolumn{3}{|c|}{\textit{Functional Effectiveness}} \\
+        \hline
+        
+            Cross-domain query success & \% of queries returning correct combined results & >95\% \\
+        \hline
+        
+            Charging task completion & \% of 50 EVs successfully charged & 100\% \\
+        \hline
+        
+            Grid constraint satisfaction & \% of time transformers remain below 95\% capacity & 100\% \\
+        \hline
+        
+            Response time & End-to-end latency for charging assignment request & <5 seconds \\
+        \hline
+    \end{tabular}
+    \caption{Evaluation metrics and targets}
+    \label{tab:evaluation-metrics}
 \end{table}
 
 \subsection{Baseline Comparison}
@@ -492,22 +516,29 @@ A unified semantic layer approach:
 \textbf{Comparative Analysis:}
 
 \begin{table}[ht]
-\centering
-\small
-\begin{tabular}{|l|c|c|c|}
-\hline
-\textbf{Evaluation Aspect} & \textbf{Manual API} & \textbf{Shared Ontology} & \textbf{Agent-Mediated} \\
-\hline
-Initial implementation time & Baseline & +50\% & +20\% \\
-Lines of integration code & Baseline & +30\% & -70\% \\
-Schema change impact & High & Medium & Low \\
-3rd system integration time & Baseline & +40\% & -60\% \\
-Runtime overhead & Low & Medium & Medium \\
-Semantic flexibility & None & Low & High \\
-\hline
-\end{tabular}
-\caption{Expected comparative results (to be validated)}
-\label{tab:baseline-comparison}
+    \centering
+    \small
+    \begin{tabular}{|l|c|c|c|}
+        \hline
+        
+            \textbf{Evaluation Aspect} & \textbf{Manual API} & \textbf{Shared Ontology} & \textbf{Agent-Mediated} \\
+        \hline
+        
+            Initial implementation time & Baseline & +50\% & +20\% \\
+        
+            Lines of integration code & Baseline & +30\% & -70\% \\
+        
+            Schema change impact & High & Medium & Low \\
+        
+            3rd system integration time & Baseline & +40\% & -60\% \\
+        
+            Runtime overhead & Low & Medium & Medium \\
+        
+            Semantic flexibility & None & Low & High \\
+        \hline
+    \end{tabular}
+    \caption{Expected comparative results (to be validated)}
+    \label{tab:baseline-comparison}
 \end{table}
 
 \subsection{Validation Approach}
@@ -543,84 +574,3 @@ The proof-of-concept will be validated through:
     \item Maintainability: estimated effort to update mappings vs. baseline
     \item Extensibility: feasibility analysis for adding Weather DT
 \end{itemize}
-
-\section{Ethical Considerations and Limitations}
-\label{sec:limitations}
-
-\subsection{Research Scope Boundaries}
-\label{subsec:scope-boundaries}
-
-This research explicitly excludes several important aspects of production DT systems:
-
-\textbf{Not Addressed:}
-\begin{itemize}
-    \item \textbf{Real-time guarantees:} No hard latency bounds or deterministic timing
-    \item \textbf{Security and authentication:} No encryption, access control, or authentication mechanisms
-    \item \textbf{Production deployment:} No high availability, disaster recovery, or operational monitoring
-    \item \textbf{Proprietary platform integration:} Focus limited to open-source platforms
-    \item \textbf{Legal and regulatory compliance:} No analysis of data governance or GDPR implications
-\end{itemize}
-
-\subsection{Simulation Limitations}
-\label{subsec:simulation-limitations}
-
-The simulation-based evaluation has inherent limitations:
-
-\begin{itemize}
-    \item \textbf{Simplified physics:} EV charging and grid load models are approximations of complex electrical systems
-    \item \textbf{Synthetic data:} Real-world operational data may exhibit patterns not captured in simulation
-    \item \textbf{Scale constraints:} Limited to 50 EVs and 3 transformers; larger-scale behavior unknown
-    \item \textbf{Controlled environment:} Lacks unpredictability of production systems (sensor failures, network issues, adversarial inputs)
-\end{itemize}
-
-\subsection{Generalizability Considerations}
-\label{subsec:generalizability}
-
-Results should be interpreted within context:
-
-\begin{itemize}
-    \item \textbf{Domain specificity:} Findings apply to Smart City $\leftrightarrow$ Energy Grid integration; other domain pairs may have different characteristics
-    \item \textbf{Ontology dependency:} Success depends on DTDL expressiveness; other knowledge representation formalisms may behave differently
-    \item \textbf{Agent reasoning:} LLM-based semantic reasoning quality depends on model capabilities and prompt engineering
-    \item \textbf{Platform selection:} KTWIN and Ditto share architectural similarities (event-driven, RabbitMQ); more divergent platforms may pose additional challenges
-\end{itemize}
-
-\subsection{Ethical Considerations}
-\label{subsec:ethical-considerations}
-
-While this research focuses on technical interoperability, several ethical dimensions merit acknowledgment:
-
-\begin{itemize}
-    \item \textbf{Energy access equity:} EV charging optimization algorithms should not systematically disadvantage certain user groups
-    \item \textbf{Data privacy:} Production implementations would require careful handling of location and consumption data
-    \item \textbf{Transparency:} Agent-mediated decision-making should be explainable to system operators
-    \item \textbf{Environmental impact:} Computational overhead of agent reasoning should be considered in sustainability analysis
-\end{itemize}
-
-These considerations are outside the scope of this technical proof-of-concept but would require attention in real-world deployments.
-
-\subsection{Threats to Validity}
-\label{subsec:threats-validity}
-
-\textbf{Internal Validity:}
-\begin{itemize}
-    \item Agent implementation quality may affect results independent of protocol design
-    \item Performance measurements may be influenced by hardware/network conditions
-    \item Mitigation: Multiple experimental runs, controlled environment, code review
-\end{itemize}
-
-\textbf{External Validity:}
-\begin{itemize}
-    \item Use case may not represent full spectrum of DT interoperability challenges
-    \item Open-source platforms may differ significantly from proprietary industrial systems
-    \item Mitigation: Clear scope definition, comprehensive related work comparison
-\end{itemize}
-
-\textbf{Construct Validity:}
-\begin{itemize}
-    \item Metrics may not fully capture ``semantic interoperability'' or ``system autonomy''
-    \item Mitigation: Multiple complementary metrics, qualitative assessment
-\end{itemize}
-
-Despite these limitations, the research provides valuable insights into the feasibility and potential benefits of agent-mediated DT interoperability,
-    establishing a foundation for future work addressing production deployment challenges.

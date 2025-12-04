@@ -12,7 +12,7 @@ This research investigates how AI Agent Protocols can enable semantic interopera
 
 ## Overleaf Integration
 
-This project is synchronized with Overleaf for review. To compare local changes with the Overleaf version:
+This project is synchronized with Overleaf for review. [Click here](https://www.overleaf.com/project/67eed6c5ea3465a8417292f3) to see it.  To compare local changes with the Overleaf version:
 
 ### Setup Overleaf Remote
 
