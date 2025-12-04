@@ -425,64 +425,64 @@ Time-series event replay enables deterministic scenario execution for controlled
 
 The evaluation assesses whether agent-mediated interoperability achieves the claimed benefits over
     traditional integration approaches across three dimensions:
-    semantic capability, integration effort, and functional performance.
-
-\subsection{Evaluation Criteria}
-\label{subsec:evaluation-criteria}
-
-\textbf{Research Question:} How can AI Agent Protocols improve Digital Twin systems interoperability while preserving existing system autonomy?
-
-This question is operationalized through three evaluation criteria:
-
-\begin{enumerate}
-    \item \textbf{Semantic Interoperability:} Can agents dynamically establish semantic mappings between heterogeneous ontologies without pre-coordination?
-    
-    \item \textbf{Integration Effort:} Does the agent approach reduce implementation and maintenance burden compared to traditional integration?
-    
-    \item \textbf{Functional Effectiveness:} Does agent-mediated coordination successfully solve the cross-domain use case?
-\end{enumerate}
-
-\subsection{Metrics Definition}
-\label{subsec:metrics-definition}
+    semantic capability, integration effort, and functional performance. 
+Table~\ref{tab:evaluation-metrics} covers these dimensions through several quantitative metrics.
+These metrics collectively provide evidence for evaluating 
+    DT interoperability improved by AI agent protocols while preserving system autonomy.
 
 \begin{table}[H]
-\centering
-\small
-\begin{tabular}{|p{4cm}|p{4cm}|p{4.5cm}|}
-\hline
-\textbf{Metric} & \textbf{Measurement Method} & \textbf{Target Value} \\
-\hline
-\multicolumn{3}{|c|}{\textit{Semantic Interoperability}} \\
-\hline
-Semantic mapping coverage & \% of required concept mappings successfully established & >90\% \\
-\hline
-Zero-configuration integration & Number of manual semantic mappings required & 0 (fully automated) \\
-\hline
-Schema evolution tolerance & System adapts when new property added to ChargingStation? & Yes (no code changes) \\
-\hline
-Mapping negotiation time & Time for agents to establish initial mappings & <30 seconds \\
-\hline
-\multicolumn{3}{|c|}{\textit{Integration Effort}} \\
-\hline
-Implementation complexity & Lines of integration code (excluding agent framework) & <500 LOC \\
-\hline
-Configuration burden & Number of configuration files/mappings & <5 config files \\
-\hline
-Time to extend & Estimated hours to add 3rd DT platform (Weather) & <8 hours \\
-\hline
-\multicolumn{3}{|c|}{\textit{Functional Effectiveness}} \\
-\hline
-Cross-domain query success & \% of queries returning correct combined results & >95\% \\
-\hline
-Charging task completion & \% of 50 EVs successfully charged & 100\% \\
-\hline
-Grid constraint satisfaction & \% of time transformers remain below 95\% capacity & 100\% \\
-\hline
-Response time & End-to-end latency for charging assignment request & <5 seconds \\
-\hline
-\end{tabular}
-\caption{Evaluation metrics and targets}
-\label{tab:evaluation-metrics}
+    \centering
+    \small
+    \begin{tabular}{|p{5cm}|p{5cm}|p{3cm}|}
+        \hline
+        
+            \textbf{Metric} & \textbf{Measurement Method} & \textbf{Target Value} \\
+        \hline
+        
+            \multicolumn{3}{|c|}{\textit{Semantic Interoperability}} \\
+        \hline
+        
+            Semantic mapping coverage & \% of required concept mappings successfully established & >90\% \\
+        \hline
+        
+            Zero-configuration integration & Number of manual semantic mappings required & 0 (fully automated) \\
+        \hline
+        
+            Schema evolution tolerance & System adapts when new property added to ChargingStation? & Yes (no code changes) \\
+        \hline
+        
+            Mapping negotiation time & Time for agents to establish initial mappings & <30 seconds \\
+        \hline
+        
+            \multicolumn{3}{|c|}{\textit{Integration Effort}} \\
+        \hline
+        
+            Implementation complexity & Lines of integration code (excluding agent framework) & <500 LOC \\
+        \hline
+        
+            Configuration burden & Number of configuration files/mappings & <5 config files \\
+        \hline
+        
+            Time to extend & Estimated hours to add 3rd DT platform (Weather) & <8 hours \\
+        \hline
+        
+            \multicolumn{3}{|c|}{\textit{Functional Effectiveness}} \\
+        \hline
+        
+            Cross-domain query success & \% of queries returning correct combined results & >95\% \\
+        \hline
+        
+            Charging task completion & \% of 50 EVs successfully charged & 100\% \\
+        \hline
+        
+            Grid constraint satisfaction & \% of time transformers remain below 95\% capacity & 100\% \\
+        \hline
+        
+            Response time & End-to-end latency for charging assignment request & <5 seconds \\
+        \hline
+    \end{tabular}
+    \caption{Evaluation metrics and targets}
+    \label{tab:evaluation-metrics}
 \end{table}
 
 \subsection{Baseline Comparison}
