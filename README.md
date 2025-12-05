@@ -1,5 +1,8 @@
 # Digital Twin Interoperability Through AI Agent Protocols
 
+[![Open in Dev Containers](https://img.shields.io/static/v1?label=Dev%20Containers&message=Open&color=blue)](https://vscode.dev/redirect?url=vscode://ms-vscode-remote.remote-containers/cloneInVolume?url=https://github.com/henrikcorrea/pep)
+
+
 This repository contains the research proposal for the master's thesis **"Enabling Cross-Domain Collaboration in Digital Twin Ecosystems Through AI Agent-Mediated Semantic Interoperability"** conducted at the Institute of Informatics, Federal University of Rio Grande do Sul (UFRGS).
 
 ## Overview
