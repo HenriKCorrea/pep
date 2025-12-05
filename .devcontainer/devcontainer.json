@@ -13,6 +13,11 @@
 	// Use 'postCreateCommand' to run commands after the container is created.
 	// "postCreateCommand": "uname -a",
 
+	// Mount a named volume
+    "mounts": [
+        "source=pep-workspace,target=/workspaces/${localWorkspaceFolderBasename},type=volume"
+    ],
+
 	// Configure tool-specific properties.
 	"customizations": {
 		"vscode": {
