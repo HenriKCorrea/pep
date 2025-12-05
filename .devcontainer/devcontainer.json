@@ -13,10 +13,9 @@
 	// Use 'postCreateCommand' to run commands after the container is created.
 	// "postCreateCommand": "uname -a",
 
-	// Mount a named volume
-    "mounts": [
-        "source=pep-workspace,target=/workspaces/${localWorkspaceFolderBasename},type=volume"
-    ],
+	// Mount a named volume. See https://code.visualstudio.com/remote/advancedcontainers/improve-performance#_use-a-named-volume-for-your-entire-source-tree
+	"workspaceMount": "source=${localWorkspaceFolderBasename}-workspace,target=/workspaces/${localWorkspaceFolderBasename},type=volume",
+	"workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
 
 	// Configure tool-specific properties.
 	"customizations": {
