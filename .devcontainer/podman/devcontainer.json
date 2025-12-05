@@ -18,9 +18,10 @@
 		"vscode": {
 			"extensions": [
 				"James-Yu.latex-workshop",
+				"hediet.vscode-drawio",
 				"PKief.material-icon-theme",
 				"GitHub.vscode-github-actions",
-				"hediet.vscode-drawio"
+				"GitHub.copilot-chat"
 			],
 			"settings": {
 				"workbench.colorTheme": "Default Dark Modern",
