@@ -42,16 +42,89 @@ This methodology enables rigorous artifact development while maintaining flexibi
 \section{System Architecture Design}
 \label{sec:architecture-design}
 
+The proposed Digital Ecosystem architecture depicted in Figure~\ref{fig:architecture} draws inspiration
+    from the DestinE initiative's virtual cloud layer~\cite{Nativi_2021},
+    adapting its principles for agent-mediated DT interoperability.
+The architecture consists of three primary layers: DT platforms, mediation services, and orchestration.
+
+
+
+
+
+
+The proposed Digital Ecosystem architecture depicted in Figure~\ref{fig:architecture} adopts a layered design 
+    inspired by DestinE virtual cloud layer concept~\cite{Nativi_2021}, 
+    adapting its separation of concerns principles to agent-mediated Digital Twin interoperability.
+% Additionally, the design draws from DestinE virtual cloud layer~\cite{Nativi_2021},
+%     particularly its approach to virtualizing heterogeneous operational infrastructure.
+
+% The architecture comprises six layers, each with distinct responsibilities:
+
+% \begin{enumerate}
+%     \item \textbf{Application Layer:} 
+%     User-facing chat interface enabling natural language interaction with the Digital Ecosystem.
+%     Provides the entry point for cross-domain queries without requiring platform-specific knowledge.
+
+%     \item \textbf{Presentation Layer:}
+%     The User Agent component translates natural language user intent into structured A2A protocol messages.
+%     Acts as the user's representative within the agent ecosystem, similar to how web browsers serve as user agents.
+    
+%     \item \textbf{Session Layer:}
+%     The Agent Supervisor---the core contribution of this work---establishes, coordinates, and terminates 
+%         multi-agent conversations for cross-domain coordination.
+%     Manages semantic negotiation between heterogeneous platforms, routing A2A messages and maintaining conversation state.
+    
+%     \item \textbf{Domain Layer:}
+%     Domain-specific agents (Smart City Agent, Energy Grid Agent) possess specialized knowledge of their 
+%         respective platform's ontologies and data models.
+%     Each agent queries its paired DT platform via MCP and participates in A2A semantic negotiations coordinated by the Session Layer.
+    
+%     \item \textbf{Platform Layer:}
+%     Independent Digital Twin platforms (KTWIN, Eclipse Ditto) hosting domain-specific twin data and exposing 
+%         MCP servers for resource discovery.
+%     Each platform maintains autonomy over its data models and operational infrastructure.
+    
+%     \item \textbf{Data Layer:}
+%     Underlying data stores, ontologies (DTDL-based smart cities, CIM-based energy grid), and entity repositories 
+%         maintained by each DT platform.
+
+% \end{enumerate}
+
+% This OSI-inspired layering provides clear separation between user interaction (Application), 
+%     protocol translation (Presentation), conversation management (Session), 
+%     and resource access (Domain, Platform, Data).
+% Critically, the Session Layer's Agent Supervisor enables dynamic semantic coordination without 
+%     requiring shared ontologies or manual integration code---agents negotiate mappings on-demand through A2A protocol conversations.
+
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=0.9\textwidth]{figures/architecture.drawio.png}
-    \caption{Multi-layer agent-mediated Digital Twin interoperability architecture. The Agent Supervisor in the Coordination Layer represents the core contribution of this work, enabling semantic negotiation between heterogeneous DT platforms through A2A protocol mediation.}
+    \caption{
+        Agent-mediated Digital Twin interoperability architecture.
+        The Agent Supervisor represents the core contribution of this work,
+            enabling semantic negotiation between heterogeneous DT platforms through A2A protocol mediation.
+    }
     \label{fig:architecture}
 \end{figure}
 
-The proposed Digital Ecosystem architecture draws inspiration from the Destination Earth (DestinE) initiative's virtual cloud layer~\cite{Nativi_2021},
-    adapting its principles for agent-mediated DT interoperability.
-The architecture consists of three primary layers: DT platforms, mediation services, and orchestration.
+\subsection{Application Layer}
+\label{subsec:application-layer}
+
+\subsection{Presentation Layer}
+\label{subsec:presentation-layer}
+
+\subsection{Session Layer}
+\label{subsec:session-layer}
+
+\subsection{Domain Layer}
+\label{subsec:domain-layer}
+
+\subsection{Platform Layer}
+\label{subsec:platform-layer}
+
+\subsection{Data Layer}
+\label{subsec:data-layer}
+
 
 \subsection{Virtual Cloud Architecture}
 \label{subsec:virtual-cloud-arch}
