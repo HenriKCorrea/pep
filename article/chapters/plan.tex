@@ -4,3 +4,74 @@
 
 \chapter{Planned Activities and Timeline}
 \label{chap:plan}
+
+This research follows an iterative agent-first development process, prioritizing early
+    validation of the core agent protocol capabilities before full system integration.
+
+\section{Development Phases}
+\label{sec:development-phases}
+
+\textbf{Sprint 1: Agent Protocol Spike}
+
+Focus: Validate MCP and A2A protocols work for semantic negotiation with minimal infrastructure.
+
+\textit{Activities:}
+\begin{itemize}
+    \item Implement mock SmartCity Agent and EnergyGrid Agent with hardcoded schemas
+    \item Create simplified scenario: 3 charging stations, 2 transformers
+    \item Develop MCP server exposing mock entity schemas
+    \item Implement A2A negotiation for basic semantic mappings
+    \item Test agent discovery and mapping establishment
+\end{itemize}
+
+\textit{Deliverable:} Working agent communication demonstrating schema discovery and semantic mapping negotiation without full DT platforms.
+
+\textit{Risk Mitigation:} Validating agent protocols early prevents wasted effort on DT infrastructure if protocols prove insufficient.
+
+\textbf{Sprint 2: Single DT Platform Integration}
+
+Focus: Integrate agents with real KTWIN deployment to validate platform introspection.
+
+\textit{Activities:}
+\begin{itemize}
+    \item Deploy KTWIN cluster with \texttt{opendigitaltwins-smartcities} DTDL
+    \item Create 3-5 \texttt{ChargingStation} digital twins with realistic properties
+    \item Extend SmartCity Agent to introspect KTWIN's DTDL schemas via MCP
+    \item Implement agent queries against live KTWIN twins
+    \item Simulate EV charging requests with mock grid constraints
+\end{itemize}
+
+\textit{Deliverable:} SmartCity Agent dynamically querying KTWIN and recommending charging stations based on real twin data.
+
+\textbf{Sprint 3: Heterogeneous Platform Integration}
+
+Focus: Add Ditto platform and demonstrate cross-platform semantic bridging.
+
+\textit{Activities:}
+\begin{itemize}
+    \item Deploy Eclipse Ditto cluster
+    \item Translate \texttt{opendigitaltwins-energygrid} CIM-based DTDL to Ditto Thing model
+    \item Create 2-3 \texttt{Transformer} twins with linked \texttt{UsagePoints}
+    \item Implement EnergyGrid Agent with Ditto Thing API integration
+    \item Develop spatial reasoning module mapping charging station locations to usage points
+    \item Implement A2A semantic negotiation between SmartCity and EnergyGrid agents
+\end{itemize}
+
+\textit{Deliverable:} Agents successfully negotiate \texttt{ChargingStation} $\leftrightarrow$ \texttt{UsagePoint} mapping and answer cross-domain query:
+    ``Which charging stations connect to Transformer T1?''
+
+\textbf{Sprint 4: Complete Use Case and Orchestration}
+
+Focus: Full scenario implementation with orchestration layer and evaluation.
+
+\textit{Activities:}
+\begin{itemize}
+    \item Implement centralized orchestration agent
+    \item Develop EV charging scheduler using agent-mediated coordination
+    \item Create simulation framework with 50 EV agents and realistic load profiles
+    \item Implement monitoring and metrics collection
+    \item Execute scenario runs with varying EV arrival patterns and grid conditions
+    \item Compare against baseline approaches (manual integration, shared ontology)
+\end{itemize}
+
+\textit{Deliverable:} Complete proof-of-concept demonstrating cross-domain optimization with quantitative evaluation results.
