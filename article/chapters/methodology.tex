@@ -65,35 +65,122 @@ Moreover, this OSI-inspired layering~\cite{day1983} provides clear separation be
 \subsection{Application Layer}
 \label{subsec:application-layer}
 
-%     User-facing chat interface enabling natural language interaction with the Digital Ecosystem.
-%     Provides the entry point for cross-domain queries without requiring platform-specific knowledge.
-
+The application layer defines the end user that interacts with the Digital Ecosystem,
+    which can be a human operator or an automated service.
+A complex goal that requires assistance from multiple DT platforms is
+    elaborated by the end user, then submitted to the system via agent.
+Such goals may involve cross-domain queries, data aggregation, or coordinated actions
+    that exceed the capabilities of any single DT platform.
+Moreover, the application layer abstracts away platform-specific details,
+    allowing users to focus on high-level objectives without needing to understand
+    the underlying DT implementations.
 
 \subsection{Presentation Layer}
 \label{subsec:presentation-layer}
 
-%     The User Agent component translates natural language user intent into structured A2A protocol messages.
-%     Acts as the user's representative within the agent ecosystem, similar to how web browsers serve as user agents.
+The presentation layer translates user intents into structured requests
+    that can be processed by the Digital Ecosystem.
+Specifically, the layer shall provide an application, service or AI agent that
+    acts on behalf of the user
+    to communicate with the Digital Ecosystem's agent through the A2A protocol.
+This segregation allows the user application to remain agnostic of
+    the underlying agent communication mechanisms,
+    granting modularity and easier maintenance.
+Furthermore to this point, the presentation layer may be implemented either as
+    part of the Digital Ecosystem,
+    integrated into the user application itself or
+    provided as a third-party service,
+    depending on the specific use case and system requirements.
 
 \subsection{Session Layer}
 \label{subsec:session-layer}
 
-%     The Agent Supervisor---the core contribution of this work---establishes, coordinates, and terminates 
-%         multi-agent conversations for cross-domain coordination.
-%     Manages semantic negotiation between heterogeneous platforms, routing A2A messages and maintaining conversation state.
+The session layer manages multi-agent conversations that coordinate
+    cross-domain interactions between heterogeneous DT platforms and user agents.
+This layer establishes which agents participate in solving a given request,
+    defines the coordination pattern
+    (e.g., sequential queries, parallel aggregation, or negotiation),
+    and enforces interaction protocols that all agents must follow.
+
+The \textbf{Agent Gateway} component realizes these principles through
+    three core mechanisms.
+First, it exposes the A2A protocol interface to user agents,
+    providing a single point of entry for cross-domain requests
+    without requiring platform-specific knowledge.
+Second, it discovers available domain agents and their capabilities,
+    enabling dynamic planning of interactions based on available resources.
+When a user request arrives, the Agent Gateway queries domain agents to understand
+    their capabilities, then decomposes the user's goal
+    into a coordinated sequence of agent interactions.
+Third, it facilitates conversations between platform-specific agents,
+    coordinating their semantic negotiations and information exchanges
+    to fulfill complex user goals.
+
+Resources are exclusively accessed through domain layer agents,
+    which encapsulate platform-specific logic and knowledge.
+The Agent Gateway never directly interacts with DT platforms or their data sources;
+    instead, it communicates exclusively via the A2A protocol with domain agents,
+    which themselves use the Model Context Protocol (MCP) to
+    query their respective platforms.
+This protocol layering ensures clean separation between
+    inter-agent coordination (A2A, session layer) and
+    platform resource access (MCP, domain/platform layers).
+
+Such design preserves platform autonomy,
+    as domain agents mediate all interactions without external entities
+    accessing their platforms' internals.
+Digital Environment capabilities are exposed only through agent interfaces,
+    enabling semantic mappings to be negotiated dynamically based on each request's context
+    rather than requiring pre-coordinated schemas.
+Aligned with DestinE's principles~\cite{Nativi_2021}, the session layer ensures that
+    each DT platform retains full autonomy over its internal operations while
+    participating in collaborative workflows mediated by agents.
+
+Although not in this research scope, the session layer may enforce governance policies.
+This includes ensuring that all interactions comply with
+    security, privacy, and operational constraints
+    defined by the Digital Environment administrators.
+Policy enforcement occurs at the gateway boundary, enabling centralized control
+    while keeping domain agents focused on their platform-specific responsibilities.
 
 \subsection{Domain Layer}
 \label{subsec:domain-layer}
 
-%     Domain-specific agents (Smart City Agent, Energy Grid Agent) possess specialized knowledge of their 
-%         respective platform's ontologies and data models.
-%     Each agent queries its paired DT platform via MCP and participates in A2A semantic negotiations coordinated by the Session Layer.
+The domain layer encapsulates platform-specific agents that
+    mediate interactions between the session layer and individual Digital Twin platforms.
+Each \textbf{Digital Twin Agent} act as a domain specialist for a specific DT platform,
+    understanding its native knowledge representation, ontology, and query capabilities.
+These agents serve as semantic translators,
+    exposing their platform's resources through the Model Context Protocol (MCP)
+    while negotiating cross-domain mappings through the Agent-to-Agent (A2A) protocol.
+To achieve semantic interoperability, besides being \textbf{domain-aware},
+    each Digital Twin Agent must be capable to reason about
+    semantic equivalences with other domains.
+By isolating platform heterogeneity within dedicated agents,
+    the domain layer enables seamless integration of diverse DT systems
+    without requiring direct interoperability between platforms themselves.
 
 \subsection{Platform Layer}
 \label{subsec:platform-layer}
 
+The platform layer consists of individual Digital Twin systems
+    that manage domain-specific digital representations of physical assets.
+Each DT platform exposes its capabilities through a Model Context Protocol (MCP) server,
+    enabling agents to discover available resources and their schemas dynamically.
+This layer abstracts away the underlying implementation details of each DT platform,
+    allowing agents to interact with them through a standardized interface.
+
 \subsection{Data Layer}
 \label{subsec:data-layer}
+
+The data layer encompasses the physical and digital resources
+    that underpin each Digital Twin platform.
+This includes physical sensors, simulation models, historical datasets,
+    and any other data sources that contribute to the DT's knowledge base.
+Each DT platform is responsible for managing its data layer autonomously,
+    ensuring data integrity, security, and availability according to its own policies.
+Agents access data indirectly through their associated DT platforms,
+    leveraging the platforms' native capabilities for data retrieval and processing.
 
 \section{Implementation Methodology}
 \label{sec:implementation}
