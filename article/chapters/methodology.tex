@@ -56,8 +56,8 @@ Moreover, this OSI-inspired layering~\cite{day1983} provides clear separation be
     \includegraphics[height=0.85\textheight,keepaspectratio]{figures/architecture.png}
     \caption{
         Agent-mediated Digital Twin interoperability architecture.
-        The Agent Supervisor represents the core contribution of this work,
-            enabling semantic negotiation between heterogeneous DT platforms through A2A protocol mediation.
+        The layered design integrates group chat patterns with MCP-based resource discovery
+            to enable dynamic semantic negotiation between heterogeneous DT platforms.
     }
     \label{fig:architecture}
 \end{figure}
@@ -95,31 +95,38 @@ Furthermore to this point, the presentation layer may be implemented either as
 \subsection{Session Layer}
 \label{subsec:session-layer}
 
-The session layer manages multi-agent conversations that coordinate
+The session layer orchestrates multi-agent conversations that coordinate
     cross-domain interactions between heterogeneous DT platforms and user agents.
-This layer establishes which agents participate in solving a given request,
-    defines the coordination pattern
-    (e.g., sequential queries, parallel aggregation, or negotiation),
-    and enforces interaction protocols that all agents must follow.
+Unlike traditional orchestration approaches that rely on predetermined workflows,
+    this layer enables dynamic task solving where the exact interaction sequence
+    emerges from ongoing agent conversations rather than following pre-defined patterns.
+This design is particularly suited for complex scenarios involving semantic interoperability,
+    where the optimal coordination strategy cannot be determined a priori due to
+    heterogeneous ontologies and unpredictable cross-domain dependencies.
 
-The \textbf{Agent Gateway} component realizes these principles through
-    three core mechanisms.
-First, it exposes the A2A protocol interface to user agents,
-    providing a single point of entry for cross-domain requests
-    without requiring platform-specific knowledge.
-Second, it discovers available domain agents and their capabilities,
-    enabling dynamic planning of interactions based on available resources.
-When a user request arrives, the Agent Gateway queries domain agents to understand
-    their capabilities, then decomposes the user's goal
-    into a coordinated sequence of agent interactions.
-Third, it facilitates conversations between platform-specific agents,
-    coordinating their semantic negotiations and information exchanges
-    to fulfill complex user goals.
+The \textbf{Group Chat Manager} component realizes these principles through
+    AutoGen's group chat pattern~\cite{wu2024autogen}, adapted for Digital Twin interoperability.
+In this pattern, participating agents share the same conversation context and
+    interact dynamically without strict communication order,
+    enabling collaborative problem-solving that adapts to the specific characteristics
+    of each cross-domain request.
+
+The Group Chat Manager operates through three iterative steps.
+First, it \textbf{dynamically selects a speaker} from available domain agents
+    based on conversation context and role alignment.
+This selection uses role-play prompts that consider both the current state of
+    the cross-domain request and each agent's domain expertise,
+    ensuring that the most appropriate agent contributes at each conversation turn.
+Second, it \textbf{collects responses} from the selected agent,
+    which may include semantic mappings, data queries, or requests for clarification
+    from other domain agents.
+Third, it \textbf{broadcasts messages} to all participating agents,
+    maintaining shared context and enabling any agent to respond when their expertise is needed.
 
 Resources are exclusively accessed through domain layer agents,
     which encapsulate platform-specific logic and knowledge.
-The Agent Gateway never directly interacts with DT platforms or their data sources;
-    instead, it communicates exclusively via the A2A protocol with domain agents,
+The Group Chat Manager never directly interacts with DT platforms or their data sources;
+    instead, it facilitates A2A protocol conversations among domain agents,
     which themselves use the Model Context Protocol (MCP) to
     query their respective platforms.
 This protocol layering ensures clean separation between
@@ -140,7 +147,7 @@ Although not in this research scope, the session layer may enforce governance po
 This includes ensuring that all interactions comply with
     security, privacy, and operational constraints
     defined by the Digital Environment administrators.
-Policy enforcement occurs at the gateway boundary, enabling centralized control
+Policy enforcement occurs at the Group Chat Manager boundary, enabling centralized control
     while keeping domain agents focused on their platform-specific responsibilities.
 
 \subsection{Domain Layer}
