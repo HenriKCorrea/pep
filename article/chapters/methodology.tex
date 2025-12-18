@@ -53,7 +53,7 @@ Moreover, this OSI-inspired layering~\cite{day1983} provides clear separation be
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[height=0.85\textheight,keepaspectratio]{figures/architecture.png}
+    \includegraphics[height=0.85\textheight,keepaspectratio]{figures/architecture.pdf}
     \caption{
         Agent-mediated Digital Twin interoperability architecture.
         The layered design integrates group chat patterns with MCP-based resource discovery
@@ -191,6 +191,19 @@ Agents access data indirectly through their associated DT platforms,
 
 \section{Implementation Methodology}
 \label{sec:implementation}
+
+The proof-of-concept implementation realizes the proposed Digital Ecosystem architecture through
+    a concrete deployment integrating heterogeneous Digital Twin platforms mediated by AI agents.
+Figure~\ref{fig:poc-architecture} illustrates the implementation architecture,
+    showing the integration of KTWIN and Eclipse Ditto platforms through agent-based coordination.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\textwidth]{figures/proof-of-concept.pdf}
+    \caption{Proof-of-concept implementation architecture}
+    \label{fig:poc-architecture}
+\end{figure}
+
 % \subsection{Virtual Cloud Architecture}
 % \label{subsec:virtual-cloud-arch}
 
@@ -217,6 +230,8 @@ Agents access data indirectly through their associated DT platforms,
 
 % This layered approach isolates platform heterogeneity from
 %     cross-domain coordination logic, enabling agents to focus on semantic mediation rather than protocol translation.
+
+
 
 \subsection{Digital Twin Platform Selection}
 \label{subsec:platform-selection}

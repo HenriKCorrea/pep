@@ -1,0 +1,11 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Draw.io: Export to PDF",
+			"type": "shell",
+			"command": "base=\"${fileBasenameNoExtension}\"; drawio --crop -x -f pdf -o \"${fileDirname}/${base%.drawio}.pdf\" \"${file}\"",
+			"problemMatcher": []
+		}
+	]
+}
