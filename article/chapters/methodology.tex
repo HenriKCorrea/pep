@@ -25,26 +25,25 @@ The DSR process consists of six iterative activities:
 \begin{enumerate}
     \item \textbf{Problem Identification and Motivation:}
     Addressed in Chapters~\ref{chap:introduction} and~\ref{chap:related-work},
-    identifying the semantic interoperability challenge in heterogeneous DT systems.
+        identifying the semantic interoperability challenge in heterogeneous DT systems.
     
     \item \textbf{Objectives of a Solution:}
     Defined in Section~\ref{sec:objectives},
-    focusing on agent-mediated interoperability while preserving system autonomy.
+        focusing on agent-mediated interoperability while preserving system autonomy.
     
     \item \textbf{Design and Development:}
     Described in Sections~\ref{sec:architecture-design} and~\ref{sec:implementation-methodology},
-    covering the Digital Ecosystem architecture and agent protocol integration.
+        covering the Digital Ecosystem architecture and agent protocol integration.
     
     \item \textbf{Demonstration:}
     Presented in Section~\ref{sec:use-case},
-    using a realistic cross-domain scenario involving Smart City and Energy Grid DTs.
-    
+        using a realistic cross-domain scenario involving Smart City and Energy Grid DTs.
+
     \item \textbf{Evaluation:}
-    Detailed in Section~\ref{sec:evaluation},
-    with metrics assessing
-    semantic mapping capabilities,
-    integration effort, and
-    functional success.
+    Detailed in Section~\ref{sec:evaluation-methodology}, assessing
+        semantic capability,
+        functional correctness and
+        performance characteristics.
     
     \item \textbf{Communication:}
     Fulfilled through this thesis.
@@ -420,8 +419,9 @@ The scenario requires bridging multiple semantic gaps between the
 These gaps are representative of real-world DT integration challenges:
     different domains model the same physical infrastructure from different perspectives using
     domain-specific ontologies optimized for their use cases.
+Table~\ref{tab:semantic-gaps} summarizes the main semantic gaps identified.
 
-\begin{table}[ht]
+\begin{table}[H]
     \centering
     \small
     \begin{tabular}{ | m{4cm} | m{4cm} | m{5cm} | }
@@ -469,156 +469,101 @@ These gaps are representative of real-world DT integration challenges:
 \end{table}
 
 \section{Evaluation Methodology}
-\label{sec:evaluation}
+\label{sec:evaluation-methodology}
 
-The evaluation assesses whether agent-mediated interoperability achieves the claimed benefits over
-    traditional integration approaches across three dimensions:
-    semantic capability, integration effort, and functional performance. 
-Table~\ref{tab:evaluation-metrics} covers these dimensions through several quantitative metrics.
-These metrics collectively provide evidence for evaluating 
-    DT interoperability improved by AI agent protocols while preserving system autonomy.
+The evaluation assesses whether the agent-mediated interoperability architecture
+    successfully enables cross-domain coordination between heterogeneous Digital Twin systems.
+This evaluation focuses on demonstrating functional feasibility and
+    measuring key characteristics of the proposed approach within
+    the constraints of a Master's thesis timeline.
 
-\begin{table}[H]
-    \centering
-    \small
-    \begin{tabular}{|p{5cm}|p{5cm}|p{3cm}|}
-        \hline
-        
-            \textbf{Metric} & \textbf{Measurement Method} & \textbf{Target Value} \\
-        \hline
-        
-            \multicolumn{3}{|c|}{\textit{Semantic Interoperability}} \\
-        \hline
-        
-            Semantic mapping coverage & \% of required concept mappings successfully established & >90\% \\
-        \hline
-        
-            Zero-configuration integration & Number of manual semantic mappings required & 0 (fully automated) \\
-        \hline
-        
-            Schema evolution tolerance & System adapts when new property added to ChargingStation? & Yes (no code changes) \\
-        \hline
-        
-            Mapping negotiation time & Time for agents to establish initial mappings & <30 seconds \\
-        \hline
-        
-            \multicolumn{3}{|c|}{\textit{Integration Effort}} \\
-        \hline
-        
-            Implementation complexity & Lines of integration code (excluding agent framework) & <500 LOC \\
-        \hline
-        
-            Configuration burden & Number of configuration files/mappings & <5 config files \\
-        \hline
-        
-            Time to extend & Estimated hours to add 3rd DT platform (Weather) & <8 hours \\
-        \hline
-        
-            \multicolumn{3}{|c|}{\textit{Functional Effectiveness}} \\
-        \hline
-        
-            Cross-domain query success & \% of queries returning correct combined results & >95\% \\
-        \hline
-        
-            Charging task completion & \% of 50 EVs successfully charged & 100\% \\
-        \hline
-        
-            Grid constraint satisfaction & \% of time transformers remain below 95\% capacity & 100\% \\
-        \hline
-        
-            Response time & End-to-end latency for charging assignment request & <5 seconds \\
-        \hline
-    \end{tabular}
-    \caption{Evaluation metrics and targets}
-    \label{tab:evaluation-metrics}
-\end{table}
+The evaluation is organized into three complementary dimensions that
+    collectively demonstrate the viability of agent-mediated semantic interoperability:
+    semantic capability,
+    functional correctness and
+    performance characteristics.
 
-\subsection{Baseline Comparison}
-\label{subsec:baseline-comparison}
+\subsection{Semantic Mapping Evaluation}
+\label{subsec:semantic-mapping-evaluation}
 
-To demonstrate the value of agent-mediated interoperability, two baseline approaches will be implemented for comparison:
+Semantic mapping evaluation assesses the quality of
+    agent-negotiated correspondences between heterogeneous ontologies:
 
-\textbf{Baseline 1: Manual REST API Integration}
-
-A traditional point-to-point integration approach:
 \begin{itemize}
-    \item Custom Python code queries KTWIN REST API for charging station data
-    \item Separate custom code queries Ditto REST API for transformer data
-    \item Hardcoded mapping logic translates between ontologies
-    \item Static configuration file defines ChargingStation $\rightarrow$ UsagePoint relationships
+    \item \textbf{Mapping Coverage:}
+    Measure the percentage of required concept mappings
+        (identified in Table~\ref{tab:semantic-gaps}) that
+        agents successfully establish during cross-domain coordination.
+    This quantifies the extent to which agents can autonomously bridge semantic gaps
+        without manual intervention.
+
+    \item \textbf{Mapping Correctness:}
+    Manual inspection of agent-negotiated mappings to verify semantic accuracy.
+    For critical mappings (e.g., \texttt{EVChargingStation} $\leftrightarrow$ \texttt{UsagePoint}),
+        validate that agents correctly identify relationships and
+        handle unit conversions (vehicle count vs. power metrics).
+
+    \item \textbf{Cross-Domain Query Accuracy:}
+    Execute a representative set of cross-domain queries with known expected outcomes.
+    Since no external ground truth exists for this novel integration,
+        correctness is validated through independent manual verification:
+        inspecting source data in both platforms and
+        confirming agent results match semantic relationships defined in Table~\ref{tab:semantic-gaps}.
+    This demonstrates whether agent-mediated integration produces semantically correct results.
 \end{itemize}
 
-\textit{Measurement focus:} Lines of code, configuration complexity, time to implement, brittleness to schema changes.
+\subsection{Functional Evaluation}
+\label{subsec:functional-evaluation}
 
-\textbf{Baseline 2: Shared Ontology Approach}
+Functional evaluation verifies that the system successfully coordinates
+    cross-domain operations under various operational conditions:
 
-A unified semantic layer approach:
 \begin{itemize}
-    \item Design common ``EnergyInfrastructure'' ontology spanning both domains
-    \item Implement exporters forcing KTWIN and Ditto to translate to shared schema
-    \item Centralized query engine operates on unified model
+    \item \textbf{Nominal Scenario:}
+    Execute the cross-domain use case described in Section~\ref{sec:use-case}.
+    Verify that all constraints are satisfied:
+        all EVs receive charging assignments,
+        transformers remain within safe capacity limits, and
+        assignments respect both Smart City availability and Energy Grid capacity constraints.
+    This demonstrates the system's ability to perform basic cross-domain coordination.
+    
+    \item \textbf{Stress Test:}
+    Increase demand beyond nominal capacity to test system behavior under resource contention.
+    Observe whether the system exhibits graceful degradation:
+        prioritizing assignments to prevent grid overloads while
+        clearly communicating when some EVs must be delayed or redirected.
+    This validates robustness under constrained resources.
+    
+    \item \textbf{Schema Evolution:}
+    Add a new property (\texttt{reservationSupport}) to the ChargingStation DTDL model.
+    Verify that agents adapt to the schema change without requiring code modifications,
+        demonstrating the architecture's resilience to ontology evolution.
+    This tests whether the system maintains zero-configuration integration when ontologies change.
 \end{itemize}
 
-\textit{Measurement focus:} Ontology development effort, deployment complexity, operational overhead, evolution challenges.
+\subsection{Performance Evaluation}
+\label{subsec:performance-evaluation}
 
-\textbf{Comparative Analysis:}
+Performance evaluation characterizes the operational overhead of
+    agent-mediated coordination to assess practical feasibility:
 
-\begin{table}[ht]
-    \centering
-    \small
-    \begin{tabular}{|l|c|c|c|}
-        \hline
-        
-            \textbf{Evaluation Aspect} & \textbf{Manual API} & \textbf{Shared Ontology} & \textbf{Agent-Mediated} \\
-        \hline
-        
-            Initial implementation time & Baseline & +50\% & +20\% \\
-        
-            Lines of integration code & Baseline & +30\% & -70\% \\
-        
-            Schema change impact & High & Medium & Low \\
-        
-            3rd system integration time & Baseline & +40\% & -60\% \\
-        
-            Runtime overhead & Low & Medium & Medium \\
-        
-            Semantic flexibility & None & Low & High \\
-        \hline
-    \end{tabular}
-    \caption{Expected comparative results (to be validated)}
-    \label{tab:baseline-comparison}
-\end{table}
-
-\subsection{Validation Approach}
-\label{subsec:validation-approach}
-
-The proof-of-concept will be validated through:
-
-\textbf{Functional Validation:}
-\begin{enumerate}
-    \item \textbf{Nominal Scenario:} Execute base case with 50 EVs, verify all constraints satisfied
-    \item \textbf{Stress Test:} Increase to 100 EVs, verify graceful degradation (some EVs delayed, no overloads)
-    \item \textbf{Schema Evolution:} Add new property to ChargingStation DTDL, verify agents adapt without code changes
-    \item \textbf{Failure Handling:} Simulate charging station outage, verify agents reroute EVs
-\end{enumerate}
-
-\textbf{Semantic Mapping Validation:}
 \begin{itemize}
-    \item Manual inspection of agent-negotiated mappings for correctness
-    \item Sample validation: Execute 20 cross-domain queries, verify accuracy against ground truth
-    \item Ontology expert review of mapping quality
-\end{itemize}
-
-\textbf{Performance Validation:}
-\begin{itemize}
-    \item Measure end-to-end latency for 100 requests
-    \item Monitor resource utilization (CPU, memory, network) during peak load
-    \item Compare against baseline approaches for equivalent workload
-\end{itemize}
-
-\textbf{Qualitative Assessment:}
-\begin{itemize}
-    \item Developer experience: subjective assessment of implementation effort
-    \item Maintainability: estimated effort to update mappings vs. baseline
-    \item Extensibility: feasibility analysis for adding Weather DT
+    \item \textbf{Mapping Negotiation Time:}
+    Measure the time required for agents to establish initial semantic mappings
+        for the EV charging coordination scenario.
+    This characterizes the startup overhead of agent-mediated interoperability
+        compared to pre-configured integration approaches.
+    
+    \item \textbf{Query Response Time:}
+    Measure end-to-end latency for charging assignment requests,
+        from user submission to coordinated response.
+    Report mean, median, and 95th percentile latencies across multiple executions
+        to characterize typical and worst-case performance.
+    This determines whether response times are acceptable for interactive use.
+    
+    \item \textbf{Resource Utilization:}
+    Monitor CPU, memory, and network usage during peak load scenarios.
+    Document resource consumption patterns to inform deployment requirements and
+        assess feasibility for typical cloud or edge computing environments.
+    This validates that the approach does not impose prohibitive infrastructure demands.
 \end{itemize}
