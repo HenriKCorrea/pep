@@ -1,7 +1,8 @@
 \chapter{Methodology}
 \label{chap:methodology}
 
-This chapter describes the research methodology employed to investigate how AI Agent Protocols can enable semantic interoperability between
+This chapter describes the research methodology employed to
+    investigate how AI Agent Protocols can enable semantic interoperability between
     heterogeneous Digital Twin systems.
 The research follows a Design Science Research (DSR) approach, focusing on
     the design, development, and evaluation of a novel Digital Ecosystem architecture that leverages
@@ -10,40 +11,52 @@ The research follows a Design Science Research (DSR) approach, focusing on
 \section{Research Design}
 \label{sec:research-design}
 
-This research adopts the Design Science Research methodology proposed by Peffers et al.~\cite{peffers2007}, which provides a
-    systematic framework for developing and evaluating Information Technology (IT) artifacts that address identified organizational problems.
-DSR is particularly appropriate for this work because it emphasizes the creation and evaluation of purposeful artifacts---in this case,
+This research adopts the Design Science Research methodology proposed by
+    Peffers et al.~\cite{peffers2007}, which provides a
+    systematic framework for developing and evaluating Information Technology (IT) artifacts that
+    address identified organizational problems.
+DSR is particularly appropriate for this work because it
+    emphasizes the creation and evaluation of
+    purposeful artifacts---in this case,
     a Digital Ecosystem architecture and its proof-of-concept implementation.
 
 The DSR process consists of six iterative activities:
 
 \begin{enumerate}
     \item \textbf{Problem Identification and Motivation:}
-    Addressed in Chapters~\ref{chap:introduction} and~\ref{chap:related-work}, identifying the semantic interoperability challenge in heterogeneous DT systems.
+    Addressed in Chapters~\ref{chap:introduction} and~\ref{chap:related-work},
+    identifying the semantic interoperability challenge in heterogeneous DT systems.
     
     \item \textbf{Objectives of a Solution:}
-    Defined in Section~\ref{sec:objectives}, focusing on agent-mediated interoperability while preserving system autonomy.
+    Defined in Section~\ref{sec:objectives},
+    focusing on agent-mediated interoperability while preserving system autonomy.
     
     \item \textbf{Design and Development:}
-    Described in Sections~\ref{sec:architecture-design} and~\ref{sec:implementation}, covering the Digital Ecosystem architecture and agent protocol integration.
+    Described in Sections~\ref{sec:architecture-design} and~\ref{sec:implementation-methodology},
+    covering the Digital Ecosystem architecture and agent protocol integration.
     
     \item \textbf{Demonstration:}
-    Presented in Section~\ref{sec:use-case}, using a realistic cross-domain scenario involving Smart City and Energy Grid DTs.
+    Presented in Section~\ref{sec:use-case},
+    using a realistic cross-domain scenario involving Smart City and Energy Grid DTs.
     
     \item \textbf{Evaluation:}
-    Detailed in Section~\ref{sec:evaluation}, with metrics assessing semantic mapping capabilities, integration effort, and functional success.
+    Detailed in Section~\ref{sec:evaluation},
+    with metrics assessing
+    semantic mapping capabilities,
+    integration effort, and
+    functional success.
     
     \item \textbf{Communication:}
-    Fulfilled through this thesis and planned publications.
+    Fulfilled through this thesis.
 \end{enumerate}
-
-This methodology enables rigorous artifact development while maintaining flexibility to iterate based on implementation findings and evaluation results.
 
 \section{System Architecture Design}
 \label{sec:architecture-design}
 
-The proposed Digital Ecosystem architecture depicted in Figure~\ref{fig:architecture} adopts a layered design 
-    inspired by DestinE virtual cloud layer concept~\cite{Nativi_2021}, 
+The proposed Digital Ecosystem architecture
+    depicted in Figure~\ref{fig:architecture} adopts a
+    layered design inspired by
+    DestinE virtual cloud layer concept~\cite{Nativi_2021}, 
     adapting its separation of concerns principles to agent-mediated Digital Twin interoperability.
 Moreover, this OSI-inspired layering~\cite{day1983} provides clear separation between
     user interaction (Application),
@@ -190,7 +203,7 @@ Agents access data indirectly through their associated DT platforms,
     leveraging the platforms' native capabilities for data retrieval and processing.
 
 \section{Implementation Methodology}
-\label{sec:implementation}
+\label{sec:implementation-methodology}
 
 The proof-of-concept implementation realizes the proposed Digital Ecosystem architecture through
     a concrete deployment integrating heterogeneous Digital Twin platforms mediated by AI agents.
@@ -204,139 +217,155 @@ Figure~\ref{fig:poc-architecture} illustrates the implementation architecture,
     \label{fig:poc-architecture}
 \end{figure}
 
-% \subsection{Virtual Cloud Architecture}
-% \label{subsec:virtual-cloud-arch}
+\subsection{User Application Component}
+\label{subsec:user-application-component}
 
-% Following DestinE's architectural principles, the virtual cloud layer virtualizes heterogeneous operational infrastructure environments while
-%     providing unified access through standardized interfaces.
-% For this research, a minimalist centralized orchestration approach has been selected to
-%     reduce implementation complexity while maintaining core capabilities for agent-mediated interoperability.
+The User Application Component provides the end-user interface through which
+    requests are submitted to the Digital Ecosystem.
+To ensure research reproducibility while avoiding proprietary constraints,
+    we propose use \textbf{Open WebUI}~\cite{baek2025},
+    an open-source self-hosted AI interface that enables flexible agent protocol integration.
 
-% The virtual cloud architecture comprises:
+Open WebUI serves as both the user interface and agent client,
+    translating natural language user requests into structured agent communications.
+The platform's extensibility allows implementation of custom Agent-to-Agent (A2A) protocol clients
+    without vendor lock-in to proprietary chat interfaces or cloud services.
 
-% \begin{itemize}
-%     \item \textbf{DT Platform Layer:}
-%     Independent KTWIN and Eclipse Ditto clusters, each maintaining domain-specific optimizations and ontologies.
+\subsection{Digital Ecosystem Orchestration}
+\label{subsec:digital-ecosystem-orchestration}
+
+The Digital Ecosystem's agent communication is realized through
+    \textbf{AutoGen}~\cite{wu2024autogen},
+    an open-source AI agent framework focused on multi-agent conversation.
+Participating agents can
+    share conversation context and
+    interact without predetermined communication sequences.
+This provides the foundation for implementing the
+    Group Chat Manager component described in Section~\ref{subsec:session-layer}.
+
+AutoGen's speaker selection mechanism can be configured with custom logic that
+    prioritizes agents based on conversation context analysis,
+    ensuring semantic negotiation progresses efficiently toward cross-domain resolution.
+The LLM backend flexibility enables evaluation across both
+    cloud-based models (E.g.: Claude Sonnet 3.5 via Anthropic API) and
+    locally-hosted alternatives (E.g.: Llama 3 via Ollama).
+This facilitates prototyping under realistic constraints while
+    supporting performance comparison and cost-sensitive deployment scenarios.
+
+\subsection{Digital Twin Platform Components}
+\label{subsec:digital-twin-platform-components}
+
+Two open-source DT platforms were selected to demonstrate heterogeneous system integration
+    while maintaining realistic semantic complexity.
+The selection criteria prioritized platforms with
+    sufficient heterogeneity to require semantic mediation, and
+    extensibility to support MCP server integration.
+
+\textbf{KTWIN}~\cite{Wermann_Wickboldt_2025} implements the Smart City DT platform.
+KTWIN is a Kubernetes-based serverless framework designed to 
+    simplify DT adoption through cloud-native deployment patterns.
+It natively supports the Digital Twins Definition Language (DTDL) and has been
+    validated for smart city applications using the
+    \texttt{opendigitaltwins-smartcities} ontology.
+This ontology provides comprehensive models for
+    urban infrastructure entities including
+    parking facilities,
+    EV charging stations,
+    traffic sensors, and
+    building management systems.
+
+Key technical characteristics include:
+
+\begin{itemize}
+    \item \textbf{Serverless Event-Driven Architecture:}
+    Function-as-a-Service (FaaS) deployment enables
+        automatic scaling and
+        reduced operational overhead, while
+        the centralized event broker (RabbitMQ) supports
+        real-time state updates through
+        multiple protocols (MQTT, HTTP, AMQP).
+
+    \item \textbf{Kubernetes-Native Infrastructure:}
+    Custom Resource Definitions (CRDs) and operators automate
+        infrastructure provisioning based on
+        DTDL ontology definitions,
+        enabling multi-cloud and edge deployments without vendor lock-in.
     
-%     \item \textbf{Mediation Layer:}
-%     Agent-based services that broker semantic interactions between heterogeneous platforms using MCP for resource discovery and A2A for negotiation.
+    \item \textbf{Ontology-Driven Automation:}
+    Native DTDL support eliminates schema translation overhead,
+        allowing direct implementation of the \texttt{smartcities} ontology concepts.
+\end{itemize}
+
+\textbf{Eclipse Ditto} implements the Energy Grid DT platform.
+Ditto is a mature open-source IoT platform providing
+    DT capabilities through its ``Thing'' abstraction,
+    widely adopted in industrial IoT deployments.
+For this research, Ditto manages twins conforming to the
+    \texttt{opendigitaltwins-energygrid} ontology, which adapts the
+    Common Information Model (CIM) standard---the energy industry's reference ontology---to DTDL.
+Since Ditto's native knowledge representation uses the Thing model,
+    schema translation will be necessary for this research.
+
+Key technical characteristics include:
+
+\begin{itemize}
+    \item \textbf{Thing-Based Knowledge Representation:}
+    Distinct from KTWIN's DTDL approach,
+        necessitating genuine semantic mapping rather than trivial schema alignment
     
-%     \item \textbf{Orchestration Layer:}
-%     Centralized coordination services managing cross-domain requests and routing agent communications.
+    \item \textbf{Rich REST and WebSocket APIs:}
+    Well-documented interfaces simplify MCP server implementation for resource access
     
-%     \item \textbf{Service API Layer:}
-%     Common interfaces for external clients to submit cross-domain queries without platform-specific knowledge.
-% \end{itemize}
-
-% This layered approach isolates platform heterogeneity from
-%     cross-domain coordination logic, enabling agents to focus on semantic mediation rather than protocol translation.
-
-
-
-\subsection{Digital Twin Platform Selection}
-\label{subsec:platform-selection}
-
-Two open-source DT platforms were selected to demonstrate heterogeneous system integration:
-
-\textbf{KTWIN}~\cite{Wermann_Wickboldt_2025} serves as the Smart City DT platform.
-KTWIN is a Kubernetes-based serverless framework designed to simplify DT adoption through cloud-native deployment patterns.
-It natively supports the Digital Twins Definition Language (DTDL) and has been validated for smart city applications using the \texttt{opendigitaltwins-smartcities} ontology.
-Key characteristics include:
-\begin{itemize}
-    \item Event-driven architecture using RabbitMQ message broker
-    \item Kubernetes-native deployment for horizontal scalability
-    \item Direct DTDL schema support without transformation
-    \item Open-source implementation enabling protocol extensions
+    \item \textbf{RabbitMQ Integration:}
+    Similar messaging infrastructure to KTWIN reduces deployment complexity
+        while maintaining semantic heterogeneity at the ontology level
+    
+    \item \textbf{Production-Grade Maturity:}
+    Extensive documentation, active community, and industrial adoption
+        ensure realistic platform behavior for evaluation
 \end{itemize}
 
-\textbf{Eclipse Ditto} serves as the Energy Grid DT platform.
-Ditto is a mature open-source IoT platform providing DT capabilities through its ``Thing'' abstraction.
-For this research, Ditto will implement the \texttt{opendigitaltwins-energygrid} ontology, which adapts the Common Information Model (CIM) standard to DTDL.
-However, Ditto's native knowledge representation uses the Thing model rather than DTDL directly, requiring schema translation.
-Key characteristics include:
-\begin{itemize}
-    \item Thing-based knowledge representation distinct from DTDL
-    \item Rich REST and WebSocket APIs for twin interaction
-    \item RabbitMQ integration (similar to KTWIN)
-    \item Extensive documentation and active community
-\end{itemize}
+The deliberate selection of platforms with similar
+    messaging infrastructure (RabbitMQ) but
+    different knowledge representations (native DTDL vs. Thing model)
+    creates the realistic heterogeneity necessary to
+    validate agent-mediated semantic interoperability while
+    maintaining implementation feasibility within research constraints.
+Neither platform provides native MCP server capabilities.
+Implementing MCP servers for both KTWIN and Eclipse Ditto
+    constitutes part of this research scope.
 
-The deliberate selection of platforms with similar messaging infrastructure (RabbitMQ) but
-    different knowledge representations (DTDL vs. Thing model) creates realistic heterogeneity while maintaining implementation feasibility.
+\subsection{Agent-Platform Integration}
+\label{subsec:agent-interaction-impl}
 
-\subsection{Agent Integration Architecture}
-\label{subsec:agent-architecture}
+While Section~\ref{subsec:session-layer} described
+    agent-to-agent coordination through the A2A protocol,
+    this subsection focuses on the complementary agent-to-platform interaction pattern
+    realized through the Model Context Protocol (MCP).
+MCP enables dynamic resource discovery and query execution without requiring agents to
+    maintain platform-specific client code or
+    hardcoded schema knowledge.
 
-Agents operate as autonomous mediators between DT platforms, bridging semantic gaps through dynamic negotiation rather than static mappings.
-The agent architecture integrates two complementary protocols:
+Each DT platform exposes an MCP server.
+The server publishes three types of information:
+    resource catalogs (available entity types and instances),
+    schema metadata (properties, relationships, semantic annotations), and
+    query capabilities (supported operations like filtering, spatial queries, aggregation).
+For KTWIN, the MCP server wraps Kubernetes CRDs and RabbitMQ event streams,
+    exposing \texttt{smart-city} ontology entities.
+For Ditto, the MCP server interfaces with REST and WebSocket APIs,
+    querying \texttt{energy-grid} ontology entities.
 
-\textbf{Model Context Protocol (MCP)} enables resource discovery and schema introspection.
-Each DT platform exposes an MCP server that publishes:
-\begin{itemize}
-    \item Available entity types and their properties
-    \item Ontology structure and relationships
-    \item Query capabilities and supported operations
-    \item Real-time schema metadata for dynamic adaptation
-\end{itemize}
-
-\textbf{Agent-to-Agent (A2A) Protocol} facilitates semantic negotiation between platform agents.
-When cross-domain coordination is required, agents use A2A to:
-\begin{itemize}
-    \item Exchange ontology concepts requiring mapping
-    \item Propose semantic equivalences and transformations
-    \item Negotiate acceptable mapping strategies
-    \item Establish shared understanding for specific use cases
-\end{itemize}
-
-Each DT platform is paired with a dedicated agent that understands the platform's native knowledge representation.
-The SmartCity Agent (paired with KTWIN) specializes in DTDL-based smart city ontologies, while
-    the EnergyGrid Agent (paired with Ditto) specializes in CIM-based grid ontologies translated to the Thing model.
-These agents act as semantic translators, exposing their platform's capabilities through MCP while negotiating cross-domain mappings through A2A.
-
-A lightweight orchestration agent coordinates multi-platform interactions,
-    routing requests to appropriate platform agents and aggregating responses.
-This centralized coordination simplifies the proof-of-concept while maintaining the agent autonomy principle---platform agents retain
-    full control over their semantic mappings and never directly access other platforms.
-
-\subsection{Technology Stack}
-\label{subsec:technology-stack}
-
-The implementation leverages open-source technologies aligned with cloud-native practices:
-
-\textbf{Infrastructure:}
-\begin{itemize}
-    \item \textbf{Kubernetes:} Container orchestration for KTWIN and Ditto clusters
-    \item \textbf{Docker:} Containerization of all services for reproducibility
-    \item \textbf{Terraform:} Infrastructure-as-code for cluster provisioning
-    \item \textbf{RabbitMQ:} Message broker for event-driven DT communications
-\end{itemize}
-
-\textbf{Digital Twin Platforms:}
-\begin{itemize}
-    \item \textbf{KTWIN:} Smart City DT platform (native DTDL support)
-    \item \textbf{Eclipse Ditto:} Energy Grid DT platform (Thing model)
-\end{itemize}
-
-\textbf{Agent Implementation:}
-\begin{itemize}
-    \item \textbf{Python 3.11+:} Primary language for agent development
-    \item \textbf{MCP SDK:} Model Context Protocol client/server libraries
-    \item \textbf{A2A Protocol:} Agent-to-Agent communication framework
-    \item \textbf{Large Language Model:} For semantic reasoning and mapping (Claude Sonnet 3.5 or local Llama 3 model)
-\end{itemize}
-
-\textbf{Data and Ontologies:}
-\begin{itemize}
-    \item \textbf{opendigitaltwins-smartcities:} DTDL ontology for urban infrastructure
-    \item \textbf{opendigitaltwins-energygrid:} CIM-based DTDL ontology for grid assets
-    \item \textbf{Synthetic datasets:} EV mobility patterns, grid load profiles (IEEE test feeders)
-\end{itemize}
-
-\textbf{Monitoring and Evaluation:}
-\begin{itemize}
-    \item \textbf{Prometheus + Grafana:} Metrics collection and visualization
-    \item \textbf{Custom evaluation framework:} Semantic mapping accuracy assessment
-\end{itemize}
+Each domain agent embeds an MCP client
+    that connects to its associated platform's MCP server.
+The client provides the agent's LLM with tool definitions for
+    discovering resources,
+    retrieving schemas, and
+    executing queries with filtering and projection.
+This architecture enables agents to dynamically discover platform capabilities through MCP,
+    negotiate semantic mappings through A2A conversations, and
+    execute coordinated queries to solve cross-domain problems---all
+    without requiring modifications to the underlying DT platforms beyond MCP server deployment.
 
 \section{Cross-Domain Use Case Definition}
 \label{sec:use-case}
