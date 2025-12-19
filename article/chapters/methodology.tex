@@ -223,7 +223,7 @@ Figure~\ref{fig:poc-architecture} illustrates the implementation architecture,
 The User Application Component provides the end-user interface through which
     requests are submitted to the Digital Ecosystem.
 To ensure research reproducibility while avoiding proprietary constraints,
-    we propose use \textbf{Open WebUI}~\cite{baek2025},
+    we use \textbf{Open WebUI}~\cite{baek2025},
     an open-source self-hosted AI interface that enables flexible agent protocol integration.
 
 Open WebUI serves as both the user interface and agent client,
@@ -415,8 +415,8 @@ Neither the Smart City DT nor the Energy Grid DT can solve this problem independ
 \label{subsec:semantic-gaps}
 
 The scenario requires bridging multiple semantic gaps between the
-    \texttt{smartcities} ontology (KTWIN) and the
-    \texttt{energygrid} ontology (Ditto).
+    \texttt{smart-city} ontology (KTWIN) and the
+    \texttt{energy-grid} ontology (Ditto).
 These gaps are representative of real-world DT integration challenges:
     different domains model the same physical infrastructure from different perspectives using
     domain-specific ontologies optimized for their use cases.
@@ -460,81 +460,13 @@ These gaps are representative of real-world DT integration challenges:
             \texttt{status} enum
             
             (working, outOfService, etc.) &
-            \texttt{connectionState}, \texttt{amiBillingReady} & Operational state represented differently: service availability vs. connection/billing status \\
+            \texttt{connectionState}, \texttt{amiBillingReady} &
+            Operational state represented differently: service availability vs. connection/billing status \\
         \hline
     \end{tabular}
     \caption{Semantic gaps requiring agent-mediated mapping}
     \label{tab:semantic-gaps}
 \end{table}
-
-\subsection{Expected Agent Behaviors}
-\label{subsec:agent-behaviors}
-
-The agent-mediated coordination follows this workflow:
-
-\textbf{Phase 1: Discovery (MCP)}
-\begin{enumerate}
-    \item External client submits request: ``Schedule charging for 50 EVs in downtown without exceeding transformer capacity''
-    \item Orchestration agent invokes SmartCity Agent and EnergyGrid Agent
-    \item SmartCity Agent exposes via MCP: ``I have 15 \texttt{ChargingStation} entities with properties: \texttt{location}, \texttt{maxPowerKW}, \texttt{currentOccupancy}''
-    \item EnergyGrid Agent exposes via MCP: ``I have 3 \texttt{Transformer} entities with properties: \texttt{ratedCapacity}, \texttt{currentLoad}, \texttt{connectedUsagePoints}''
-\end{enumerate}
-
-\textbf{Phase 2: Semantic Negotiation (A2A)}
-\begin{enumerate}
-    \item EnergyGrid Agent: ``To calculate grid impact, I need to know which \texttt{UsagePoints} correspond to your \texttt{ChargingStations}''
-    \item SmartCity Agent: ``My \texttt{ChargingStation\#5} has \texttt{maxPowerKW}=150 and \texttt{location}=(lat,lon). Can you map this to your grid topology?''
-    \item EnergyGrid Agent performs spatial reasoning: ``\texttt{ChargingStation\#5} maps to my \texttt{UsagePoint\#UP\_789}, which connects to \texttt{Transformer\#T2}''
-    \item Agents negotiate equivalence: \texttt{ChargingStation.maxPowerKW} $\approx$ \texttt{EquivalentLoad.activePower} (with opposite sign convention)
-\end{enumerate}
-
-\textbf{Phase 3: Collaborative Decision}
-\begin{enumerate}
-    \item For each charging station, agents jointly evaluate:
-        \begin{itemize}
-            \item SmartCity: parking availability, distance from EV locations
-            \item EnergyGrid: connected transformer available capacity
-        \end{itemize}
-    \item EnergyGrid Agent: ``\texttt{Transformer\#T2} current load: 850kW, rated: 1000kW $\rightarrow$ available: 150kW''
-    \item SmartCity Agent: ``Assigning 10 EVs to \texttt{ChargingStation\#5}''
-    \item EnergyGrid Agent: ``\texttt{Transformer\#T1} at 95\% capacity $\rightarrow$ blocking \texttt{ChargingStation\#3}''
-    \item SmartCity Agent: ``Acknowledged, redirecting EVs to alternative stations''
-\end{enumerate}
-
-This interaction demonstrates dynamic semantic mapping without pre-coordinated schemas or manual integration code.
-
-
-\subsection{Simulation Environment}
-\label{subsec:simulation-environment}
-
-To enable reproducible evaluation without requiring physical infrastructure, a simulation environment will be developed:
-
-\textbf{EV Mobility Simulation:}
-\begin{itemize}
-    \item 50 EV agents with stochastic arrival times (normal distribution centered at 5 PM)
-    \item Battery state-of-charge (SoC) modeling: 20-80\% range, charging rate dependent on station type
-    \item Movement patterns based on synthetic urban mobility data
-    \item Driver preferences: charging time constraints, station proximity
-\end{itemize}
-
-\textbf{Grid Load Simulation:}
-\begin{itemize}
-    \item Baseline transformer loads following typical urban consumption profiles
-    \item Realistic load curves with peak demand 4-8 PM
-    \item Three transformers with capacities: 1000 kW, 800 kW, 1200 kW
-    \item Load forecasting uncertainty: ±10\% prediction error
-\end{itemize}
-
-\textbf{Charging Station Infrastructure:}
-\begin{itemize}
-    \item 15 charging stations distributed across 3 transformer service areas
-    \item Mix of charging types: 7 kW (Level 2), 22 kW (Level 2 fast), 50 kW (DC fast)
-    \item Dynamic availability status based on current EV occupancy
-    \item Geographic distribution representative of urban downtown area
-\end{itemize}
-
-Time-series event replay enables deterministic scenario execution for controlled evaluation while
-    introducing configurable variability to test agent adaptability.
 
 \section{Evaluation Methodology}
 \label{sec:evaluation}
