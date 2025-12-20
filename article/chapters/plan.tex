@@ -1,9 +1,9 @@
 % This chapter is the methodology for this research study plan.
 % It should detail the planned activities, methods, and computational resources to be employed in each of them, along with a timeline.
-% Important milestones such as the preparation of interim reports and the submission of at least one article to an event or journal should be explicitly stated in the timeline.
+% Important milestones such as the preparation of interim reports should be explicitly stated in the timeline.
 
-\chapter{Planned Activities and Timeline}
-\label{chap:plan}
+\chapter{Planned Activities}
+\label{chap:planned-activities}
 
 This research follows an iterative agent-first development process, prioritizing early
     validation of the core agent protocol capabilities before full system integration.
@@ -11,7 +11,25 @@ This research follows an iterative agent-first development process, prioritizing
 \section{Development Phases}
 \label{sec:development-phases}
 
-\textbf{Sprint 1: Agent Protocol Spike}
+\textbf{Sprint 1: Foundations and Coursework}
+
+Focus: Establish academic foundation and research context.
+
+\textit{Activities:}
+\begin{itemize}
+    \item Admission to the Special Student's Program at PPGC - INF/UFRGS.
+    \item Participation as a student in CMP258 - Big Data, Cloud and Fog/EDGE Application Development.
+    \item Admission to the Master's Program at PPGC - INF/UFRGS.
+    \item Participation as a student in CMP617 - Computing special topics DCXVII: Natural Language Processing and Information Retrieval.
+    \item Participation as a student in CMP264 - Information Visualization.
+    \item Participation as a student in CMP263 - Machine Learning.
+    \item Study, reading and selection of articles in the context of Digital Twin, Large Language Models and AI agents.
+    \item English Language Proficiency Exam.
+\end{itemize}
+
+\textit{Milestone:} Study and Research Plan document.
+
+\textbf{Sprint 2: Agent Protocol Spike}
 
 Focus: Validate MCP and A2A protocols work for semantic negotiation with minimal infrastructure.
 
@@ -24,11 +42,15 @@ Focus: Validate MCP and A2A protocols work for semantic negotiation with minimal
     \item Test agent discovery and mapping establishment
 \end{itemize}
 
-\textit{Deliverable:} Working agent communication demonstrating schema discovery and semantic mapping negotiation without full DT platforms.
+\textit{Milestone:}
+Working agent communication demonstrating schema discovery and
+    semantic mapping negotiation without full DT platforms.
 
-\textit{Risk Mitigation:} Validating agent protocols early prevents wasted effort on DT infrastructure if protocols prove insufficient.
+\textit{Risk Mitigation:}
+Validating agent protocols early prevents wasted effort on DT infrastructure
+    if protocols prove insufficient.
 
-\textbf{Sprint 2: Single DT Platform Integration}
+\textbf{Sprint 3: Single DT Platform Integration}
 
 Focus: Integrate agents with real KTWIN deployment to validate platform introspection.
 
@@ -39,11 +61,13 @@ Focus: Integrate agents with real KTWIN deployment to validate platform introspe
     \item Extend SmartCity Agent to introspect KTWIN's DTDL schemas via MCP
     \item Implement agent queries against live KTWIN twins
     \item Simulate EV charging requests with mock grid constraints
+    \item Writing of the Master's Thesis.
 \end{itemize}
 
-\textit{Deliverable:} SmartCity Agent dynamically querying KTWIN and recommending charging stations based on real twin data.
+\textit{Milestone:}
+UFRGS Master's Progress Seminar presentation.
 
-\textbf{Sprint 3: Heterogeneous Platform Integration}
+\textbf{Sprint 4: Heterogeneous Platform Integration}
 
 Focus: Add Ditto platform and demonstrate cross-platform semantic bridging.
 
@@ -55,23 +79,66 @@ Focus: Add Ditto platform and demonstrate cross-platform semantic bridging.
     \item Implement EnergyGrid Agent with Ditto Thing API integration
     \item Develop spatial reasoning module mapping charging station locations to usage points
     \item Implement A2A semantic negotiation between SmartCity and EnergyGrid agents
+    \item Writing of the Master's Thesis.
 \end{itemize}
 
-\textit{Deliverable:} Agents successfully negotiate \texttt{ChargingStation} $\leftrightarrow$ \texttt{UsagePoint} mapping and answer cross-domain query:
-    ``Which charging stations connect to Transformer T1?''
+\textit{Milestone:}
+Agents successfully negotiate
+    \texttt{ChargingStation} $\leftrightarrow$ \texttt{UsagePoint} mapping
 
-\textbf{Sprint 4: Complete Use Case and Orchestration}
+\textbf{Sprint 5: Complete Use Case and Orchestration}
 
 Focus: Full scenario implementation with orchestration layer and evaluation.
 
 \textit{Activities:}
 \begin{itemize}
-    \item Implement centralized orchestration agent
-    \item Develop EV charging scheduler using agent-mediated coordination
-    \item Create simulation framework with 50 EV agents and realistic load profiles
-    \item Implement monitoring and metrics collection
-    \item Execute scenario runs with varying EV arrival patterns and grid conditions
-    \item Compare against baseline approaches (manual integration, shared ontology)
+    \item Deploy Open WebUI user application and AutoGen Group Chat Manager orchestration
+    \item Implement dynamic EV charging coordination with 50 EVs, varying charging capacities, and transformer constraints
+    \item Execute semantic mapping evaluation: measure coverage and correctness against Table~\ref{tab:semantic-gaps}
+    \item Writing and review of the Master's Thesis
 \end{itemize}
 
-\textit{Deliverable:} Complete proof-of-concept demonstrating cross-domain optimization with quantitative evaluation results.
+\textit{Milestone:}
+Complete proof-of-concept demonstrating cross-domain collaboration.
+Master's Dissertation Defense.
+
+\section{Timeline}
+
+\begin{figure}[htbp]
+    \begin{ganttchart}[
+    hgrid,
+    vgrid,
+    time slot format=isodate-yearmonth,
+    time slot unit=month
+    ]{2024-05}{2026-02}
+        \gantttitlecalendar{year, month} \\
+        \ganttbar{Sprint 1}{2024-06}{2025-12} \\
+        \ganttlinkedmilestone{Milestone 1}{2025-12}
+    \end{ganttchart}
+    \caption{Research timeline: Sprint 1 (Foundations and Coursework)}
+    \label{fig:timeline-sprint1}
+\end{figure}
+
+\vspace{1cm}
+
+\begin{figure}[htbp]
+    \centering
+    \begin{ganttchart}[
+    hgrid,
+    vgrid,
+    time slot format=isodate-yearmonth,
+    time slot unit=month
+]{2026-01}{2027-02}
+        \gantttitlecalendar{year, month} \\
+        \ganttbar{Sprint 2}{2026-02}{2026-03} \\
+        \ganttlinkedmilestone{Milestone 2}{2026-03} \\
+        \ganttlinkedbar{Sprint 3}{2026-04}{2026-05} \\
+        \ganttlinkedmilestone{Milestone 3}{2026-05} \\
+        \ganttlinkedbar{Sprint 4}{2026-06}{2026-08} \\
+        \ganttlinkedmilestone{Milestone 4}{2026-08} \\
+        \ganttlinkedbar{Sprint 5}{2026-09}{2026-12} \\
+        \ganttlinkedmilestone{Milestone 5}{2026-12}
+    \end{ganttchart}
+    \caption{Research timeline: Sprints 2-5 (Development and Integration)}
+    \label{fig:timeline-sprints2-5}
+\end{figure}
