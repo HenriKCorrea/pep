@@ -48,3 +48,4 @@ build/
 
 # Exception: PDF figures
 !article/figures/*.pdf
+!figures/*.pdf
