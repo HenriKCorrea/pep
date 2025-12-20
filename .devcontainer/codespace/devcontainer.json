@@ -1,7 +1,7 @@
 // For format details, see https://aka.ms/devcontainer.json. For config options, see the
 // README at: https://github.com/devcontainers/templates/tree/main/src/ubuntu
 {
-	"name": "Codespace",
+	"name": "Codespace - Remote Development",
 	"image": "henrikcorrea/latex-templates:latest",
 
 	// Features to add to the dev container. More info: https://containers.dev/features.
@@ -12,10 +12,6 @@
 
 	// Use 'postCreateCommand' to run commands after the container is created.
 	// "postCreateCommand": "uname -a",
-
-	// Mount a named volume. See https://code.visualstudio.com/remote/advancedcontainers/improve-performance#_use-a-named-volume-for-your-entire-source-tree
-	"workspaceMount": "source=${localWorkspaceFolderBasename}-workspace,target=/workspaces/${localWorkspaceFolderBasename},type=volume",
-	"workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
 
 	// Configure tool-specific properties.
 	"customizations": {
