@@ -61,11 +61,11 @@ Moreover, this OSI-inspired layering~\cite{day1983} provides clear separation be
     user interaction (Application),
     protocol translation (Presentation),
     conversation management (Session) and
-    resource access (Domain, Platform, Data).
+    resource access (Domain, Integration, Platform).
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[height=0.85\textheight,keepaspectratio]{figures/architecture.pdf}
+    \includegraphics[width=\textwidth,keepaspectratio]{figures/architecture.pdf}
     \caption{
         Agent-mediated Digital Twin interoperability architecture.
         The layered design integrates group chat patterns with MCP-based resource discovery
@@ -143,7 +143,7 @@ The Group Chat Manager never directly interacts with DT platforms or their data 
     query their respective platforms.
 This protocol layering ensures clean separation between
     inter-agent coordination (A2A, session layer) and
-    platform resource access (MCP, domain/platform layers).
+    platform resource access (MCP, domain/integration layers).
 
 Such design preserves platform autonomy,
     as domain agents mediate all interactions without external entities
@@ -179,27 +179,28 @@ By isolating platform heterogeneity within dedicated agents,
     the domain layer enables seamless integration of diverse DT systems
     without requiring direct interoperability between platforms themselves.
 
+\subsection{Integration Layer}
+\label{subsec:integration-layer}
+
+The integration layer provides the technical bridge between domain agents and Digital Twin platforms,
+    implemented through Model Context Protocol (MCP) servers.
+Each MCP server exposes a platform's capabilities through a standardized interface,
+    enabling agents to discover available resources and their schemas dynamically.
+This layer abstracts away platform-specific APIs and data access patterns,
+    allowing agents to interact with heterogeneous DT systems through a unified protocol.
+
 \subsection{Platform Layer}
 \label{subsec:platform-layer}
 
 The platform layer consists of individual Digital Twin systems
     that manage domain-specific digital representations of physical assets.
-Each DT platform exposes its capabilities through a Model Context Protocol (MCP) server,
-    enabling agents to discover available resources and their schemas dynamically.
-This layer abstracts away the underlying implementation details of each DT platform,
-    allowing agents to interact with them through a standardized interface.
-
-\subsection{Data Layer}
-\label{subsec:data-layer}
-
-The data layer encompasses the physical and digital resources
-    that underpin each Digital Twin platform.
-This includes physical sensors, simulation models, historical datasets,
-    and any other data sources that contribute to the DT's knowledge base.
-Each DT platform is responsible for managing its data layer autonomously,
-    ensuring data integrity, security, and availability according to its own policies.
-Agents access data indirectly through their associated DT platforms,
-    leveraging the platforms' native capabilities for data retrieval and processing.
+Each DT platform maintains its own internal data sources,
+    including physical sensors, simulation models, historical datasets,
+    and any other resources that contribute to its knowledge base.
+DT platforms retain full autonomy over their data management,
+    ensuring data integrity, security, and availability according to their own policies.
+Agents access platform resources exclusively through the integration layer's MCP servers,
+    preserving platform independence while enabling cross-domain coordination.
 
 \section{Implementation Methodology}
 \label{sec:implementation-methodology}
