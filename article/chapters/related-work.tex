@@ -94,7 +94,7 @@ Afterwards, the abstract, introduction and conclusion chapters are assessed
     based on inclusion and exclusion criteria.
 
 Target primary study is at least 8 and at most 12 works among DLs.
-If screening outcomes fewer than articles 8, expand to extra DLs interactively until
+If screening outcomes fewer than 8 articles, expand to extra DLs interactively until
     achieving minimum coverage.
 In contrast, if more than 12 papers are included,
     the selection will be reduced to 12 studies through prioritization based on:
@@ -196,6 +196,51 @@ While the shared ontology facilitates semantic integration,
     between heterogeneous DT systems without shared vocabularies.
 Nevertheless, SWS primary focus are human-AI interactions rather than autonomous DT-to-DT agent protocols.
 
+Mariani~\textit{et al.} proposes a principled integration architecture between Multi-Agent Systems (MAS) and Digital Twins (DT)
+    to improve environment engineering in agent-oriented development~\cite{mariani2023}.
+The architecture adopts the A\&A (Agents \& Artifacts) meta-model, where DTs encapsulate physical resources
+    and expose their services to agents through CArtAgO artefacts.
+A technical implementation is presented using JaCaMo (MAS platform) and WLDT (Web of Linked Digital Twins library),
+    with a DTDiscoveryArtefact component that automatically discovers DT descriptors and
+    dynamically maps DT properties, actions and behaviors to artefact observable properties and operations.
+The approach achieves separation of concerns: DTs handle physical world interactions (protocols, data formats, device management),
+    while agents operate at a higher abstraction level pursuing application goals through artefacts.
+The work focuses on MAS environment engineering within Cyber-Physical Systems,
+    providing a conceptual and technical design with implementation ongoing at time of publication.
+While the architecture enables agents to leverage DTs as environment abstractions,
+    it does not address autonomous semantic negotiation between heterogeneous DT systems across organizational boundaries,
+    as DTs primarily serve as passive resources orchestrated by agents rather than active participants in cross-domain collaboration.
+
+Marah and Challenger introduce MADTwin, a framework for developing agent-based digital twins for Cyber-Physical Systems~\cite{marah2024}.
+The framework features a flexible architecture where physical components are modeled as physical agents
+    controlling hardware (sensors, actuators), while their digital counterparts are represented as digital agents in the virtual environment.
+Both layers are implemented using JADE platform with FIPA-ACL for agent communication and MQTT for IoT sensor data.
+The architecture achieves separation of concerns through two levels of reasoning:
+    physical agents perform low-level context-aware decisions (e.g., obstacle detection),
+    while digital agents conduct high-level reasoning with global system view (e.g., collision avoidance coordination).
+The framework provides an upper ontology for agent-based DTs that can be extended to domain-specific implementations,
+    demonstrated through a smart warehouse case study with autonomous mobile robots.
+While MADTwin successfully addresses modularity and intelligent autonomous behavior within a single DT system,
+    the framework focuses on internal agent-based architecture rather than cross-domain DT interoperability.
+Agents represent components within one system boundary,
+    and the approach does not address semantic negotiation between heterogeneous DT systems
+    from different organizations or domains without shared JADE/FIPA infrastructure.
+
+Belbachir~\textit{et al.} present the COGNIMAN architecture, a seven-layer modular framework for flexible manufacturing
+    aligned with Industry 5.0 principles~\cite{belbachir2025a}.
+The architecture comprises Physical Twin, Data Layer, Digital Twin Representation, Service Layer,
+    User Interface, Connectivity and Integration, and Ethics layers.
+COGNIMAN emphasizes human-centric design through explicit integration of human roles
+    (operators, technical developers, administrators) and human-in-the-loop decision-making processes.
+The architecture supports modular integration of diverse technologies (sensors, AI/ML, cloud services)
+    and is demonstrated through a glass fiber manufacturing case study focusing on defect detection using computer vision.
+While COGNIMAN addresses comprehensive requirements for smart manufacturing---including flexibility, scalability,
+    interoperability, and maintainability within a single production environment---
+    the architecture does not employ agent-based approaches or address autonomous semantic negotiation
+    between heterogeneous DT systems across different organizations or manufacturing domains.
+The focus remains on human-machine collaboration and cognitive services within a unified manufacturing context
+    rather than DT-to-DT interoperability across domain boundaries.
+
 %% Prisma ScR Items
 %%
 %% PRISMA-ScR 20 Results of Individual Sources of Evidence - For each included source of evidence, present the relevant data that were charted that relate to the review questions and objectives.
@@ -203,8 +248,6 @@ Nevertheless, SWS primary focus are human-AI interactions rather than autonomous
 %% PRISMA-ScR 26 Conclusions - Provide a general interpretation of the results with respect to the review questions and objectives, as well as potential implications or next steps.
 
 \begin{figure}[H]
-    \caption{PRISMA 2020 Flow Diagram}
-    \label{fig:prisma}
     \resizebox{\textwidth}{!}{
     \prismaflowstart
         % Identification Phase
@@ -215,26 +258,26 @@ Nevertheless, SWS primary focus are human-AI interactions rather than autonomous
         
         SD (n = 13)
         
-        SL (n = ?)}{};
+        SL (n = 23)}{};
 
-        \prismaflownode{n2}{below=of n1}{Records identified (n = 55)}{n1};
+        \prismaflownode{n2}{below=of n1}{Records identified (n = 78)}{n1};
         
         % Screening Phase
-        \prismaflownode{n3}{below=of n2}{Records screened (n = 55)}{n2};
-        \prismaflownode{n3r}{right=of n3}{Records excluded (n = 50)
+        \prismaflownode{n3}{below=of n2}{Records screened (n = 78)}{n2};
+        \prismaflownode{n3r}{right=of n3}{Records excluded (n = 70)
 
-        - No DT inter. focus (n = 34)
+        - No DT inter. focus (n = 46)
 
-        - Secondary study (n = 11)
+        - Secondary study (n = 17)
         
-        - No AI or Agent focus (n = 4)
+        - No AI or Agent focus (n = 6)
 
         - No peer review (n = 1)
         }{};
         \prismaflowarrow{n3}{n3r};
 
         % Inclusion Phase
-        \prismaflownode{n4}{below=of n3}{Studies included in qualitative synthesis (n = 5)}{n3};
+        \prismaflownode{n4}{below=of n3}{Studies included in qualitative synthesis (n = 8)}{n3};
 
         % Labels
         \prismalabel{1.3*\mh}{n1.west |- {$(n1)!-0.0!(n4)$}}{Identification};
@@ -243,12 +286,12 @@ Nevertheless, SWS primary focus are human-AI interactions rather than autonomous
 
     \prismaflowend
     }
+    \caption{PRISMA 2020 Flow Diagram}
+    \label{fig:prisma}
 \end{figure}
 
 \begin{table}[H]
     \centering
-    \caption{Comparative Analysis of Related Work}
-    \label{tab:related-work-comparison}
     \resizebox{\textwidth}{!}{
     \begin{tabular}{l|c|c|c|p{2.5cm}|p{2.2cm}|p{6.5cm}}
         \textbf{Reference} & \textbf{DT} & \textbf{AI} & \textbf{XD} & \textbf{Protocol/ Framework} & \textbf{Validation} & \textbf{Gap/Difference from This Research} \\
@@ -282,11 +325,31 @@ Nevertheless, SWS primary focus are human-AI interactions rather than autonomous
             lacks autonomous DT-to-DT agent protocols \\
         \hline
         
+        \cite{mariani2023} & Y & Y & N & JaCaMo + WLDT + A\&A & Conceptual design & 
+            DTs as MAS environment abstractions;
+            agents orchestrate DTs as passive resources;
+            no cross-domain validation \\
+        \hline
+
+        \cite{marah2024} & Y & Y & N & JADE + FIPA-ACL + MQTT & Smart warehouse & 
+            Agent-based DT architecture for single system;
+            physical and digital agent layers;
+            no cross-domain interoperability between heterogeneous DT systems \\
+        \hline
+        
+        \cite{belbachir2025a} & Y & N & N & Modular + MQTT + OPC UA & Glass fiber mfg & 
+            Human-centric DT architecture for single manufacturing environment;
+            modular design with AI/ML services;
+            no agent-based approach or cross-domain DT interoperability \\
+        \hline
+        
         \textbf{This work} & \textbf{Y} & \textbf{Y} & \textbf{Y} & \textbf{AgenTwin} & \textbf{Smart City $\leftrightarrow$ Energy Grid} & 
         \textbf{AgenTwin: AI Agent Framework enabling cross-domain semantic interoperability in Digital Ecosystems without shared ontology} \\
         
     \end{tabular}
     }
+    \caption{Comparative Analysis of Related Work}
+    \label{tab:related-work-comparison}
 \end{table}
 
 \vspace{0.5em}
