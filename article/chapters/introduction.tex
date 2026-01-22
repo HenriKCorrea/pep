@@ -46,7 +46,7 @@ Interoperability is the ability of different DT systems to
     different standards, protocols, or ontologies.
 Standards like Digital Twins Definition Language (DTDL)~\cite{opendigitaltwins_2025} for smart cities and
     the Common Information Model (CIM)~\cite{Uslar_2012} for energy grids are used to
-    describe the structure and behavior of digital twins.
+    describe the structure and behavior of Digital Twins.
 Despite the growing adoption of DTs,
     achieving interoperability between heterogeneous DT systems
     remains a significant challenge~\cite{Tripathi_2024}.
@@ -86,10 +86,11 @@ Nativi et al.~\cite{Nativi_2021} present the Destination Earth Digital Ecosystem
 This approach creates a paradox of autonomous yet cooperative entities by decoupling DTs from the underlying cloud infrastructure, 
     enabling stakeholders to maintain domain-specific optimizations while fostering collaboration when cross-domain value is required.
 
-Building on this vision, this research explores the use of AI Agent Protocols
-    to facilitate semantic interoperability between DTs within such digital ecosystems.
+Building on this vision, this research proposes AgenTwin,
+    an AI Agent Framework for Cooperative Digital Twin Interoperability that
+    leverages AI Agent Protocols to facilitate semantic interoperability between DTs within digital ecosystems.
 Rather than pursuing universal standards that require breaking changes to operational systems,
-    agent-mediated negotiation and mapping can bridge the gap between diverse ontologies and data models.
+    AgenTwin enables agent-mediated negotiation and mapping to bridge the gap between diverse ontologies and data models.
 This approach aligns with Klar's framework for DT maturity~\cite{Klar_2024}, where
     semantic interoperability represents a critical advancement that
     enables DTs to cooperate meaningfully while preserving their
@@ -104,7 +105,10 @@ This research aims to address the critical challenge of
     preserving the autonomy and domain-specific optimizations of existing implementations.
 The main research question guiding this study is:
 
-\textbf{How can AI Agent Protocols improve Digital Twin systems interoperability while preserving existing system autonomy?}
+% \textbf{How can AI Agent Protocols improve Digital Twin systems interoperability while preserving existing system autonomy?}
+\textbf{How can AgenTwin leverage AI Agent Protocols to
+    improve Digital Twin systems interoperability while
+    preserving existing system autonomy?}
 
 This question addresses the fundamental tension between
     the need for cross-domain DT collaboration and
@@ -119,18 +123,19 @@ To answer the research question, this work pursues the following specific object
     This includes examining how agent-mediated communication can bridge semantic gaps between heterogeneous DT platforms
       without requiring universal standards or breaking changes.
 
-    \item \textbf{Design a Digital Ecosystem Architecture:}
-    Define and formalize an architectural framework for Digital Ecosystems powered by AI Agent Protocols.
-      This architecture should enable autonomous DTs to cooperate through agent-mediated semantic mapping
+    \item \textbf{Design AgenTwin's Digital Ecosystem Architecture:}
+    Define and formalize the AgenTwin architectural framework that enables Digital Ecosystems powered by AI Agent Protocols.
+    This architecture should enable autonomous DTs to cooperate through agent-mediated semantic mapping
         while maintaining their domain-specific characteristics and stakeholder independence.
 
-    \item \textbf{Develop a Proof-of-Concept Implementation:}
+    \item \textbf{Develop an AgenTwin Proof-of-Concept Implementation:}
     Create a working prototype that demonstrates cross-domain DT interoperability using open-source frameworks.
-      The implementation will extend existing DT platforms with agent protocol capabilities to validate the proposed architectural approach.
+    The implementation will extend existing DT platforms with AgenTwin's agent protocol capabilities to
+      validate the proposed architectural approach.
 
     \item \textbf{Evaluate Cross-Domain Use Case Performance:}
     Conduct technical evaluation of the developed prototype using a realistic cross-domain scenario
-      that requires coordination between heterogeneous DT systems to solve problems that individual systems cannot address independently.
+        that requires coordination between heterogeneous DT systems to solve problems that individual systems cannot address independently.
 \end{enumerate}
 
 \section{Expected Contributions}
@@ -139,16 +144,17 @@ To answer the research question, this work pursues the following specific object
 This research is expected to make the following contributions to the Digital Twin and distributed systems communities:
 
 \begin{itemize}
-    \item \textbf{Conceptual Framework for Agent-Mediated DT Interoperability:}
-    A novel theoretical framework that positions AI Agent Protocols as mediators for semantic interoperability in Digital Ecosystems,
-      extending current understanding of how autonomous systems can cooperate without sacrificing domain specificity.
+    \item \textbf{AgenTwin Framework:}
+    A novel conceptual framework that positions AI Agent Protocols as
+        mediators for semantic interoperability in Digital Ecosystems,
+        extending current understanding of how autonomous systems can cooperate without sacrificing domain specificity.
 
-    \item \textbf{Digital Ecosystem Architecture:}
+    \item \textbf{AgenTwin Architecture:}
     A formalized architectural pattern that demonstrates how agent protocols can be integrated into existing DT platforms
-      to enable cross-domain collaboration while maintaining system boundaries and stakeholder autonomy.
+        to enable cross-domain collaboration while maintaining system boundaries and stakeholder autonomy.
 
-    \item \textbf{Open-Source Implementation:}
-    A working prototype that extends open-source DT frameworks with AI Agent capabilities,
+    \item \textbf{Open-Source AgenTwin Implementation:}
+    A working prototype that extends open-source DT frameworks with AgenTwin's AI Agent capabilities,
       providing a reference implementation for researchers and practitioners interested in exploring agent-mediated DT interoperability.
 
     \item \textbf{Cross-Domain Validation Scenario:}
@@ -178,4 +184,3 @@ Network-level protocols,
 
 The evaluation will be limited to simulated environments and may not capture all complexities of production DT deployments.
 Results should be interpreted within the context of the specific use cases and platforms chosen for validation.
-

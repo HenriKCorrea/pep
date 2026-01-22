@@ -2,11 +2,11 @@
 \label{chap:methodology}
 
 This chapter describes the research methodology employed to
-    investigate how AI Agent Protocols can enable semantic interoperability between
+    investigate how AgenTwin leverages AI Agent Protocols to enable semantic interoperability between
     heterogeneous Digital Twin systems.
 The research follows a Design Science Research (DSR) approach, focusing on
-    the design, development, and evaluation of a novel Digital Ecosystem architecture that leverages
-    agent-mediated communication to solve cross-domain coordination challenges.
+    the design, development, and evaluation of AgenTwin's Digital Ecosystem architecture that
+    enables agent-mediated communication to solve cross-domain coordination challenges.
 
 \section{Research Design}
 \label{sec:research-design}
@@ -18,7 +18,7 @@ This research adopts the Design Science Research methodology proposed by
 DSR is particularly appropriate for this work because it
     emphasizes the creation and evaluation of
     purposeful artifacts---in this case,
-    a Digital Ecosystem architecture and its proof-of-concept implementation.
+    AgenTwin's Digital Ecosystem architecture and its proof-of-concept implementation.
 
 The DSR process consists of six iterative activities:
 
@@ -33,7 +33,7 @@ The DSR process consists of six iterative activities:
     
     \item \textbf{Design and Development:}
     Described in Sections~\ref{sec:architecture-design} and~\ref{sec:implementation-methodology},
-        covering the Digital Ecosystem architecture and agent protocol integration.
+        covering AgenTwin's Digital Ecosystem architecture and agent protocol integration.
     
     \item \textbf{Demonstration:}
     Presented in Section~\ref{sec:use-case},
@@ -52,7 +52,7 @@ The DSR process consists of six iterative activities:
 \section{System Architecture Design}
 \label{sec:architecture-design}
 
-The proposed Digital Ecosystem architecture
+AgenTwin's Digital Ecosystem architecture
     depicted in Figure~\ref{fig:architecture} adopts a
     layered design inspired by
     DestinE virtual cloud layer concept~\cite{Nativi_2021}, 
@@ -67,7 +67,7 @@ Moreover, this OSI-inspired layering~\cite{day1983} provides clear separation be
     \centering
     \includegraphics[width=\textwidth,keepaspectratio]{figures/architecture.pdf}
     \caption{
-        Agent-mediated Digital Twin interoperability architecture.
+        AgenTwin architecture.
         The layered design integrates group chat patterns with MCP-based resource discovery
             to enable dynamic semantic negotiation between heterogeneous DT platforms.
     }
@@ -205,7 +205,7 @@ Agents access platform resources exclusively through the integration layer's MCP
 \section{Implementation Methodology}
 \label{sec:implementation-methodology}
 
-The proof-of-concept implementation realizes the proposed Digital Ecosystem architecture through
+The AgenTwin proof-of-concept implementation realizes the proposed architecture through
     a concrete deployment integrating heterogeneous Digital Twin platforms mediated by AI agents.
 Figure~\ref{fig:poc-architecture} illustrates the implementation architecture,
     showing the integration of KTWIN and Eclipse Ditto platforms through agent-based coordination.
@@ -213,7 +213,7 @@ Figure~\ref{fig:poc-architecture} illustrates the implementation architecture,
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=\textwidth]{figures/proof-of-concept.pdf}
-    \caption{Proof-of-concept implementation architecture}
+    \caption{AgenTwin proof-of-concept implementation architecture}
     \label{fig:poc-architecture}
 \end{figure}
 
@@ -370,7 +370,7 @@ This architecture enables agents to dynamically discover platform capabilities t
 \section{Cross-Domain Use Case Definition}
 \label{sec:use-case}
 
-To validate the agent-mediated interoperability approach, a realistic cross-domain scenario has been designed that requires
+To validate AgenTwin's agent-mediated interoperability approach, a realistic cross-domain scenario has been designed that requires
     cooperation between Smart City and Energy Grid DT systems.
 
 \subsection{Scenario Description: Dynamic EV Charging Coordination}
@@ -472,10 +472,10 @@ Table~\ref{tab:semantic-gaps} summarizes the main semantic gaps identified.
 \section{Evaluation Methodology}
 \label{sec:evaluation-methodology}
 
-The evaluation assesses whether the agent-mediated interoperability architecture
+The evaluation assesses whether AgenTwin's agent-mediated interoperability architecture
     successfully enables cross-domain coordination between heterogeneous Digital Twin systems.
 This evaluation focuses on demonstrating functional feasibility and
-    measuring key characteristics of the proposed approach within
+    measuring key characteristics of AgenTwin within
     the constraints of a Master's thesis timeline.
 
 The evaluation is organized into three complementary dimensions that
